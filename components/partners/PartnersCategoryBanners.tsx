@@ -1,0 +1,89 @@
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+import { PARTNERS_LP_IMAGES } from "@/constants/partners-lp";
+
+const experienceLinks = [
+  { label: "Feriados", href: "#curadoria" },
+  { label: "Benefícios", href: "#beneficios" },
+  { label: "Roteiros", href: "#curadoria" },
+] as const;
+
+const programLinks = [
+  { label: "Concierge Partners", href: "#categorias" },
+  { label: "Cruzeiros", href: "#curadoria" },
+] as const;
+
+export function PartnersCategoryBanners() {
+  return (
+    <section
+      id="categorias"
+      className="scroll-mt-24 relative border-y border-white/10 bg-btg-navy px-5 py-16 lg:px-8"
+    >
+      <div className="mx-auto max-w-[1280px]">
+        <div className="grid gap-x-20 gap-y-4 md:grid-cols-2">
+          <div className="group">
+            <Image
+              src={PARTNERS_LP_IMAGES.experiencias}
+              alt="Praia"
+              width={620}
+              height={166}
+            />
+            <div className=" bg-[#0B2859] w-full z-10 mt-auto p-6">
+              <h3 className="text-2xl font-bold text-white">Experiências</h3>
+              <p className="mt-2 max-w-sm text-sm text-white/90">
+                Descubra viagens pensadas para cada momento.
+              </p>
+            </div>
+            <div className="mt-4">
+              {experienceLinks.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="flex items-center justify-between border-b border-white/15 py-4 text-lg font-medium text-white transition hover:text-[#7eb4ff]"
+                >
+                  <span>{item.label}</span>
+                  <ArrowUpRight
+                    className="h-5 w-5 shrink-0"
+                    strokeWidth={1.75}
+                  />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="group">
+            <Image
+              src={PARTNERS_LP_IMAGES.programaPartners}
+              alt="Programa Partners"
+              width={620}
+              height={166}
+            />
+            <div className="relative  bg-[#0B2859] w-full z-10 mt-auto p-6">
+              <h3 className="text-2xl font-bold text-white">
+                Programa Partners
+              </h3>
+              <p className="mt-2 max-w-sm text-sm text-white/90">
+                Serviços exclusivos para clientes.
+              </p>
+            </div>
+            <div className="mt-4">
+              {programLinks.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="flex items-center justify-between border-b border-white/15 py-4 text-lg font-medium text-white transition hover:text-[#7eb4ff]"
+                >
+                  <span>{item.label}</span>
+                  <ArrowUpRight
+                    className="h-5 w-5 shrink-0"
+                    strokeWidth={1.75}
+                  />
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
