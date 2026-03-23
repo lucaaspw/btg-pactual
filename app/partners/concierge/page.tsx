@@ -116,7 +116,7 @@ export default function PartnersConciergePage() {
       <PartnersHeader />
 
       <main className="bg-btg-navy text-white">
-        <section className="relative z-0 h-[600px] overflow-hidden pt-[5.5rem] sm:pt-24">
+        <section className="relative z-0 h-[480px] overflow-hidden pt-[5.5rem] sm:h-[520px] sm:pt-24 md:h-[600px]">
           <Image
             src="/concierge_image/banner_concierge.png"
             alt="Concierge Partners"
@@ -129,12 +129,12 @@ export default function PartnersConciergePage() {
             className="absolute inset-0 bg-gradient-to-r from-btg-navy/75 via-btg-navy/25 to-transparent md:from-btg-navy/55 md:via-btg-navy/15"
             aria-hidden
           />
-          <div className="relative z-10 mx-auto flex max-w-[1280px] flex-col justify-end px-5 pb-16 sm:px-8 md:h-[400px] md:pb-24 lg:px-0">
+          <div className="relative z-10 mx-auto flex max-w-[1280px] flex-col justify-end px-5 pb-10 sm:px-8 sm:pb-14 md:h-[400px] md:pb-24 lg:px-0">
             <div className="max-w-2xl">
               <h1 className="text-3xl font-bold leading-tight tracking-tight drop-shadow-md md:text-5xl">
                 Concierge Partners
               </h1>
-              <p className="mt-4 text-lg leading-snug text-white drop-shadow-sm md:text-2xl">
+              <p className="mt-3 text-base leading-snug text-white drop-shadow-sm sm:text-lg md:mt-4 md:text-2xl">
                 O mundo do jeito que voce imagina
               </p>
             </div>
@@ -142,30 +142,30 @@ export default function PartnersConciergePage() {
         </section>
 
         <section className="px-5 lg:px-8">
-          <div className="border-b border-white/10  mx-auto max-w-[1280px] pt-12 pb-8 text-[#E7EEFF]">
-            <p className="text-2xl mb-4">
+          <div className="mx-auto max-w-[1280px] border-b border-white/10 pt-8 pb-8 text-[#E7EEFF] sm:pt-10 md:pt-12">
+            <p className="mb-4 text-base sm:text-lg md:text-2xl">
               Com o Travel Service Partners - em parceria com a PRIMETOUR,
               referencia em turismo de luxo no Brasil - nosso time organiza
               viagens, reservas e experiencias exclusivas para voce.
             </p>
-            <p className="text-2xl leading-snug">
+            <p className="text-base leading-snug sm:text-lg md:text-2xl">
               Atendimento de segunda a segunda, das 8h as 20h.
             </p>
-            <h2 className="mt-10 text-2xl font-bold md:text-4xl">
+            <h2 className="mt-8 text-2xl font-bold sm:mt-10 md:text-4xl">
               O que o Concierge faz por você
             </h2>
           </div>
         </section>
 
-        <section className="px-5 pt-6 pb-14 lg:px-8">
+        <section className="px-5 pt-4 pb-12 sm:pt-6 sm:pb-14 lg:px-8">
           <div className="mx-auto max-w-[1280px]">
-            <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
+            <div className="mt-6 grid grid-cols-1 gap-4 sm:mt-8 sm:gap-5 md:grid-cols-2 xl:grid-cols-4">
               {conciergeFeatures.map((item) => (
                 <article
                   key={item.title}
                   className="overflow-hidden bg-[#10408D]"
                 >
-                  <div className="relative h-[200px]">
+                  <div className="relative h-[180px] sm:h-[200px]">
                     <Image
                       src={item.image}
                       alt={item.title}
@@ -173,11 +173,13 @@ export default function PartnersConciergePage() {
                       className="object-cover"
                     />
                   </div>
-                  <div className="py-5 px-4">
-                    <h3 className="text-white text-2xl mb-3 font-semibold">
+                  <div className="px-4 py-4 sm:py-5">
+                    <h3 className="mb-2 text-xl font-semibold text-white sm:mb-3 sm:text-2xl">
                       {item.title}
                     </h3>
-                    <p className="text-lg font-light">{item.description}</p>
+                    <p className="text-base font-light sm:text-lg">
+                      {item.description}
+                    </p>
                   </div>
                 </article>
               ))}
@@ -185,25 +187,25 @@ export default function PartnersConciergePage() {
           </div>
         </section>
 
-        <section className="px-5 py-14 lg:px-8">
+        <section className="px-5 py-12 sm:py-14 lg:px-8">
           <div className="mx-auto max-w-[1280px]">
             <h2 className="text-2xl pb-6 border-b border-white/10 font-bold md:text-3xl">
               Consultoria completa para sua viagem
             </h2>
-            <p className="mt-6 text-2xl text-[#E7EEFF]">
+            <p className="mt-6 text-base text-[#E7EEFF] sm:text-lg md:text-2xl">
               Nossa equipe esta preparada para elaborar roteiros personalizados
               que atendam aos seus desejos e preferencias. Da escolha do hotel
               ideal a organizacao de experiencias exclusivas no destino, cada
               detalhe e planejado para proporcionar uma viagem unica.
             </p>
-            <p className="mt-5 text-2xl font-semibold text-[#E7EEFF]">
+            <p className="mt-5 text-lg font-semibold text-[#E7EEFF] sm:text-xl md:text-2xl">
               Exemplos de experiencias que podemos organizar:
             </p>
 
-            <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
+            <div className="mt-8 grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-4">
               {travelExamples.map((item) => (
                 <article key={item.label} className="overflow-hidden">
-                  <div className="relative h-[200px]">
+                  <div className="relative h-[180px] sm:h-[200px]">
                     <Image
                       src={item.image}
                       alt={item.label}
@@ -211,24 +213,26 @@ export default function PartnersConciergePage() {
                       className="object-cover"
                     />
                   </div>
-                  <p className="p-4 text-lg text-center">{item.label}</p>
+                  <p className="p-4 text-center text-base sm:text-lg">
+                    {item.label}
+                  </p>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="pt-2 pb-5 py-14 lg:px-8">
+        <section className="px-5 pt-2 pb-10 sm:pb-12 md:py-14 lg:px-8">
           <div className="mx-auto max-w-[1280px]">
-            <h2 className="text-4xl border-b border-white/10 pb-6  font-bold md:text-3xl">
+            <h2 className="border-b border-white/10 pb-6 text-2xl font-bold md:text-3xl">
               Cuidamos de toda a logistica de sua viagem
             </h2>
-            <p className="mt-6 text-2xl">
+            <p className="mt-6 text-base sm:text-lg md:text-2xl">
               Realizamos a emissao de passagens aereas nacionais e
               internacionais, oferecendo consultoria especializada sobre rotas,
               assentos e utilizacao de milhas.
             </p>
-            <p className="mt-5 text-2xl">
+            <p className="mt-5 text-base sm:text-lg md:text-2xl">
               Caso necessario, tambem auxiliamos com remarcacoes e ajustes de
               itinerario.
             </p>
@@ -241,14 +245,15 @@ export default function PartnersConciergePage() {
               A elite do turismo mundial tambem e Partners
             </h2>
 
-            <div className="mt-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 items-center justify-center gap-x-8 gap-y-5 pt-8">
+            <div className="mt-8 grid grid-cols-2 items-center justify-center gap-x-4 gap-y-4 pt-6 sm:gap-x-6 sm:gap-y-5 sm:pt-8 md:grid-cols-4 lg:grid-cols-8">
               {premiumPartners.map((partner) => (
-                <div key={partner.name} className="px-1 py-1">
+                <div key={partner.name} className="flex items-center justify-center px-1 py-1">
                   <Image
                     src={partner.image}
                     alt={partner.name}
                     width={partner.width}
                     height={partner.height}
+                    className="h-auto w-full max-w-[120px] object-contain sm:max-w-[140px] md:max-w-none"
                   />
                 </div>
               ))}
