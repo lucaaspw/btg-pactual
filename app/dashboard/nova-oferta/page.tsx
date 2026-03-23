@@ -53,7 +53,7 @@ export default function NovaOferta() {
   }
 
   const sectionTitleClass =
-    "mb-4 flex items-center gap-2 border-b border-gray-300 pb-2 text-sm font-bold tracking-wide text-btg-navy uppercase";
+    "mb-4 flex items-center gap-2 border-b border-gray-300 pb-2 text-sm font-bold tracking-wide uppercase";
   const labelClass = "mb-1 block text-xs font-semibold uppercase text-gray-700";
   const inputClass =
     "w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 outline-none transition focus:border-[#2E73D4] focus:ring-2 focus:ring-[#2E73D4]/20";

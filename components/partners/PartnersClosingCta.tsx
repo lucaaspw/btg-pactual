@@ -13,7 +13,7 @@ export function PartnersClosingCta() {
       className="scroll-mt-24 bg-[#0B2859] px-5 py-20 text-center lg:px-8"
     >
       <div className="mx-auto ">
-        <h2 className="text-2xl font-bold text-white md:text-3xl">
+        <h2 className="text-2xl font-bold md:text-3xl">
           Quer saber mais?
         </h2>
         <p className="mt-4 text-lg text-[#E7EEFF]">

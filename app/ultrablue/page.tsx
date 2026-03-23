@@ -17,7 +17,7 @@ export default async function UltrabluePage() {
         <p className="text-sm font-semibold uppercase tracking-wide text-[#7eb4ff]">
           Cartão Ultrablue
         </p>
-        <h1 className="mt-2 text-3xl font-bold text-white md:text-4xl">
+        <h1 className="mt-2 text-3xl font-bold md:text-4xl">
           Suas ofertas
         </h1>
         <p className="mt-2 max-w-2xl text-[#E7EEFF]">

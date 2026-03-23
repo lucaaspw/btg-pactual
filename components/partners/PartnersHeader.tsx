@@ -6,11 +6,11 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const nav = [
-  { label: "Feriados", href: "#curadoria" },
-  { label: "Roteiros", href: "#curadoria" },
-  { label: "Cruzeiros", href: "#curadoria" },
-  { label: "Concierge Partners", href: "#categorias" },
-  { label: "Benefícios", href: "#beneficios" },
+  { label: "Feriados", href: "/partners/feriados" },
+  { label: "Roteiros", href: "/partners/roteiros" },
+  { label: "Cruzeiros", href: "/partners/cruzeiros" },
+  { label: "Concierge Partners", href: "/partners/concierge" },
+  { label: "Benefícios", href: "/partners/beneficios" },
 ] as const;
 
 /** Após rolar um pouco, o fundo fecha para o conteúdo não “vazar” por trás do menu. */
@@ -51,22 +51,26 @@ export function PartnersHeader() {
           aria-label="Principal"
         >
           {nav.map((item) => (
-            <a
+            <Link
               key={item.label}
               href={item.href}
-              className="drop-shadow-sm transition hover:text-[#b8d4ff]"
+              className="drop-shadow-sm text-xl transition hover:text-[#b8d4ff]"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
         <a
-          href="#contato"
-          className="inline-flex shrink-0 items-center gap-2 bg-[#2E73D4] px-4 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-[#3A80E4]"
+          href="/partners#contato"
+          className="inline-flex text-xl shrink-0 items-center gap-2 bg-[#2E73D4] px-4 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-[#3A80E4]"
         >
           Quero falar com meu concierge
-          <ArrowUpRight className="h-4 w-4 shrink-0" strokeWidth={2} aria-hidden />
+          <ArrowUpRight
+            className="h-4 w-4 shrink-0"
+            strokeWidth={2}
+            aria-hidden
+          />
         </a>
       </div>
     </header>

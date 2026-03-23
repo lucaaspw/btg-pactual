@@ -1,4 +1,8 @@
-import { tipoCartaoIgual, type TipoCartao } from "@/constants/cartoes";
+import { TIPO_CARTAO, tipoCartaoIgual, type TipoCartao } from "@/constants/cartoes";
+import {
+  tipoOfertaIgual,
+  type TipoOferta,
+} from "@/constants/tipo-oferta";
 import type { Oferta } from "@/types/oferta";
 
 const OFERTAS_FIELDS = "id,title,slug,acf";
@@ -60,4 +64,12 @@ export async function getOfertasPorTipoCartao(
 ): Promise<Oferta[]> {
   const todas = await getOfertas();
   return todas.filter((o) => tipoCartaoIgual(o.acf?.tipo_cartao, tipo));
+}
+
+/** Ofertas Partners filtradas por `tipo_oferta` (Feriado, Roteiro, Cruzeiro). */
+export async function getOfertasPartnersPorTipoOferta(
+  tipo: TipoOferta,
+): Promise<Oferta[]> {
+  const partners = await getOfertasPorTipoCartao(TIPO_CARTAO.PARTNERS);
+  return partners.filter((o) => tipoOfertaIgual(o.acf?.tipo_oferta, tipo));
 }

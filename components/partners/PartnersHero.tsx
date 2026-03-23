@@ -30,7 +30,7 @@ export function PartnersHero() {
         className={`relative z-10 mx-auto flex max-w-[1280px] flex-col justify-end px-5 pb-16 sm:px-8 md:h-[400px] md:pb-24 lg:px-0`}
       >
         <div>
-          <h1 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-white drop-shadow-md md:text-5xl lg:text-[3.25rem]">
+          <h1 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight drop-shadow-md md:text-5xl lg:text-[3.25rem]">
             Cartão Partners
             <br />
             BTG Pactual

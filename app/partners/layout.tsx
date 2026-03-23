@@ -1,10 +1,4 @@
-import { Manrope } from "next/font/google";
 import type { Metadata } from "next";
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-partners",
-});
 
 export const metadata: Metadata = {
   title: "Cartão Partners BTG Pactual",
@@ -18,9 +12,7 @@ export default function PartnersLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div
-      className={`${manrope.className} min-h-screen bg-btg-navy text-white antialiased`}
-    >
+    <div className="min-h-screen bg-btg-navy text-white antialiased">
       {children}
     </div>
   );

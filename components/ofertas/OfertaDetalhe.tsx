@@ -112,7 +112,7 @@ function CabecalhoBloco({
         height={32}
         className={iconeDetalheClass}
       />
-      <h2 className="text-lg font-bold text-white md:text-xl">{titulo}</h2>
+      <h2 className="text-lg font-bold md:text-xl">{titulo}</h2>
     </div>
   );
 }
@@ -205,7 +205,7 @@ export function OfertaDetalhe({
           </p>
         ) : null}
 
-        <h1 className="mt-3 text-center text-2xl font-bold leading-tight text-white md:text-4xl md:leading-tight">
+        <h1 className="mt-3 text-center text-2xl font-bold leading-tight md:text-4xl md:leading-tight">
           {titulo}
         </h1>
 

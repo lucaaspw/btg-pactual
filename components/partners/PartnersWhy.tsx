@@ -46,7 +46,7 @@ export function PartnersWhy() {
         </div>
 
         <div>
-          <h2 className="text-xl font-bold leading-tight mb-10 text-white md:text-xl">
+          <h2 className="text-xl font-bold leading-tight mb-10 md:text-xl">
             Por que planejar sua viagem com a gente
           </h2>
 
@@ -62,7 +62,7 @@ export function PartnersWhy() {
                     className="h-8 w-8 shrink-0 object-contain"
                   />
                   <div>
-                    <h3 className="font-semibold text-white">{title}</h3>
+                    <h3 className="font-semibold">{title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-[#E7EEFF]">
                       {text}
                     </p>
