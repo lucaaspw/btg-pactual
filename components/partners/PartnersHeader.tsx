@@ -107,52 +107,77 @@ export function PartnersHeader() {
         </a>
       </div>
 
-      {mobileOpen ? (
-        <div className="lg:hidden">
-          <div className="fixed z-[120] w-full top-0 flex flex-col bg-[#1c4a99] px-6 py-6 text-white shadow-2xl">
-            <div className="flex items-start justify-between">
-              <span className="text-white/35">Menu</span>
-              <button
-                type="button"
-                aria-label="Fechar menu"
-                onClick={() => setMobileOpen(false)}
-                className="inline-flex h-10 w-10 items-center justify-center text-white/90 transition hover:text-white"
-              >
-                <X className="h-8 w-8" strokeWidth={1.25} />
-              </button>
-            </div>
-
-            <nav
-              className="mt-4 flex flex-1 flex-col items-center justify-center gap-10"
-              aria-label="Menu mobile"
-            >
-              {mobileNav.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-[1rem] font-semibold leading-none text-white transition hover:text-[#d8e8ff]"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-
-            <a
-              href="/partners#contato"
+      <div
+        className={`lg:hidden ${mobileOpen ? "pointer-events-auto" : "pointer-events-none"}`}
+        aria-hidden={!mobileOpen}
+      >
+        <div
+          className={`fixed inset-0 z-[110] bg-btg-navy-deep/45 transition-opacity duration-300 ease-out ${
+            mobileOpen ? "opacity-100" : "opacity-0"
+          }`}
+          onClick={() => setMobileOpen(false)}
+        />
+        <div
+          className={`fixed z-[120] top-0 w-full flex flex-col bg-[#1c4a99] px-6 py-6 text-white shadow-2xl transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            mobileOpen
+              ? "translate-y-0 opacity-100"
+              : "-translate-y-4 opacity-0"
+          }`}
+        >
+          <div className="flex items-start justify-between">
+            <span className="text-white/35">Menu</span>
+            <button
+              type="button"
+              aria-label="Fechar menu"
               onClick={() => setMobileOpen(false)}
-              className="inline-flex w-full mt-5 items-center justify-between gap-2 bg-[#3a87e6] px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-[#5098ef]"
+              className="inline-flex h-10 w-10 items-center justify-center text-white/90 transition hover:text-white"
             >
-              Quero falar com meu concierge
-              <ArrowUpRight
-                className="h-7 w-7 shrink-0"
-                strokeWidth={2}
-                aria-hidden
-              />
-            </a>
+              <X className="h-8 w-8" strokeWidth={1.25} />
+            </button>
           </div>
+
+          <nav
+            className="mt-4 flex flex-1 flex-col items-center justify-center gap-10"
+            aria-label="Menu mobile"
+          >
+            {mobileNav.map((item, index) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
+                className={`text-[1rem] font-semibold leading-none text-white transition-all duration-300 hover:text-[#d8e8ff] ${
+                  mobileOpen
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-1 opacity-0"
+                }`}
+                style={{
+                  transitionDelay: mobileOpen ? `${index * 35}ms` : "0ms",
+                }}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <a
+            href="/partners#contato"
+            onClick={() => setMobileOpen(false)}
+            className={`inline-flex w-full mt-5 items-center justify-between gap-2 bg-[#3a87e6] px-5 py-3.5 text-white transition-all duration-300 hover:bg-[#5098ef] ${
+              mobileOpen
+                ? "translate-y-0 opacity-100"
+                : "translate-y-2 opacity-0"
+            }`}
+            style={{ transitionDelay: mobileOpen ? "160ms" : "0ms" }}
+          >
+            Quero falar com meu concierge
+            <ArrowUpRight
+              className="h-7 w-7 shrink-0"
+              strokeWidth={2}
+              aria-hidden
+            />
+          </a>
         </div>
-      ) : null}
+      </div>
     </header>
   );
 }

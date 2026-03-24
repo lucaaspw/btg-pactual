@@ -1,7 +1,7 @@
 import { PartnersClosingCta } from "@/components/partners/PartnersClosingCta";
 import { PartnersFooter } from "@/components/partners/PartnersFooter";
 import { PartnersHeader } from "@/components/partners/PartnersHeader";
-import { ChevronLeft } from "lucide-react";
+import { ArrowUpRight, ChevronLeft } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -41,10 +41,12 @@ export default function PartnersBeneficiosPage() {
                   <ChevronLeft className="h-5 w-5" aria-hidden />
                   voltar
                 </Link>
-                <h1 className="text-4xl font-bold leading-tight tracking-tight md:text-5xl">
-                  Benefícios do Cartão Partners
+                <h1 className="text-4xl font-bold text-center md:text-left leading-tight tracking-tight md:text-5xl">
+                  Benefícios do
+                  <br className="md:hidden" />
+                  Cartão Partners
                 </h1>
-                <p className="mt-6 text-2xl leading-snug text-[#E7EEFF]">
+                <p className="mt-6 text-2xl text-center md:text-left leading-snug text-[#E7EEFF]">
                   Muito mais do que um cartão:
                   <br />
                   vantagens exclusivas para suas viagens e experiências ao redor
@@ -62,13 +64,24 @@ export default function PartnersBeneficiosPage() {
                   sizes="(max-width: 1024px) 100vw, 660px"
                 />
               </div>
+              <Link
+                href="#"
+                className="inline-flex items-center gap-2 bg-[#2E73D4] px-8 py-4 text-base font-semibold text-white shadow-lg transition hover:bg-[#3A80E4]"
+              >
+                Quero falar com meu concierge
+                <ArrowUpRight
+                  className="h-5 w-5 shrink-0"
+                  strokeWidth={2}
+                  aria-hidden
+                />
+              </Link>
             </div>
           </div>
         </section>
 
         <section className="px-5 md:pb-[170px] sm:px-8 pb-16 lg:px-8">
           <div className="mx-auto max-w-[1280px]">
-            <h2 className="border-b border-white/10 pb-6 text-3xl font-bold">
+            <h2 className="md:border-b border-white/10 pb-6 text-3xl font-bold">
               Cashback
             </h2>
             <p className="mt-8 text-xl leading-snug text-[#E7EEFF]">
@@ -95,7 +108,7 @@ export default function PartnersBeneficiosPage() {
         </section>
 
         <section className="px-5 pb-14 sm:px-8 sm:pb-16 lg:px-8">
-          <div className="mx-auto max-w-[1280px] border-t border-white/10">
+          <div className="mx-auto max-w-[1280px] md:border-t border-white/10">
             <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2 lg:gap-8 pb-10">
               <article className="flex h-full flex-col justify-center">
                 <h2 className="text-3xl font-bold leading-tight">
@@ -104,7 +117,7 @@ export default function PartnersBeneficiosPage() {
                 <p className="mt-5 text-xl text-[#E7EEFF]">
                   Viaje com tranquilidade.
                 </p>
-                <p className="mt-8 max-w-[560px] text-[1.35rem] leading-snug text-[#E7EEFF]">
+                <p className="mt-8 max-w-[560px] hidden md:block text-[1.35rem] leading-snug text-[#E7EEFF]">
                   O cartão Partners oferece{" "}
                   <strong>seguro viagem global</strong> da Omint, garantindo
                   cobertura para você e até <strong>4 dependentes</strong>{" "}
@@ -121,11 +134,25 @@ export default function PartnersBeneficiosPage() {
                   sizes="(max-width: 1024px) 100vw, 670px"
                 />
               </div>
+              <article className="flex h-full flex-col justify-center">
+                <p className="max-w-[560px] block md:hidden text-[1.35rem] leading-snug text-[#E7EEFF]">
+                  O cartão Partners oferece{" "}
+                  <strong>seguro viagem global</strong> da Omint, garantindo
+                  cobertura para você e até <strong>4 dependentes</strong>{" "}
+                  durante suas viagens.
+                </p>
+              </article>
             </div>
 
-            <div className="mt-10 border-t border-white/10">
+            <div className="mt-10 md:border-t border-white/10">
               <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2 lg:gap-8">
-                <div className="relative h-[520px] overflow-hidden sm:h-[560px] lg:h-[550px]">
+                <h2 className="text-3xl md:hidden font-bold leading-tight">
+                  Acesso ao Terminal BTG
+                </h2>
+                <p className="mt-5 text-xl md:hidden text-[#E7EEFF]">
+                  Uma experiência diferenciada antes mesmo de embarcar.
+                </p>
+                <div className="relative h-[380px] md:h-[520px] overflow-hidden sm:h-[560px] lg:h-[550px]">
                   <Image
                     src="/beneficios_image/acesso_terminal.png"
                     alt="Terminal BTG"
@@ -136,13 +163,13 @@ export default function PartnersBeneficiosPage() {
                 </div>
 
                 <article className="flex h-full flex-col justify-center py-6">
-                  <h2 className="text-3xl font-bold leading-tight">
+                  <h2 className="text-3xl hidden md:block font-bold leading-tight">
                     Acesso ao Terminal BTG
                   </h2>
-                  <p className="mt-5 text-xl text-[#E7EEFF]">
+                  <p className="mt-5 text-xl hidden md:block text-[#E7EEFF]">
                     Uma experiência diferenciada antes mesmo de embarcar.
                   </p>
-                  <p className="mt-6 text-[1.35rem] font-semibold text-white">
+                  <p className="md:mt-6 text-[1.35rem] font-semibold text-white">
                     Benefícios incluem:
                   </p>
 
@@ -150,7 +177,7 @@ export default function PartnersBeneficiosPage() {
                     {terminalBenefits.map((benefit) => (
                       <li
                         key={benefit}
-                        className="border-b border-white/10 py-3 text-[1.3rem] text-[#E7EEFF] last:border-b-0"
+                        className="md:border-b border-white/10 py-3 text-[1.3rem] text-[#E7EEFF] last:border-b-0"
                       >
                         {benefit}
                       </li>
@@ -161,7 +188,7 @@ export default function PartnersBeneficiosPage() {
             </div>
 
             <article className="mt-10">
-              <h2 className="border-b border-white/10 pb-5 text-3xl font-bold">
+              <h2 className="md:border-b border-white/10 pb-5 text-3xl font-bold">
                 Salas VIP Loungekey
               </h2>
               <p className="mt-6 text-[1.35rem] leading-snug text-[#E7EEFF]">
