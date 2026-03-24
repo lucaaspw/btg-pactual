@@ -49,7 +49,11 @@ export default async function PartnersOfertaPage({ params }: PageProps) {
   return (
     <>
       <PartnersHeader />
-      <OfertaDetalhe oferta={oferta} backHref="/partners" />
+      <OfertaDetalhe
+        oferta={oferta}
+        backHref="/partners"
+        brand="partners"
+      />
       <PartnersClosingCta />
       <PartnersFooter />
     </>

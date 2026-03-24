@@ -19,66 +19,64 @@ export function UltrablueCategoryOffersSection({
   ofertas,
 }: UltrablueCategoryOffersSectionProps) {
   return (
-    <section
-      className={`${HEADER_OFFSET_CLASS} scroll-mt-24 bg-[#012A5B] px-5 pb-16 lg:px-8`}
-    >
-      <div className="mx-auto max-w-[1280px]">
-        <div className="relative mt-10 h-[220px] overflow-hidden sm:h-[280px]">
-          <Image
-            src={ULTRABLUE_LP_IMAGES.defaultBanner}
-            alt=""
-            fill
-            className="object-cover object-center"
-            sizes="(max-width: 1280px) 100vw, 1280px"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#012A5B]/55 to-transparent" />
+    <section className=" bg-[#F1F4F8] pb-16 lg:px-0">
+      <div className="">
+        <div
+          className="mt-10 pt-10 px-5 md:px-0 h-[220px] sm:h-[280px]"
+          style={{
+            backgroundImage: `url(${ULTRABLUE_LP_IMAGES.defaultBanner})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            height: "420px",
+          }}
+        >
+          <div className="mx-auto max-w-[1280px] pb-8 pt-10">
+            <Link
+              href="/ultrablue"
+              className="mb-20 flex items-center gap-1 text-sm text-[#0B2859] transition md:text-2xl"
+            >
+              <ChevronLeft className="h-5 w-5" aria-hidden />
+              voltar
+            </Link>
+            <h1 className="text-xl font-bold text-[#0B2859] tracking-tight md:text-2xl lg:text-3xl">
+              {title}
+            </h1>
+          </div>
         </div>
-        <div className="border-b border-[#0B2859] pb-8 pt-10">
-          <Link
-            href="/ultrablue"
-            className="mb-20 flex items-center gap-1 text-sm text-[#E7EEFF] transition hover:text-white md:text-2xl"
-          >
-            <ChevronLeft className="h-5 w-5" aria-hidden />
-            voltar
-          </Link>
-          <h1 className="text-xl font-bold tracking-tight md:text-2xl lg:text-3xl">
-            {title}
-          </h1>
+        <div className="mx-auto max-w-[1280px] px-5 md:px-0">
           {description ? (
-            <p className="mt-8 max-w-2xl text-lg leading-snug text-[#E7EEFF]">
+            <p className="mt-8 pb-5 md:border-b border-[#0B2859] font-bold text-2xl leading-snug text-[#0B2859]">
               {description}
             </p>
           ) : null}
+          {ofertas.length === 0 ? (
+            <p className="mt-10 max-w-xl text-[#0B2859]">
+              Em breve novas ofertas exclusivas nesta categoria. O operador pode
+              publicar em{" "}
+              <a
+                className="underline underline-offset-2"
+                href="/dashboard/nova-oferta"
+              >
+                Nova oferta
+              </a>{" "}
+              com tipo de cartão <strong>Ultrablue</strong>.
+            </p>
+          ) : (
+            <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+              {ofertas.map((oferta) => (
+                <OfertaCard
+                  key={oferta.id}
+                  oferta={oferta}
+                  detailHref={
+                    oferta.slug
+                      ? `/ultrablue/oferta/${encodeURIComponent(oferta.slug)}`
+                      : undefined
+                  }
+                />
+              ))}
+            </div>
+          )}
         </div>
-
-        {ofertas.length === 0 ? (
-          <p className="mt-10 max-w-xl text-[#E7EEFF]">
-            Em breve novas ofertas exclusivas nesta categoria. O operador pode
-            publicar em{" "}
-            <a
-              className="underline underline-offset-2"
-              href="/dashboard/nova-oferta"
-            >
-              Nova oferta
-            </a>{" "}
-            com tipo de cartão <strong>Ultrablue</strong>.
-          </p>
-        ) : (
-          <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
-            {ofertas.map((oferta) => (
-              <OfertaCard
-                key={oferta.id}
-                oferta={oferta}
-                detailHref={
-                  oferta.slug
-                    ? `/ultrablue/oferta/${encodeURIComponent(oferta.slug)}`
-                    : undefined
-                }
-              />
-            ))}
-          </div>
-        )}
       </div>
     </section>
   );

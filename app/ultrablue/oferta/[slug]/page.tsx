@@ -52,6 +52,7 @@ export default async function UltrablueOfertaPage({ params }: PageProps) {
       <OfertaDetalhe
         oferta={oferta}
         backHref="/ultrablue"
+        brand="ultrablue"
         offsetForFixedHeader
       />
       <UltrablueClosingCta />
