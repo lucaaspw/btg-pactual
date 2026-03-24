@@ -26,9 +26,9 @@ const FERIADOS_BRAND = {
   ultrablue: {
     section: "bg-[#F1F4F8] text-[#05132A]",
     backLink:
-      "mb-20 flex items-center gap-1 text-sm text-[#05132A] transition hover:text-[#0B2859] md:text-2xl",
+      "mb-14 flex items-center gap-1 text-sm text-[#05132A] transition hover:text-[#0B2859] md:text-base",
     title:
-      "max-w-[920px] text-xl font-bold tracking-tight text-[#0B2859] md:text-2xl lg:text-3xl",
+      "max-w-[920px] text-2xl font-bold leading-[1.25] tracking-tight text-[#0B2859] md:text-3xl lg:text-[2rem] lg:leading-snug",
     border: "border-b border-[#0B2859]/25",
     scopeActiveText: "text-[#0B2859]",
   },
@@ -378,37 +378,46 @@ export function FeriadosSection({
   }, [sections]);
 
   return (
-    <section
-      className={`${HEADER_OFFSET_CLASS}scroll-mt-24 ${t.section} pb-24`}
-    >
-      <div
-        className="w-full"
-        style={
-          brand === "ultrablue"
-            ? {
-                backgroundImage: `url(${ULTRABLUE_LP_IMAGES.defaultBanner})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                height: "420px",
-              }
-            : undefined
-        }
-      >
-        <div className="mx-auto max-w-[1280px]">
-          <div className="pt-10 px-5 md:px-0">
+    <section className={`${HEADER_OFFSET_CLASS} scroll-mt-24 ${t.section} pb-24`}>
+      {brand === "ultrablue" ? (
+        <div className="relative min-h-[240px] w-full overflow-hidden sm:min-h-[280px] md:min-h-[320px]">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url(${ULTRABLUE_LP_IMAGES.defaultBanner})`,
+            }}
+            aria-hidden
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-t from-[#F1F4F8]/95 via-[#F1F4F8]/55 to-[#F1F4F8]/35 sm:from-[#F1F4F8]/85 sm:via-[#F1F4F8]/40"
+            aria-hidden
+          />
+          <div className="relative mx-auto max-w-[1280px] px-5 pb-10 pt-10 md:px-0">
             <Link href={homeHref} className={t.backLink}>
               <ChevronLeft className="h-5 w-5" aria-hidden />
               voltar
             </Link>
             <h1 className={t.title}>{title}</h1>
-            {brand === "ultrablue" && introDescription ? (
+            {introDescription ? (
               <p className="mt-8 max-w-2xl text-lg leading-snug text-[#05132A]">
                 {introDescription}
               </p>
             ) : null}
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="w-full">
+          <div className="mx-auto max-w-[1280px]">
+            <div className="px-5 pt-10 md:px-0">
+              <Link href={homeHref} className={t.backLink}>
+                <ChevronLeft className="h-5 w-5" aria-hidden />
+                voltar
+              </Link>
+              <h1 className={t.title}>{title}</h1>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="mx-auto max-w-[1280px] px-5 md:px-0">
         {ofertas.length === 0 ? (
           <p

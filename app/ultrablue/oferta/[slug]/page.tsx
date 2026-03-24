@@ -49,12 +49,7 @@ export default async function UltrablueOfertaPage({ params }: PageProps) {
   return (
     <>
       <UltrablueHeader />
-      <OfertaDetalhe
-        oferta={oferta}
-        backHref="/ultrablue"
-        brand="ultrablue"
-        offsetForFixedHeader
-      />
+      <OfertaDetalhe oferta={oferta} backHref="/ultrablue" brand="ultrablue" />
       <UltrablueClosingCta />
       <UltrablueFooter />
     </>

@@ -7,12 +7,37 @@ import type { Oferta } from "@/types/oferta";
 
 const HEADER_OFFSET_CLASS = "pt-[5.5rem] sm:pt-24";
 
-/** Ícones estáticos da página de detalhe (public/partners_image). */
+/**
+ * Tipografia e espaçamentos iguais em Partners e Ultrablue (só as cores mudam por marca).
+ */
+const DETALHE_LAYOUT = {
+  backLink:
+    "flex mt-20 mb-20 items-center gap-1 text-sm transition md:text-2xl",
+  blockTitle: "text-lg font-bold md:text-xl",
+  h1: "mt-3 text-center text-2xl font-bold leading-tight md:text-4xl md:leading-tight",
+  destino: "mt-10 text-center text-base md:text-lg",
+  body: "mt-4 text-base leading-relaxed md:text-lg",
+  valorLead: "text-base md:text-lg",
+  valorPrice: "text-lg font-bold leading-snug md:text-xl",
+  section: "py-10 text-center md:py-12",
+  articlePad: "px-5 pb-16 lg:px-8",
+  heroWrap:
+    "relative mt-10 aspect-[21/9] min-h-[200px] w-full overflow-hidden bg-black/20 md:min-h-[280px]",
+} as const;
+
 const OFERTA_DETALHE_ICONES = {
-  calendar: "/ultrablue_image/icon_calendar-blue.png",
-  cash: "/ultrablue_image/icon_cash-blue.png",
-  baggage: "/ultrablue_image/icon_bagage-blue.png",
-  drink: "/ultrablue_image/icon_drink-blue.png",
+  partners: {
+    calendar: "/partners_image/calendar-icon.png",
+    cash: "/partners_image/cash-icon.png",
+    baggage: "/partners_image/bagage-icon.png",
+    drink: "/partners_image/drink-icon.png",
+  },
+  ultrablue: {
+    calendar: "/ultrablue_image/icon_calendar-blue.png",
+    cash: "/ultrablue_image/icon_cash-blue.png",
+    baggage: "/ultrablue_image/icon_bagage-blue.png",
+    drink: "/ultrablue_image/icon_drink-blue.png",
+  },
 } as const;
 
 export type OfertaDetalheBrand = "partners" | "ultrablue";
@@ -22,18 +47,16 @@ const DETALHE_BRAND = {
     shell: "bg-btg-navy text-white",
     muted: "text-[#E7EEFF]",
     title: "text-white",
-    blockTitle: "text-lg font-bold text-white md:text-xl",
-    backLink:
-      "flex mt-20 mb-20 items-center gap-1 text-sm text-[#E7EEFF] transition hover:text-white md:text-2xl",
+    blockTitle: `${DETALHE_LAYOUT.blockTitle} text-white`,
+    backLink: `${DETALHE_LAYOUT.backLink} text-[#E7EEFF] hover:text-white`,
     divider: "divide-white/10",
   },
   ultrablue: {
     shell: "bg-[#F1F4F8] text-[#05132A]",
     muted: "text-[#05132A]/85",
     title: "text-[#0B2859]",
-    blockTitle: "text-lg font-bold text-[#0B2859] md:text-xl",
-    backLink:
-      "flex mt-20 mb-20 items-center gap-1 text-sm text-[#05132A] transition hover:text-[#0B2859] md:text-2xl",
+    blockTitle: `${DETALHE_LAYOUT.blockTitle} text-[#0B2859]`,
+    backLink: `${DETALHE_LAYOUT.backLink} text-[#05132A] hover:text-[#0B2859]`,
     divider: "divide-[#0B2859]/25",
   },
 } as const;
@@ -103,14 +126,10 @@ function ValorBloco({
 
   return (
     <div className="mt-4 space-y-1 text-center">
-      <p className={`text-base md:text-lg ${t.muted}`}>A partir de</p>
-      <p className={`text-lg font-bold leading-snug md:text-xl ${priceClass}`}>
-        {destaque}
-      </p>
+      <p className={`${DETALHE_LAYOUT.valorLead} ${t.muted}`}>A partir de</p>
+      <p className={`${DETALHE_LAYOUT.valorPrice} ${priceClass}`}>{destaque}</p>
       {ctx ? (
-        <p className={`pt-0.5 text-base leading-relaxed md:text-lg ${t.muted}`}>
-          {ctx}
-        </p>
+        <p className={`pt-0.5 ${DETALHE_LAYOUT.body} ${t.muted}`}>{ctx}</p>
       ) : null}
     </div>
   );
@@ -193,12 +212,13 @@ export function OfertaDetalhe({
   ).trim();
   const incluiLinhas = parseIncluiLinhas(incluiRaw);
 
-  const bodyClass = `mt-4 text-base leading-relaxed md:text-lg ${tokens.muted}`;
+  const bodyClass = `${DETALHE_LAYOUT.body} ${tokens.muted}`;
+  const icones = OFERTA_DETALHE_ICONES[brand];
   const blocos: Bloco[] = [];
 
   if (quando) {
     blocos.push({
-      iconSrc: OFERTA_DETALHE_ICONES.calendar,
+      iconSrc: icones.calendar,
       titulo: "Quando",
       corpo: <p className={bodyClass}>{quando}</p>,
     });
@@ -206,7 +226,7 @@ export function OfertaDetalhe({
 
   if (preco) {
     blocos.push({
-      iconSrc: OFERTA_DETALHE_ICONES.cash,
+      iconSrc: icones.cash,
       titulo: "Valor",
       corpo: <ValorBloco acf={acf} brand={brand} />,
     });
@@ -214,7 +234,7 @@ export function OfertaDetalhe({
 
   if (acomodacaoTexto) {
     blocos.push({
-      iconSrc: OFERTA_DETALHE_ICONES.baggage,
+      iconSrc: icones.baggage,
       titulo: "Acomodação",
       corpo: <p className={bodyClass}>{acomodacaoTexto}</p>,
     });
@@ -222,7 +242,7 @@ export function OfertaDetalhe({
 
   if (incluiLinhas.length > 0) {
     blocos.push({
-      iconSrc: OFERTA_DETALHE_ICONES.drink,
+      iconSrc: icones.drink,
       titulo: "Inclui no pacote",
       corpo: (
         <div className="mt-4 space-y-3 text-center">
@@ -237,7 +257,9 @@ export function OfertaDetalhe({
   }
 
   return (
-    <article className={`${topPad} px-5 pb-16 lg:px-8 ${tokens.shell}`}>
+    <article
+      className={`${topPad} ${DETALHE_LAYOUT.articlePad} ${tokens.shell}`}
+    >
       <div className="mx-auto max-w-[1280px]">
         <Link href={backHref} className={tokens.backLink}>
           <ChevronLeft className="h-5 w-5" aria-hidden />
@@ -245,25 +267,15 @@ export function OfertaDetalhe({
         </Link>
 
         {destino ? (
-          <p
-            className={`mt-10 text-center text-base md:text-lg ${tokens.muted}`}
-          >
+          <p className={`${DETALHE_LAYOUT.destino} ${tokens.muted}`}>
             {destino}
           </p>
         ) : null}
 
-        <h1
-          className={`mt-3 text-center text-2xl font-bold leading-tight md:text-4xl md:leading-tight ${tokens.title}`}
-        >
-          {titulo}
-        </h1>
+        <h1 className={`${DETALHE_LAYOUT.h1} ${tokens.title}`}>{titulo}</h1>
 
         {img ? (
-          <div
-            className={`relative mt-10 aspect-[21/9] min-h-[200px] w-full overflow-hidden md:min-h-[280px] ${
-              brand === "ultrablue" ? "bg-[#0B2859]/10" : "bg-black/20"
-            }`}
-          >
+          <div className={DETALHE_LAYOUT.heroWrap}>
             <Image
               src={img}
               alt=""
@@ -277,7 +289,7 @@ export function OfertaDetalhe({
 
         <div className={`mx-auto mt-14 max-w-2xl divide-y ${tokens.divider}`}>
           {blocos.map(({ iconSrc, titulo: t, corpo }, i) => (
-            <section key={`${t}-${i}`} className="py-10 text-center md:py-12">
+            <section key={`${t}-${i}`} className={DETALHE_LAYOUT.section}>
               <CabecalhoBloco
                 iconSrc={iconSrc}
                 titulo={t}

@@ -11,7 +11,7 @@ export function UltrablueCuratedOffers({
   return (
     <section
       id="curadoria"
-      className="scroll-mt-24 bg-[#F1F4F8] px-5 pb-12 lg:px-8"
+      className="relative -mt-px scroll-mt-24 bg-[#F1F4F8] px-5 pb-16 md:mt-0 lg:px-8"
     >
       <div className="mx-auto max-w-[1280px]">
         {ofertas.length === 0 ? (

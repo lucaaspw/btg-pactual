@@ -18,9 +18,9 @@ export function UltrablueCategoryBanners() {
   return (
     <section
       id="categorias"
-      className="scroll-mt-24 relative bg-[#F1F4F8] px-5 pb-12 pt-6 lg:px-8"
+      className="scroll-mt-24 relative border-0 bg-[#F1F4F8] px-5 py-16 md:border-y md:border-[#0B2859]/20 lg:px-8"
     >
-      <div className="mx-auto md:border-t pt-16 border-[#0B2859] max-w-[1280px]">
+      <div className="mx-auto max-w-[1280px]">
         <div className="grid gap-x-20 gap-y-4 md:grid-cols-2">
           <div>
             <Image
@@ -61,7 +61,7 @@ export function UltrablueCategoryBanners() {
             />
             <div className="mt-auto w-full bg-[#0B2859] p-6">
               <h3 className="text-2xl font-bold text-white">
-                Programa Partners
+                Programa Ultrablue
               </h3>
               <p className="mt-2 max-w-sm text-sm text-white/90">
                 Serviços exclusivos para clientes.

@@ -31,7 +31,7 @@ export default function UltrablueBeneficiosPage() {
     <>
       <UltrablueHeader />
       <main className="bg-white text-[#05132A]">
-        <section className="relative overflow-hidden bg-[#EFF2F6] px-5 pt-10 pb-10 pt-[5.5rem] sm:px-8 sm:pb-12 sm:pt-24 lg:px-8">
+        <section className="relative overflow-hidden bg-[#EFF2F6] px-5 pb-10 pt-[5.5rem] sm:px-8 sm:pb-12 sm:pt-24 lg:px-8">
           <Image
             src="/ultrablue_image/banner_default.jpg"
             alt="Background Ultrablue"
@@ -50,17 +50,20 @@ export default function UltrablueBeneficiosPage() {
                   <ChevronLeft className="h-5 w-5" aria-hidden />
                   voltar
                 </Link>
-                <h1 className="text-center text-4xl font-bold text-[#0B2859] leading-tight tracking-tight md:text-left md:text-5xl">
-                  Benefícios do Cartão Ultrablue
+                <h1 className="text-center text-4xl font-bold leading-tight tracking-tight text-[#0B2859] md:text-left md:text-5xl">
+                  Benefícios do
+                  <br className="md:hidden" />
+                  Cartão Ultrablue
                 </h1>
-                <p className="mt-6 text-center text-xl leading-snug text-[#05132A] md:text-left">
+                <p className="mt-6 text-center text-2xl leading-snug text-[#05132A] md:text-left">
                   Muito mais do que um cartão:
-                  <br /> praticidade, economia e experiências exclusivas no dia
-                  a dia e em suas viagens.
+                  <br />
+                  praticidade, economia e experiências exclusivas no dia a dia e
+                  em suas viagens.
                 </p>
               </div>
 
-              <div className="relative mx-auto h-[300px] w-full max-w-[660px] overflow-hidden sm:h-[360px] lg:h-[420px]">
+              <div className="relative mx-auto h-[300px] w-full max-w-[660px] overflow-hidden sm:h-[360px] lg:h-[520px]">
                 <Image
                   src="/ultrablue_image/card_ultrablue.png"
                   alt="Cartão Ultrablue BTG Pactual"
