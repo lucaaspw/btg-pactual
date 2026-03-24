@@ -1,12 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 export function DashboardHeader() {
-  const pathname = usePathname();
-  const isNovaOferta = pathname === "/dashboard/nova-oferta";
-
   return (
     <header className="border-b border-white/10 bg-btg-navy-deep text-white">
       <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-between gap-y-3 gap-x-4 px-4 py-5 md:px-6">

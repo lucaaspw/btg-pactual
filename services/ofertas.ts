@@ -54,7 +54,7 @@ export async function getOfertaBySlug(slug: string): Promise<Oferta | null> {
 }
 
 /** Todas as ofertas publicadas no CPT `btg_pactual`. */
-export async function getOfertas(): Promise<Oferta[]> {
+async function getOfertas(): Promise<Oferta[]> {
   const data = await fetchOfertasJson();
   return Array.isArray(data) ? (data as Oferta[]) : [];
 }

@@ -4,9 +4,6 @@ import type { Oferta } from "@/types/oferta";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 
-/** Espaço abaixo do header fixo (alinhado ao hero / páginas Partners). */
-const HEADER_OFFSET_CLASS = "pt-[5.5rem] sm:pt-24";
-
 type UltrablueCategoryOffersSectionProps = {
   title: string;
   description?: string;

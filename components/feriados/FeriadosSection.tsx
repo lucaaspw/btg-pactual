@@ -4,9 +4,8 @@ import { OfertaCard } from "@/components/ofertas/OfertaCard";
 import { ULTRABLUE_LP_IMAGES } from "@/constants/ultrablue-lp";
 import type { Oferta } from "@/types/oferta";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 
 const HEADER_OFFSET_CLASS = "pt-[5.5rem] sm:pt-24";
 
@@ -364,18 +363,6 @@ export function FeriadosSection({
   const [escopoPorSecao, setEscopoPorSecao] = useState<
     Record<string, "nacional" | "internacional">
   >({});
-
-  useEffect(() => {
-    setEscopoPorSecao((prev) => {
-      const next = { ...prev };
-      for (const s of sections) {
-        if (next[s.id] === undefined) {
-          next[s.id] = "nacional";
-        }
-      }
-      return next;
-    });
-  }, [sections]);
 
   return (
     <section className={`${HEADER_OFFSET_CLASS} scroll-mt-24 ${t.section} pb-24`}>
