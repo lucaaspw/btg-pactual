@@ -18,7 +18,7 @@ export function PartnersCategoryBanners() {
   return (
     <section
       id="categorias"
-      className="scroll-mt-24 relative border-y border-white/10 bg-btg-navy px-5 py-16 lg:px-8"
+      className="scroll-mt-24 relative border-0 md:border-y border-white/10 bg-btg-navy px-5 py-16 lg:px-8"
     >
       <div className="mx-auto max-w-[1280px]">
         <div className="grid gap-x-20 gap-y-4 md:grid-cols-2">
@@ -60,9 +60,7 @@ export function PartnersCategoryBanners() {
               height={166}
             />
             <div className="relative  bg-[#0B2859] w-full z-10 mt-auto p-6">
-              <h3 className="text-2xl font-bold">
-                Programa Partners
-              </h3>
+              <h3 className="text-2xl font-bold">Programa Partners</h3>
               <p className="mt-2 max-w-sm text-sm text-white/90">
                 Serviços exclusivos para clientes.
               </p>

@@ -117,12 +117,20 @@ export default function PartnersConciergePage() {
       <PartnersHeader />
 
       <main className="bg-btg-navy text-white">
-        <section className="relative z-0 h-[480px] overflow-hidden pt-[5.5rem] sm:h-[520px] sm:pt-24 md:h-[600px]">
+        <section className="relative z-0 h-[574px] overflow-hidden pt-[5.5rem] sm:h-[520px] sm:pt-24 md:h-[600px]">
           <Image
             src="/concierge_image/banner_concierge.png"
             alt="Concierge Partners"
             fill
-            className="object-cover object-center"
+            className="hidden object-cover object-center md:block"
+            priority
+            sizes="100vw"
+          />
+          <Image
+            src="/concierge_image/banner_mobile-concierge.png"
+            alt="Concierge Partners"
+            fill
+            className="object-cover object-center md:hidden"
             priority
             sizes="100vw"
           />

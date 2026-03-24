@@ -13,6 +13,7 @@ const nav = [
   { label: "Concierge Partners", href: "/partners/concierge" },
   { label: "Benefícios", href: "/partners/beneficios" },
 ] as const;
+const mobileNav = [{ label: "Homepage", href: "/partners" }, ...nav] as const;
 
 /** Após rolar um pouco, o fundo fecha para o conteúdo não “vazar” por trás do menu. */
 const SCROLL_SOLID_PX = 48;
@@ -35,6 +36,13 @@ export function PartnersHeader() {
     };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
 
   return (
@@ -100,32 +108,49 @@ export function PartnersHeader() {
       </div>
 
       {mobileOpen ? (
-        <div className="border-t border-white/10 bg-btg-navy px-4 pb-5 lg:hidden">
-          <nav className="flex flex-col pt-3" aria-label="Menu mobile">
-            {nav.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
+        <div className="lg:hidden">
+          <div className="fixed z-[120] w-full top-0 flex flex-col bg-[#1c4a99] px-6 py-6 text-white shadow-2xl">
+            <div className="flex items-start justify-between">
+              <span className="text-white/35">Menu</span>
+              <button
+                type="button"
+                aria-label="Fechar menu"
                 onClick={() => setMobileOpen(false)}
-                className="py-3 text-base text-white transition hover:text-[#b8d4ff]"
+                className="inline-flex h-10 w-10 items-center justify-center text-white/90 transition hover:text-white"
               >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+                <X className="h-8 w-8" strokeWidth={1.25} />
+              </button>
+            </div>
 
-          <a
-            href="/partners#contato"
-            onClick={() => setMobileOpen(false)}
-            className="mt-3 inline-flex w-full items-center justify-center gap-2 bg-[#2E73D4] px-4 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-[#3A80E4]"
-          >
-            Quero falar com meu concierge
-            <ArrowUpRight
-              className="h-4 w-4 shrink-0"
-              strokeWidth={2}
-              aria-hidden
-            />
-          </a>
+            <nav
+              className="mt-4 flex flex-1 flex-col items-center justify-center gap-10"
+              aria-label="Menu mobile"
+            >
+              {mobileNav.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-[1rem] font-semibold leading-none text-white transition hover:text-[#d8e8ff]"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+
+            <a
+              href="/partners#contato"
+              onClick={() => setMobileOpen(false)}
+              className="inline-flex w-full mt-5 items-center justify-between gap-2 bg-[#3a87e6] px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-[#5098ef]"
+            >
+              Quero falar com meu concierge
+              <ArrowUpRight
+                className="h-7 w-7 shrink-0"
+                strokeWidth={2}
+                aria-hidden
+              />
+            </a>
+          </div>
         </div>
       ) : null}
     </header>

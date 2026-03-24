@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { PARTNERS_LP_IMAGES } from "@/constants/partners-lp";
+import { ChevronDown } from "lucide-react";
 
 /** Espaço reservado para o header fixo (logo + nav + CTA). */
 const HEADER_OFFSET_CLASS = "pt-[5.5rem] sm:pt-24";
@@ -16,7 +17,15 @@ export function PartnersHero() {
           alt="Resort à beira-mar ao entardecer"
           fill
           priority
-          className="object-cover object-center"
+          className="hidden object-cover object-center md:block"
+          sizes="100vw"
+        />
+        <Image
+          src={PARTNERS_LP_IMAGES.heroMobile}
+          alt="Resort à beira-mar ao entardecer"
+          fill
+          priority
+          className="object-cover object-center md:hidden"
           sizes="100vw"
         />
         {/* Leitura do título à esquerda + leve fechamento na base para o navy da próxima seção */}
@@ -43,6 +52,12 @@ export function PartnersHero() {
             experiências exclusivas
           </p>
         </div>
+      </div>
+      <div className="absolute bottom-2 left-0 right-0 px-5 md:px-0 flex flex-col items-center justify-center gap-2">
+        <p className="text-center text-white text-lg">
+          Conheça nossas experiências
+        </p>
+        <ChevronDown className="h-6 w-6" aria-hidden />
       </div>
     </section>
   );
