@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BTG Dashboard
 
-## Getting Started
+Monorepo **Next.js** com landings **Partners** e **Ultrablue**, painel de ofertas (`/dashboard`) e integração com **WordPress** (REST + ACF).
 
-First, run the development server:
+## Início rápido
 
 ```bash
+npm install
+cp .env.example .env.local
+# Edite .env.local (mínimo: NEXT_PUBLIC_WP_URL) — detalhes em docs/GUIA.md
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000) — a raiz lista atalhos para Partners, Ultrablue e o fluxo de nova oferta.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Documentação
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Documento | Conteúdo |
+|-----------|----------|
+| **[docs/GUIA.md](./docs/GUIA.md)** | Visão do projeto, pastas, variáveis de ambiente, WordPress, **subdomínios e middleware**, deploy e boas práticas |
 
-## Learn More
+## Scripts
 
-To learn more about Next.js, take a look at the following resources:
+| Comando | Descrição |
+|---------|-----------|
+| `npm run dev` | Desenvolvimento |
+| `npm run build` | Build de produção |
+| `npm run start` | Servidor após build |
+| `npm run lint` | ESLint |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Stack principal
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Next.js (App Router), React, TypeScript, Tailwind CSS.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Documentação detalhada: **[docs/GUIA.md](./docs/GUIA.md)**.
