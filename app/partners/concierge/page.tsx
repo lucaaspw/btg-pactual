@@ -1,6 +1,7 @@
 import { PartnersClosingCta } from "@/components/partners/PartnersClosingCta";
 import { PartnersFooter } from "@/components/partners/PartnersFooter";
 import { PartnersHeader } from "@/components/partners/PartnersHeader";
+import { ChevronLeft } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -131,6 +132,13 @@ export default function PartnersConciergePage() {
           />
           <div className="relative z-10 mx-auto flex max-w-[1280px] flex-col justify-end px-5 pb-10 sm:px-8 sm:pb-14 md:h-[400px] md:pb-24 lg:px-0">
             <div className="max-w-2xl">
+              <Link
+                href="/partners"
+                className="flex md:text-2xl mb-20 items-center gap-1 text-sm text-[#E7EEFF] transition hover:text-white"
+              >
+                <ChevronLeft className="h-5 w-5" aria-hidden />
+                voltar
+              </Link>
               <h1 className="text-3xl font-bold leading-tight tracking-tight drop-shadow-md md:text-5xl">
                 Concierge Partners
               </h1>
@@ -247,7 +255,10 @@ export default function PartnersConciergePage() {
 
             <div className="mt-8 grid grid-cols-2 items-center justify-center gap-x-4 gap-y-4 pt-6 sm:gap-x-6 sm:gap-y-5 sm:pt-8 md:grid-cols-4 lg:grid-cols-8">
               {premiumPartners.map((partner) => (
-                <div key={partner.name} className="flex items-center justify-center px-1 py-1">
+                <div
+                  key={partner.name}
+                  className="flex items-center justify-center px-1 py-1"
+                >
                   <Image
                     src={partner.image}
                     alt={partner.name}

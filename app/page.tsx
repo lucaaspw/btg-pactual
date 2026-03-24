@@ -13,19 +13,19 @@ export default function Home() {
         <nav className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
           <Link
             href="/partners"
-            className="rounded-lg bg-[#2E73D4] px-6 py-3 font-semibold transition hover:bg-[#3A80E4]"
+            className="bg-[#2E73D4] px-6 py-3 font-semibold transition hover:bg-[#3A80E4]"
           >
             Landing Partners
           </Link>
           <Link
             href="/ultrablue"
-            className="rounded-lg border border-[#7eb4ff] px-6 py-3 font-semibold text-[#E7EEFF] transition hover:bg-white/10"
+            className="border border-[#7eb4ff] px-6 py-3 font-semibold text-[#E7EEFF] transition hover:bg-white/10"
           >
             Landing Ultrablue
           </Link>
           <Link
             href="/dashboard/nova-oferta"
-            className="rounded-lg bg-[#f2b541] px-6 py-3 font-semibold text-btg-navy transition hover:bg-[#ffc85c]"
+            className="bg-[#f2b541] px-6 py-3 font-semibold text-btg-navy transition hover:bg-[#ffc85c]"
           >
             Nova oferta (operador)
           </Link>

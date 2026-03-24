@@ -6,6 +6,7 @@ import {
 import type { Oferta } from "@/types/oferta";
 
 const OFERTAS_FIELDS = "id,title,slug,acf";
+const OFERTAS_QUERY = `_fields=${OFERTAS_FIELDS}&per_page=100`;
 
 async function fetchOfertasJson(): Promise<unknown> {
   const base = process.env.NEXT_PUBLIC_WP_URL?.replace(/\/$/, "");
@@ -14,7 +15,7 @@ async function fetchOfertasJson(): Promise<unknown> {
   }
 
   const res = await fetch(
-    `${base}/wp-json/wp/v2/btg_pactual?_fields=${OFERTAS_FIELDS}`,
+    `${base}/wp-json/wp/v2/btg_pactual?${OFERTAS_QUERY}`,
     { cache: "no-store" },
   );
 
@@ -36,7 +37,7 @@ export async function getOfertaBySlug(slug: string): Promise<Oferta | null> {
   }
 
   const res = await fetch(
-    `${base}/wp-json/wp/v2/btg_pactual?slug=${encodeURIComponent(s)}&_fields=${OFERTAS_FIELDS}`,
+    `${base}/wp-json/wp/v2/btg_pactual?slug=${encodeURIComponent(s)}&${OFERTAS_QUERY}`,
     { cache: "no-store" },
   );
 

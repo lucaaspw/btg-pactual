@@ -11,17 +11,24 @@ export interface Oferta {
     /** Ex.: `Partners` | `Ultrablue` — ver `constants/cartoes.ts`. */
     tipo_cartao: TipoCartao | string;
     tipo_oferta: string;
+    /** Ex.: "Páscoa", "Réveillon" — agrupa ofertas na página Feriados. */
+    nome_feriado?: string;
+    nacional_internacional?: string;
+    estado_pais?: string;
     destino_rota: string;
     nome_da_oferta: string;
     descricao: string;
-    imagem: {
-      url: string;
-      sizes?: {
-        medium_large?: string;
-        large?: string;
-        full?: string;
-      };
-    };
+    imagem?:
+      | {
+          url?: string;
+          sizes?: {
+            medium_large?: string;
+            large?: string;
+            full?: string;
+          };
+        }
+      | number
+      | string;
     data_de_inicio: string;
     data_final: string;
     moeda: string;
@@ -33,5 +40,7 @@ export interface Oferta {
     acomodacao?: string;
     /** Texto longo opcional (ACF); linhas ou bullets para "Inclui no pacote". */
     inclui_no_pacote?: string;
+    /** Campo novo no payload da API; mantido em paralelo por compatibilidade. */
+    incluso_no_pacote?: string;
   };
 }

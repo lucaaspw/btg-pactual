@@ -32,6 +32,25 @@ function toAcfDate(value: string): string {
   return v;
 }
 
+function normalizeMoeda(value: string): string {
+  const moeda = value.trim().toLowerCase();
+  if (!moeda) return "R$";
+  if (
+    moeda === "$" ||
+    moeda === "us$" ||
+    moeda === "us" ||
+    moeda.includes("usd") ||
+    moeda.includes("dolar") ||
+    moeda.includes("dólar")
+  ) {
+    return "US$";
+  }
+  if (moeda.includes("eur") || moeda.includes("euro")) {
+    return "EUR";
+  }
+  return "R$";
+}
+
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 const ALLOWED_IMAGE_TYPES = new Set([
   "image/jpeg",
@@ -58,15 +77,19 @@ export async function POST(request: Request) {
 
     const tipoCartao = getStr("tipo_cartao");
     const tipoOferta = getStr("tipo_oferta");
+    const nacionalInternacional = getStr("nacional_internacional");
+    const estadoPais = getStr("estado_pais");
+    const nomeFeriado = getStr("nome_feriado");
     const destino = getStr("destino_rota");
     const title = getStr("nome_da_oferta");
     const nomeOferta = getStr("nome_da_oferta");
     const descricao = getStr("descricao");
+    const inclusoNoPacote = getStr("incluso_no_pacote");
     const file = formData.get("imagem");
     const imagemAlt = getStr("texto_alternativo_alt");
     const dataInicio = toAcfDate(getStr("data_de_inicio"));
     const dataFim = toAcfDate(getStr("data_final"));
-    const moeda = getStr("moeda") || "R$";
+    const moeda = normalizeMoeda(getStr("moeda"));
     const preco = getStr("preco");
     const contextoDoPreco = getStr("contexto_do_preco");
     const observacaoTaxa = getStr("taxas");
@@ -204,6 +227,9 @@ export async function POST(request: Request) {
     const acfPayload: Record<string, string | number> = {
       tipo_cartao: tipoCartao,
       tipo_oferta: tipoOferta,
+      nome_feriado: nomeFeriado,
+      nacional_internacional: nacionalInternacional,
+      estado_pais: estadoPais,
       destino_rota: destino,
       nome_da_oferta: nomeOferta || title,
       descricao,
@@ -214,6 +240,7 @@ export async function POST(request: Request) {
       moeda,
       preco,
       contexto_do_preco: contextoDoPreco,
+      incluso_no_pacote: inclusoNoPacote,
       taxas: observacaoTaxa,
     };
 

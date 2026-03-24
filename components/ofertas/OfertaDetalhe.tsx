@@ -14,12 +14,11 @@ const OFERTA_DETALHE_ICONES = {
   drink: "/partners_image/drink-icon.png",
 } as const;
 
-const iconeDetalheClass =
-  "h-7 w-7 shrink-0 object-contain md:h-8 md:w-8";
+const iconeDetalheClass = "h-7 w-7 shrink-0 object-contain md:h-8 md:w-8";
 
 function heroSrc(oferta: Oferta): string {
   const img = oferta.acf?.imagem;
-  if (!img) return "";
+  if (!img || typeof img !== "object") return "";
   return (
     img.sizes?.large ||
     img.sizes?.full ||
@@ -32,24 +31,41 @@ function heroSrc(oferta: Oferta): string {
 function formatQuando(inicio?: string, fim?: string): string {
   const a = (inicio || "").trim();
   const b = (fim || "").trim();
-  if (!a && !b) return "Consulte disponibilidade";
+  if (!a && !b) return "";
   if (a && b) return `${a} a ${b}`;
   return a || b;
 }
 
+function texto(value?: string): string {
+  return (value || "").trim();
+}
+
+function formatMoeda(raw?: string): string {
+  const moeda = String(raw || "")
+    .trim()
+    .toLowerCase();
+  if (!moeda) return "R$";
+  if (
+    moeda === "$" ||
+    moeda === "us$" ||
+    moeda === "us" ||
+    moeda.includes("usd") ||
+    moeda.includes("dolar") ||
+    moeda.includes("dólar")
+  ) {
+    return "US$";
+  }
+  if (moeda.includes("eur") || moeda.includes("euro")) {
+    return "EUR";
+  }
+  return "R$";
+}
+
 function ValorBloco({ acf }: { acf: Oferta["acf"] }) {
-  const moeda = String(acf.moeda || "R$").trim();
+  const moeda = formatMoeda(acf.moeda);
   const preco = String(acf.preco || "").trim();
   const taxas = (acf.taxas || "").trim();
   const ctx = (acf.contexto_do_preco || "").trim();
-
-  if (!preco) {
-    return (
-      <p className="mt-4 text-base leading-relaxed text-[#E7EEFF] md:text-lg">
-        Consulte valores
-      </p>
-    );
-  }
 
   const destaque = `${moeda} ${preco}${taxas ? ` (${taxas})` : ""}`;
 
@@ -124,42 +140,51 @@ export function OfertaDetalhe({
 }: OfertaDetalheProps) {
   const topPad = offsetForFixedHeader ? HEADER_OFFSET_CLASS : "pt-8 sm:pt-10";
   const acf = oferta.acf;
-  const destino = (acf?.destino_rota || "").trim();
+  const destino = texto(acf?.destino_rota);
   const titulo =
-    (acf?.nome_da_oferta || "").trim() || oferta.title?.rendered || "Oferta";
+    texto(acf?.nome_da_oferta) || oferta.title?.rendered || "Oferta";
   const img = heroSrc(oferta);
 
-  const acomodacaoTexto = (acf?.acomodacao || "").trim();
-  const descricao = (acf?.descricao || "").trim();
-  const blocoAcomodacao = acomodacaoTexto || descricao;
+  const preco = texto(acf?.preco);
+  const acomodacaoTexto = texto(acf?.contexto_do_preco);
+  const quando = formatQuando(acf?.data_de_inicio, acf?.data_final);
 
-  const incluiRaw = (acf?.inclui_no_pacote || "").trim();
+  const incluiRaw = (
+    acf?.inclui_no_pacote ||
+    acf?.incluso_no_pacote ||
+    ""
+  ).trim();
   const incluiLinhas = parseIncluiLinhas(incluiRaw);
 
-  const blocos: Bloco[] = [
-    {
+  const blocos: Bloco[] = [];
+
+  if (quando) {
+    blocos.push({
       iconSrc: OFERTA_DETALHE_ICONES.calendar,
       titulo: "Quando",
       corpo: (
         <p className="mt-4 text-base leading-relaxed text-[#E7EEFF] md:text-lg">
-          {formatQuando(acf?.data_de_inicio, acf?.data_final)}
+          {quando}
         </p>
       ),
-    },
-    {
+    });
+  }
+
+  if (preco) {
+    blocos.push({
       iconSrc: OFERTA_DETALHE_ICONES.cash,
       titulo: "Valor",
       corpo: <ValorBloco acf={acf} />,
-    },
-  ];
+    });
+  }
 
-  if (blocoAcomodacao) {
+  if (acomodacaoTexto) {
     blocos.push({
       iconSrc: OFERTA_DETALHE_ICONES.baggage,
       titulo: "Acomodação",
       corpo: (
         <p className="mt-4 text-base leading-relaxed text-[#E7EEFF] md:text-lg">
-          {blocoAcomodacao}
+          {acomodacaoTexto}
         </p>
       ),
     });
@@ -189,13 +214,9 @@ export function OfertaDetalhe({
       <div className="mx-auto max-w-[1280px]">
         <Link
           href={backHref}
-          className="inline-flex items-center gap-1 text-sm font-medium text-[#E7EEFF] transition hover:text-white"
+          className="flex md:text-2xl mt-20 mb-20 items-center gap-1 text-sm text-[#E7EEFF] transition hover:text-white"
         >
-          <ChevronLeft
-            className="h-4 w-4 shrink-0"
-            strokeWidth={2}
-            aria-hidden
-          />
+          <ChevronLeft className="h-5 w-5" aria-hidden />
           voltar
         </Link>
 
@@ -210,7 +231,7 @@ export function OfertaDetalhe({
         </h1>
 
         {img ? (
-          <div className="relative mt-10 aspect-[21/9] min-h-[200px] w-full overflow-hidden rounded-lg bg-black/20 md:min-h-[280px]">
+          <div className="relative mt-10 aspect-[21/9] min-h-[200px] w-full overflow-hidden bg-black/20 md:min-h-[280px]">
             <Image
               src={img}
               alt=""

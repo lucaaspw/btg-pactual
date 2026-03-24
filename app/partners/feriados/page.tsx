@@ -1,4 +1,4 @@
-import { PartnersCategoryOffersSection } from "@/components/partners/PartnersCategoryOffersSection";
+import { PartnersFeriadosSection } from "@/components/partners/PartnersFeriadosSection";
 import { PartnersClosingCta } from "@/components/partners/PartnersClosingCta";
 import { PartnersFooter } from "@/components/partners/PartnersFooter";
 import { PartnersHeader } from "@/components/partners/PartnersHeader";
@@ -18,10 +18,10 @@ export default async function PartnersFeriadosPage() {
   return (
     <>
       <PartnersHeader />
-      <PartnersCategoryOffersSection
-        title={`Confira destinos selecionados para viajar com exclusividade durante os feriados de 2026`}
-        description="Feriados"
+      <PartnersFeriadosSection
+        title="Confira destinos selecionados para viajar com exclusividade durante os feriados de 2026"
         ofertas={ofertas}
+        holidayFallbackLabel="Páscoa"
       />
       <PartnersClosingCta />
       <PartnersFooter />

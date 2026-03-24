@@ -1,5 +1,7 @@
 import { OfertaCard } from "@/components/ofertas/OfertaCard";
 import type { Oferta } from "@/types/oferta";
+import { ChevronLeft } from "lucide-react";
+import Link from "next/link";
 
 /** Espaço abaixo do header fixo (alinhado ao hero da home Partners). */
 const HEADER_OFFSET_CLASS = "pt-[5.5rem] sm:pt-24";
@@ -21,6 +23,13 @@ export function PartnersCategoryOffersSection({
     >
       <div className="mx-auto max-w-[1280px]">
         <div className="border-b border-white/10 pt-10 pb-8">
+          <Link
+            href="/partners"
+            className="flex md:text-2xl mb-20 items-center gap-1 text-sm text-[#E7EEFF] transition hover:text-white"
+          >
+            <ChevronLeft className="h-5 w-5" aria-hidden />
+            voltar
+          </Link>
           <h1 className="text-xl font-bold tracking-tight md:text-2xl lg:text-3xl">
             {title}
           </h1>
