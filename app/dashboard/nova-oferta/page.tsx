@@ -278,12 +278,12 @@ export default function NovaOferta() {
                     </div>
                     <div>
                       <label className={labelClass} htmlFor="estado_pais">
-                        Estado / Pais
+                        Estado (Nacional) ou país (Internacional)
                       </label>
                       <input
                         id="estado_pais"
                         name="estado_pais"
-                        placeholder="Ex: Alagoas, Bahia"
+                        placeholder="Ex.: Bahia ou Chile — agrupa na página Feriados"
                         className={inputClass}
                       />
                     </div>

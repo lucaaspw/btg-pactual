@@ -7,15 +7,14 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 const HEADER_OFFSET_CLASS = "pt-[5.5rem] sm:pt-24";
-const OUTROS_TAB = "Outros";
 
 type PartnersFeriadosSectionProps = {
   /** Linha de destaque no hero (ex.: feriados de 2026). */
   title: string;
   ofertas: Oferta[];
   /**
-   * Título do feriado à esquerda quando não há `nome_feriado` no CMS
-   * (mantém a mesma hierarquia visual do layout).
+   * Título da seção para ofertas sem `nome_feriado` no CMS
+   * (ex.: campanha em destaque).
    */
   holidayFallbackLabel?: string;
 };
@@ -40,43 +39,62 @@ function nomeFeriadoTrim(oferta: Oferta): string {
   return (oferta.acf?.nome_feriado || "").trim();
 }
 
-type HolidayUi =
-  | { kind: "none" }
-  | { kind: "single_heading"; label: string }
-  | { kind: "tabs"; tabs: string[] };
+type HolidaySection = {
+  id: string;
+  title: string;
+  offers: Oferta[];
+};
 
-function buildHolidayUi(ofertas: Oferta[]): HolidayUi {
-  const names = new Set<string>();
-  let hasEmpty = false;
+/** Uma seção por feriado; ofertas sem nome entram numa seção com `holidayFallbackLabel`. */
+function buildHolidaySections(
+  ofertas: Oferta[],
+  holidayFallbackLabel: string,
+): HolidaySection[] {
+  const byName = new Map<string, Oferta[]>();
+  const semNome: Oferta[] = [];
+
   for (const o of ofertas) {
     const n = nomeFeriadoTrim(o);
-    if (!n) hasEmpty = true;
-    else names.add(n);
-  }
-  const sorted = [...names].sort((a, b) => a.localeCompare(b, "pt-BR"));
-
-  if (sorted.length === 0) {
-    return { kind: "none" };
-  }
-  if (sorted.length === 1 && !hasEmpty) {
-    return { kind: "single_heading", label: sorted[0]! };
+    if (!n) {
+      semNome.push(o);
+    } else {
+      const list = byName.get(n) ?? [];
+      list.push(o);
+      byName.set(n, list);
+    }
   }
 
-  const tabs = [...sorted];
-  if (hasEmpty) {
-    tabs.push(OUTROS_TAB);
+  const sections: HolidaySection[] = [];
+  const sortedNames = [...byName.keys()].sort((a, b) =>
+    a.localeCompare(b, "pt-BR"),
+  );
+
+  for (const name of sortedNames) {
+    sections.push({
+      id: `feriado:${name}`,
+      title: name,
+      offers: byName.get(name)!,
+    });
   }
-  return { kind: "tabs", tabs };
+
+  if (semNome.length > 0) {
+    const titleSemNome =
+      sortedNames.length === 0 ? holidayFallbackLabel : "Demais ofertas";
+    sections.push({
+      id: "feriado:sem-nome",
+      title: titleSemNome,
+      offers: semNome,
+    });
+  }
+
+  return sections;
 }
 
-function matchesHolidayTab(oferta: Oferta, tab: string): boolean {
-  if (tab === OUTROS_TAB) {
-    return !nomeFeriadoTrim(oferta);
-  }
-  return nomeFeriadoTrim(oferta) === tab;
-}
-
-function groupByRegiao(ofertas: Oferta[]): Map<string, Oferta[]> {
+/**
+ * Nacional: agrupa por estado. Internacional: agrupa por país.
+ * Em ambos os casos usa o campo `estado_pais` (preencher estado ou país conforme o escopo).
+ */
+function groupByEstadoOuPais(ofertas: Oferta[]): Map<string, Oferta[]> {
   const map = new Map<string, Oferta[]>();
   for (const o of ofertas) {
     const raw = (o.acf?.estado_pais || "").trim();
@@ -100,9 +118,11 @@ function groupByRegiao(ofertas: Oferta[]): Map<string, Oferta[]> {
 function RegionCarousel({
   regionLabel,
   ofertas,
+  isFirstInSection,
 }: {
   regionLabel: string;
   ofertas: Oferta[];
+  isFirstInSection: boolean;
 }) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -114,11 +134,11 @@ function RegionCarousel({
   }, []);
 
   return (
-    <div className="mt-20 first:mt-14">
+    <div className={isFirstInSection ? "mt-10" : "mt-20"}>
       <div className="mb-6 flex items-end justify-between gap-6 border-b border-white/[0.12] pb-4">
-        <h2 className="text-xl font-normal tracking-tight text-white sm:text-2xl">
+        <h3 className="text-xl font-normal tracking-tight text-white sm:text-2xl">
           {regionLabel}
-        </h2>
+        </h3>
         <div className="flex shrink-0 gap-0.5">
           <button
             type="button"
@@ -163,67 +183,112 @@ function RegionCarousel({
   );
 }
 
+function FeriadoHolidayBlock({
+  section,
+  escopo,
+  onEscopoChange,
+}: {
+  section: HolidaySection;
+  escopo: "nacional" | "internacional";
+  onEscopoChange: (v: "nacional" | "internacional") => void;
+}) {
+  const filtered = useMemo(
+    () => section.offers.filter((o) => matchesEscopo(o, escopo)),
+    [section.offers, escopo],
+  );
+
+  const byRegiao = useMemo(() => groupByEstadoOuPais(filtered), [filtered]);
+
+  const scopeBtn = (key: "nacional" | "internacional") => {
+    const active = escopo === key;
+    return active
+      ? "bg-white px-7 py-2.5 text-sm cursor-pointer font-semibold text-btg-navy shadow-sm"
+      : "border border-white/45 bg-transparent px-7 py-2.5 text-sm cursor-pointer font-semibold text-white transition hover:border-white/70";
+  };
+
+  return (
+    <article className="border-b border-white/[0.12] pb-16 last:border-b-0 last:pb-0">
+      <div className="flex gap-8 py-10 sm:items-center sm:gap-10">
+        <h2 className="text-[1.75rem] font-bold leading-tight tracking-tight md:text-4xl md:leading-tight">
+          {section.title}
+        </h2>
+
+        <div
+          className="inline-flex w-full cursor-pointer shrink-0 gap-2 items-center justify-center sm:w-auto"
+          role="group"
+          aria-label={`Nacional ou internacional — ${section.title}`}
+        >
+          <button
+            type="button"
+            className={scopeBtn("nacional")}
+            onClick={() => onEscopoChange("nacional")}
+          >
+            Nacional
+          </button>
+          <button
+            type="button"
+            className={scopeBtn("internacional")}
+            onClick={() => onEscopoChange("internacional")}
+          >
+            Internacional
+          </button>
+        </div>
+      </div>
+
+      {filtered.length === 0 ? (
+        <p className="max-w-xl text-[#E7EEFF]">
+          Nenhuma oferta {escopo === "nacional" ? "nacional" : "internacional"}{" "}
+          cadastrada para {section.title}. Ajuste o filtro ou publique ofertas
+          com &quot;Nacional / Internacional&quot; e estado ou país preenchidos.
+        </p>
+      ) : (
+        <>
+          {[...byRegiao.entries()].map(([region, lista], idx) => (
+            <RegionCarousel
+              key={region}
+              regionLabel={region}
+              ofertas={lista}
+              isFirstInSection={idx === 0}
+            />
+          ))}
+        </>
+      )}
+    </article>
+  );
+}
+
 export function PartnersFeriadosSection({
   title,
   ofertas,
   holidayFallbackLabel = "Feriados",
 }: PartnersFeriadosSectionProps) {
-  const holidayUi = useMemo(() => buildHolidayUi(ofertas), [ofertas]);
-
-  const defaultTab = useMemo(() => {
-    if (holidayUi.kind === "tabs") {
-      return holidayUi.tabs[0] ?? "";
-    }
-    if (holidayUi.kind === "single_heading") {
-      return holidayUi.label;
-    }
-    return "";
-  }, [holidayUi]);
-
-  const [selectedTab, setSelectedTab] = useState(defaultTab);
-  const [escopo, setEscopo] = useState<"nacional" | "internacional">(
-    "nacional",
+  const sections = useMemo(
+    () => buildHolidaySections(ofertas, holidayFallbackLabel),
+    [ofertas, holidayFallbackLabel],
   );
 
+  const [escopoPorSecao, setEscopoPorSecao] = useState<
+    Record<string, "nacional" | "internacional">
+  >({});
+
   useEffect(() => {
-    setSelectedTab(defaultTab);
-  }, [defaultTab]);
-
-  const filtered = useMemo(() => {
-    let list = ofertas.filter((o) => matchesEscopo(o, escopo));
-
-    if (holidayUi.kind === "tabs") {
-      list = list.filter((o) => matchesHolidayTab(o, selectedTab));
-    } else if (holidayUi.kind === "single_heading") {
-      list = list.filter((o) => nomeFeriadoTrim(o) === holidayUi.label);
-    }
-
-    return list;
-  }, [ofertas, escopo, holidayUi, selectedTab]);
-
-  const byRegiao = useMemo(() => groupByRegiao(filtered), [filtered]);
-
-  const tabButtonClass = (active: boolean) =>
-    [
-      "px-6 py-2.5 text-sm font-semibold transition",
-      active
-        ? "bg-white text-btg-navy"
-        : "border border-white/45 bg-transparent text-white hover:bg-white/5",
-    ].join(" ");
-
-  const scopeBtn = (key: "nacional" | "internacional") => {
-    const active = escopo === key;
-    return active
-      ? "bg-white px-7 py-2.5 text-sm font-semibold text-btg-navy shadow-sm"
-      : "border border-white/45 bg-transparent px-7 py-2.5 text-sm font-semibold text-white transition hover:border-white/70";
-  };
+    setEscopoPorSecao((prev) => {
+      const next = { ...prev };
+      for (const s of sections) {
+        if (next[s.id] === undefined) {
+          next[s.id] = "nacional";
+        }
+      }
+      return next;
+    });
+  }, [sections]);
 
   return (
     <section
-      className={`${HEADER_OFFSET_CLASS} scroll-mt-24 bg-btg-navy px-5 pb-24 lg:px-8`}
+      className={`${HEADER_OFFSET_CLASS} scroll-mt-24 bg-[#050C1C] px-5 pb-24 lg:px-8`}
     >
       <div className="mx-auto max-w-[1280px]">
-        <div className="border-b border-white/[0.12] pt-10 pb-10">
+        <div className="pt-10 pb-10">
           <Link
             href="/partners"
             className="mb-14 flex items-center gap-1 text-sm text-[#C8D4E8] transition hover:text-white md:text-base"
@@ -231,92 +296,43 @@ export function PartnersFeriadosSection({
             <ChevronLeft className="h-5 w-5" aria-hidden />
             voltar
           </Link>
-          <h1 className="max-w-[920px] text-2xl font-bold leading-[1.25] tracking-tight text-white md:text-3xl lg:text-[2rem] lg:leading-snug">
+          <h1 className="max-w-[920px] text-2xl font-bold leading-[1.25] tracking-tight md:text-3xl lg:text-[2rem] lg:leading-snug">
             {title}
           </h1>
         </div>
 
-        <div
-          className={`flex flex-col gap-8 border-b border-white/[0.12] py-10 sm:flex-row sm:items-center sm:justify-between sm:gap-10`}
-        >
-          {holidayUi.kind === "single_heading" ? (
-            <h2 className="text-[1.75rem] font-bold leading-tight tracking-tight text-white md:text-4xl md:leading-tight">
-              {holidayUi.label}
-            </h2>
-          ) : holidayUi.kind === "tabs" ? (
-            <div
-              className="flex flex-wrap items-center gap-2"
-              role="tablist"
-              aria-label="Feriados"
-            >
-              {holidayUi.tabs.map((tab) => (
-                <button
-                  key={tab}
-                  type="button"
-                  role="tab"
-                  aria-selected={selectedTab === tab}
-                  className={tabButtonClass(selectedTab === tab)}
-                  onClick={() => setSelectedTab(tab)}
-                >
-                  {tab}
-                </button>
-              ))}
-            </div>
-          ) : (
-            <h2 className="text-[1.75rem] font-bold leading-tight tracking-tight text-white md:text-4xl md:leading-tight">
-              {holidayFallbackLabel}
-            </h2>
-          )}
-
-          <div
-            className="inline-flex w-full shrink-0 items-center justify-center border border-white/25 p-1 sm:w-auto"
-            role="group"
-            aria-label="Nacional ou internacional"
-          >
-            <button
-              type="button"
-              className={scopeBtn("nacional")}
-              onClick={() => setEscopo("nacional")}
-            >
-              Nacional
-            </button>
-            <button
-              type="button"
-              className={scopeBtn("internacional")}
-              onClick={() => setEscopo("internacional")}
-            >
-              Internacional
-            </button>
-          </div>
-        </div>
-
-        {filtered.length === 0 ? (
+        {ofertas.length === 0 ? (
           <p className="mt-10 max-w-xl text-[#E7EEFF]">
-            {ofertas.length === 0
-              ? "Em breve novas ofertas exclusivas nesta categoria. O operador pode publicar em "
-              : "Nenhuma oferta neste filtro. Tente outro feriado ou Nacional / Internacional. "}
-            {ofertas.length === 0 ? (
-              <>
-                <a
-                  className="underline underline-offset-2"
-                  href="/dashboard/nova-oferta"
-                >
-                  Nova oferta
-                </a>{" "}
-                com tipo de cartão <strong>Partners</strong>.
-              </>
-            ) : null}
+            Em breve novas ofertas exclusivas nesta categoria. O operador pode
+            publicar em{" "}
+            <a
+              className="underline underline-offset-2"
+              href="/dashboard/nova-oferta"
+            >
+              Nova oferta
+            </a>{" "}
+            com tipo de cartão <strong>Partners</strong>.
+          </p>
+        ) : sections.length === 0 ? (
+          <p className="mt-10 max-w-xl text-[#E7EEFF]">
+            Não foi possível montar as seções de feriados.
           </p>
         ) : (
-          <>
-            {[...byRegiao.entries()].map(([region, lista]) => (
-              <RegionCarousel
-                key={region}
-                regionLabel={region}
-                ofertas={lista}
+          <div className="mt-0">
+            {sections.map((section) => (
+              <FeriadoHolidayBlock
+                key={section.id}
+                section={section}
+                escopo={escopoPorSecao[section.id] ?? "nacional"}
+                onEscopoChange={(v) =>
+                  setEscopoPorSecao((prev) => ({
+                    ...prev,
+                    [section.id]: v,
+                  }))
+                }
               />
             ))}
-          </>
+          </div>
         )}
       </div>
     </section>

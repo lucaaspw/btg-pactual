@@ -14,6 +14,7 @@ export interface Oferta {
     /** Ex.: "Páscoa", "Réveillon" — agrupa ofertas na página Feriados. */
     nome_feriado?: string;
     nacional_internacional?: string;
+    /** Na página Feriados: estado (ex. Bahia) se Nacional; país (ex. Chile) se Internacional. */
     estado_pais?: string;
     destino_rota: string;
     nome_da_oferta: string;
