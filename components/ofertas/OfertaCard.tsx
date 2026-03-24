@@ -56,13 +56,7 @@ export function OfertaCard({
   const ctaClass = badgeOnImage ? ctaFeriadosClassName : ctaClassName;
 
   return (
-    <article
-      className={`flex h-full flex-col overflow-hidden bg-btg-navy-card text-white ${
-        badgeOnImage
-          ? "shadow-[0_12px_32px_rgba(0,0,0,0.35)]"
-          : "shadow-[0_8px_24px_rgba(0,0,0,0.25)]"
-      }`}
-    >
+    <article className="flex h-full flex-col overflow-hidden bg-btg-navy-card text-white">
       <div className="relative h-[200px] w-full">
         <div
           className="h-full w-full bg-cover bg-center"

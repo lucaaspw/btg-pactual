@@ -8,7 +8,10 @@ function conciergeHref() {
 
 export function UltrablueClosingCta() {
   return (
-    <section id="contato" className="scroll-mt-24 bg-[#0056B8] px-5 py-20 text-center lg:px-8">
+    <section
+      id="contato"
+      className="scroll-mt-24 bg-[#10408D] px-5 py-20 text-center lg:px-8"
+    >
       <div className="mx-auto">
         <h2 className="text-2xl font-bold md:text-3xl">Quer saber mais?</h2>
         <p className="mt-4 text-lg text-[#E7EEFF]">
@@ -20,7 +23,11 @@ export function UltrablueClosingCta() {
           className="mt-8 inline-flex items-center gap-2 bg-[#2E73D4] px-8 py-4 text-base font-semibold text-white shadow-lg transition hover:bg-[#3A80E4]"
         >
           Quero falar com meu concierge
-          <ArrowUpRight className="h-5 w-5 shrink-0" strokeWidth={2} aria-hidden />
+          <ArrowUpRight
+            className="h-5 w-5 shrink-0"
+            strokeWidth={2}
+            aria-hidden
+          />
         </a>
       </div>
     </section>

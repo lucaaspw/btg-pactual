@@ -9,7 +9,7 @@ const nav = [
   { label: "Feriados", href: "/ultrablue/feriados" },
   { label: "Roteiros", href: "/ultrablue/roteiros" },
   { label: "Cruzeiros", href: "/ultrablue/cruzeiros" },
-  { label: "Concierge Partners", href: "/ultrablue/concierge" },
+  { label: "Concierge Ultrablue", href: "/ultrablue/concierge" },
   { label: "Benefícios", href: "/ultrablue/beneficios" },
 ] as const;
 
@@ -39,7 +39,7 @@ export function UltrablueHeader() {
       className={`fixed top-0 right-0 left-0 z-[100] transition-colors duration-300 ${
         solid
           ? "border-b border-white/20 bg-[#0056B8]"
-          : "border-b border-transparent  bg-[#0056B8]"
+          : "border-b border-transparent  bg-[#10408D]"
       }`}
     >
       <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-4 px-4 py-4 sm:px-5 lg:px-0">
@@ -82,7 +82,7 @@ export function UltrablueHeader() {
 
         <a
           href="/ultrablue#contato"
-          className="hidden shrink-0 items-center gap-2 bg-[#2E73D4] px-4 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-[#3A80E4] lg:inline-flex"
+          className="hidden shrink-0 items-center gap-2 bg-[#2E73D4] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#3A80E4] lg:inline-flex"
         >
           Quero falar com meu concierge
           <ArrowUpRight

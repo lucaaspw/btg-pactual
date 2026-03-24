@@ -18,9 +18,9 @@ export function UltrablueCategoryBanners() {
   return (
     <section
       id="categorias"
-      className="scroll-mt-24 relative border-0 border-white/10 bg-[#012A5B] px-5 py-16 md:border-y lg:px-8"
+      className="scroll-mt-24 relative bg-[#F1F4F8] px-5 pb-12 pt-6 lg:px-8"
     >
-      <div className="mx-auto max-w-[1280px]">
+      <div className="mx-auto md:border-t pt-16 border-[#0B2859] max-w-[1280px]">
         <div className="grid gap-x-20 gap-y-4 md:grid-cols-2">
           <div>
             <Image
@@ -29,8 +29,8 @@ export function UltrablueCategoryBanners() {
               width={620}
               height={166}
             />
-            <div className="mt-auto w-full bg-[#0B3A79] p-6">
-              <h3 className="text-2xl font-bold">Experiências</h3>
+            <div className="mt-auto w-full bg-[#0B2859] p-6">
+              <h3 className="text-2xl font-bold text-white">Experiências</h3>
               <p className="mt-2 max-w-sm text-sm text-white/90">
                 Descubra viagens pensadas para cada momento.
               </p>
@@ -40,10 +40,13 @@ export function UltrablueCategoryBanners() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="flex items-center justify-between border-b border-white/15 py-4 text-lg font-medium text-white transition hover:text-[#7eb4ff]"
+                  className="flex items-center justify-between border-b border-[#0B2859] py-4 text-lg font-medium text-[#0B2859] transition hover:text-[#1E4F99]"
                 >
                   <span>{item.label}</span>
-                  <ArrowUpRight className="h-5 w-5 shrink-0" strokeWidth={1.75} />
+                  <ArrowUpRight
+                    className="h-5 w-5 shrink-0"
+                    strokeWidth={1.75}
+                  />
                 </Link>
               ))}
             </div>
@@ -56,8 +59,10 @@ export function UltrablueCategoryBanners() {
               width={620}
               height={166}
             />
-            <div className="mt-auto w-full bg-[#0B3A79] p-6">
-              <h3 className="text-2xl font-bold">Programa Ultrablue</h3>
+            <div className="mt-auto w-full bg-[#0B2859] p-6">
+              <h3 className="text-2xl font-bold text-white">
+                Programa Partners
+              </h3>
               <p className="mt-2 max-w-sm text-sm text-white/90">
                 Serviços exclusivos para clientes.
               </p>
@@ -67,10 +72,13 @@ export function UltrablueCategoryBanners() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="flex items-center justify-between border-b border-white/15 py-4 text-lg font-medium text-white transition hover:text-[#7eb4ff]"
+                  className="flex items-center justify-between border-b border-[#0B2859] py-4 text-lg font-medium text-[#0B2859] transition hover:text-[#1E4F99]"
                 >
                   <span>{item.label}</span>
-                  <ArrowUpRight className="h-5 w-5 shrink-0" strokeWidth={1.75} />
+                  <ArrowUpRight
+                    className="h-5 w-5 shrink-0"
+                    strokeWidth={1.75}
+                  />
                 </Link>
               ))}
             </div>

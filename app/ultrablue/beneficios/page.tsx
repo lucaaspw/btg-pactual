@@ -31,7 +31,7 @@ export default function UltrablueBeneficiosPage() {
     <>
       <UltrablueHeader />
       <main className="bg-white text-[#05132A]">
-        <section className="relative overflow-hidden bg-[#EFF2F6] px-5 pb-10 pt-[5.5rem] sm:px-8 sm:pb-12 sm:pt-24 lg:px-8">
+        <section className="relative overflow-hidden bg-[#EFF2F6] px-5 pt-10 pb-10 pt-[5.5rem] sm:px-8 sm:pb-12 sm:pt-24 lg:px-8">
           <Image
             src="/ultrablue_image/banner_default.jpg"
             alt="Background Ultrablue"
@@ -88,7 +88,7 @@ export default function UltrablueBeneficiosPage() {
               {cashbackItems.map((item) => (
                 <article
                   key={item}
-                  className="rounded-xl border border-[#C9D6E8] px-5 py-8 text-[#05132A]"
+                  className="rounded-xl border border-[#C9D6E8] px-5 py-4 text-[#05132A]"
                 >
                   <p className="text-[1.1rem] leading-tight text-[#05132A]">
                     {item}
@@ -96,6 +96,10 @@ export default function UltrablueBeneficiosPage() {
                 </article>
               ))}
             </div>
+            <p className="mt-8 text-xl leading-snug text-[#05132A]">
+              Os benefícios podem ser utilizados para potencializar suas
+              experiências e sua rotina.
+            </p>
           </div>
         </section>
 
@@ -166,6 +170,21 @@ export default function UltrablueBeneficiosPage() {
                 </article>
               </div>
             </div>
+          </div>
+        </section>
+        <section className="px-5 pb-14 sm:px-8 sm:pb-16 lg:px-8">
+          <div className="mx-auto max-w-[1280px]">
+            <h2 className="text-3xl font-bold leading-tight text-[#0B2859]">
+              Salas VIP Loungekey
+            </h2>
+            <hr className="mt-6  border-[#DFE6F0]" />
+            <p className="mt-5 text-xl text-[#05132A]">
+              Acesse mais de 1.000 salas VIP em aeroportos ao redor do mundo,
+              com bebidas, wi-fi, conforto e privacidade.
+            </p>
+            <p className="mt-5 text-xl text-[#05132A]">
+              Inclui até 12 convidados por ano.
+            </p>
           </div>
         </section>
       </main>
