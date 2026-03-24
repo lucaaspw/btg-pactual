@@ -2,6 +2,7 @@ import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { formatPrecoExibicao } from "@/lib/format-preco";
 import type { Oferta } from "@/types/oferta";
 
 const HEADER_OFFSET_CLASS = "pt-[5.5rem] sm:pt-24";
@@ -63,7 +64,7 @@ function formatMoeda(raw?: string): string {
 
 function ValorBloco({ acf }: { acf: Oferta["acf"] }) {
   const moeda = formatMoeda(acf.moeda);
-  const preco = String(acf.preco || "").trim();
+  const preco = formatPrecoExibicao(String(acf.preco || "").trim(), acf.moeda);
   const taxas = (acf.taxas || "").trim();
   const ctx = (acf.contexto_do_preco || "").trim();
 

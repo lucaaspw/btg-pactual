@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { formatPrecoExibicao } from "@/lib/format-preco";
 import type { Oferta } from "@/types/oferta";
 
 type OfertaCardProps = {
@@ -123,7 +124,7 @@ export function OfertaCard({
           >
             {moeda === "US$" ? "3x de " : ""}
             {oferta.acf?.preco
-              ? `${moeda} ${String(oferta.acf.preco).trim()}`
+              ? `${moeda} ${formatPrecoExibicao(String(oferta.acf.preco), oferta.acf?.moeda)}`
               : "Consulte"}
           </p>
           {contextoPreco ? (
