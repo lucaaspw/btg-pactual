@@ -138,7 +138,7 @@ export default function UltrablueConciergePage() {
             className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-[#012A5B]/75 via-[#012A5B]/60 to-transparent md:from-[#012A5B]/55 md:via-[#012A5B]/15"
             aria-hidden
           />
-          <div className="relative z-10 mx-auto flex max-w-[1280px] flex-col justify-end px-5 pb-10 sm:px-8 sm:pb-14 md:h-[400px] md:pb-24 lg:px-0">
+          <div className="relative z-10 mx-auto flex max-w-[1280px] flex-col justify-end px-5 pb-10 pt-10 sm:px-8 sm:pb-14 md:h-[400px] md:pb-24 lg:px-0">
             <div className="max-w-2xl">
               <Link
                 href="/ultrablue"
@@ -242,7 +242,7 @@ export default function UltrablueConciergePage() {
                         className="object-cover"
                       />
                     </div>
-                    <p className="p-4 text-center text-[1.05rem] font-semibold leading-snug text-[#0B2859] md:text-xl">
+                    <p className="p-4 text-center text-[1.3rem] font-semibold leading-snug text-[#0B2859] md:text-xl">
                       {item.label}
                     </p>
                   </article>
@@ -275,7 +275,7 @@ export default function UltrablueConciergePage() {
               A elite do turismo mundial também é Ultrablue
             </h2>
             <div className="bg-[#0B2859] py-2 flex justify-center">
-              <div className="mx-auto max-w-[1280px] grid grid-cols-2 items-center justify-center gap-x-4 gap-y-4 sm:gap-x-6 sm:gap-y-5 md:grid-cols-4 lg:grid-cols-8">
+              <div className="mx-auto max-w-[1280px] grid grid-cols-2 items-center justify-center gap-x-7 gap-y-7 sm:gap-x-6 sm:gap-y-5 md:grid-cols-4 lg:grid-cols-8">
                 {premiumPartners.map((partner) => (
                   <div
                     key={partner.name}
@@ -286,7 +286,7 @@ export default function UltrablueConciergePage() {
                       alt={partner.name}
                       width={partner.width}
                       height={partner.height}
-                      className="h-auto w-full max-w-[120px] object-contain sm:max-w-[140px] md:max-w-none"
+                      className="h-auto w-[100px] max-w-[120px] object-contain sm:max-w-[140px] md:max-w-none"
                     />
                   </div>
                 ))}

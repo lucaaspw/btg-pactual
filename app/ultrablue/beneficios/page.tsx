@@ -40,7 +40,7 @@ export default function UltrablueBeneficiosPage() {
             sizes="(max-width: 1280px) 100vw, 1280px"
             priority
           />
-          <div className="relative mx-auto max-w-[1280px] pb-10 sm:pb-12">
+          <div className="relative mx-auto max-w-[1280px] pb-10 pt-10 sm:pb-12">
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,560px)] lg:gap-10">
               <div className="max-w-[540px]">
                 <Link
@@ -116,17 +116,17 @@ export default function UltrablueBeneficiosPage() {
                 <p className="mt-5 text-xl text-[#05132A]">
                   Viaje com mais economia.
                 </p>
-                <p className="mt-8 max-w-[560px] text-[1.2rem] leading-snug text-[#05132A]">
+                <p className="hidden md:block mt-8 max-w-[560px] text-[1.2rem] leading-snug text-[#05132A]">
                   Redução de <strong>4.38% para 1.1% no IOF</strong> em compras
                   internacionais.
                 </p>
-                <p className="mt-8 max-w-[560px] border-t border-[#DFE6F0] pt-6 text-[1.2rem] leading-snug text-[#05132A]">
+                <p className="hidden md:block mt-8 max-w-[560px] border-t border-[#DFE6F0] pt-6 text-[1.2rem] leading-snug text-[#05132A]">
                   Mais previsibilidade e vantagens no uso do seu cartão no
                   exterior.
                 </p>
               </article>
 
-              <div className="relative h-[380px] overflow-hidden sm:h-[420px] lg:h-[420px]">
+              <div className="relative h-[200px] md:h-[380px] overflow-hidden sm:h-[420px] lg:h-[420px]">
                 <Image
                   src="/ultrablue_image/iof_reduzido.jpg"
                   alt="Economia em viagens internacionais"
@@ -135,11 +135,25 @@ export default function UltrablueBeneficiosPage() {
                   sizes="(max-width: 1024px) 100vw, 670px"
                 />
               </div>
+              <p className="md:hidden mt-2 max-w-[560px] text-[1.2rem] leading-snug text-[#05132A]">
+                Redução de <strong>4.38% para 1.1% no IOF</strong> em compras
+                internacionais.
+              </p>
+              <p className="md:hidden mt-2 max-w-[560px] border-t border-[#DFE6F0] pt-6 text-[1.2rem] leading-snug text-[#05132A]">
+                Mais previsibilidade e vantagens no uso do seu cartão no
+                exterior.
+              </p>
             </div>
 
             <div className="mt-10 md:border-t border-[#DFE6F0]">
               <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2 lg:gap-8">
-                <div className="relative h-[380px] overflow-hidden sm:h-[560px] md:h-[520px] lg:h-[550px]">
+                <h2 className="text-3xl md:hidden font-bold leading-tight text-[#0B2859]">
+                  Acesso ao Terminal BTG
+                </h2>
+                <p className="mt-5 md:hidden text-xl text-[#05132A]">
+                  Uma experiência diferenciada antes mesmo de embarcar.
+                </p>
+                <div className="relative h-[200px] md:h-[380px] overflow-hidden sm:h-[560px] md:h-[520px] lg:h-[550px]">
                   <Image
                     src="/beneficios_image/acesso_terminal.png"
                     alt="Terminal BTG"
@@ -150,10 +164,10 @@ export default function UltrablueBeneficiosPage() {
                 </div>
 
                 <article className="flex h-full flex-col justify-center py-6">
-                  <h2 className="text-3xl font-bold leading-tight text-[#0B2859]">
+                  <h2 className="text-3xl hidden md:block font-bold leading-tight text-[#0B2859]">
                     Acesso ao Terminal BTG
                   </h2>
-                  <p className="mt-5 text-xl text-[#05132A]">
+                  <p className="mt-5 hidden md:block text-xl text-[#05132A]">
                     Uma experiência diferenciada antes mesmo de embarcar.
                   </p>
                   <p className="mt-6 text-[1.2rem] font-semibold text-[#0B2859]">

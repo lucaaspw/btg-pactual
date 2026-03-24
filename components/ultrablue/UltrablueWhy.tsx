@@ -28,7 +28,7 @@ export function UltrablueWhy() {
   return (
     <section
       id="beneficios"
-      className="scroll-mt-24 bg-[#F1F4F8] md:py-16 lg:px-8"
+      className="scroll-mt-24 bg-[#F1F4F8] md:py-16 pb-10 lg:px-8"
     >
       <div className="mx-auto grid max-w-[1280px] items-center gap-8 lg:grid-cols-2 lg:gap-14">
         <div className="relative mx-auto aspect-[4/3] min-h-[220px] w-full max-w-[520px] overflow-hidden lg:mx-0">
@@ -49,7 +49,7 @@ export function UltrablueWhy() {
           <ul className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:mt-20 lg:gap-x-8 lg:gap-y-10">
             {features.map(({ imageSrc, title, text }) => (
               <li key={title} className="w-full">
-                <div className="flex items-center flex-col  gap-3 text-center md:text-left">
+                <div className="flex items-center flex-col md:flex-row md:items-start gap-3 text-center md:text-left">
                   <Image
                     src={imageSrc}
                     alt=""

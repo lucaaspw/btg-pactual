@@ -28,6 +28,10 @@ export function UltrablueHero() {
           sizes="100vw"
         />
       </div>
+      <div
+        className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-btg-navy/75 via-btg-navy/25 to-transparent md:from-btg-navy md:via-btg-navy/40"
+        aria-hidden
+      />
 
       <div
         className={`relative z-10 mx-auto flex max-w-[1280px] flex-col justify-end px-5 pt-20 md:pb-16 sm:px-8 md:h-[400px] md:pb-24 lg:px-0`}
@@ -44,7 +48,7 @@ export function UltrablueHero() {
         </div>
       </div>
 
-      <div className="absolute bottom-2 left-0 right-0 flex flex-col items-center justify-center gap-2 px-5 md:px-0">
+      <div className="absolute md:hidden bottom-2 left-0 right-0 flex flex-col items-center justify-center gap-2 px-5 md:px-0">
         <p className="text-center text-lg text-white">
           Conheça nossas experiências
         </p>
