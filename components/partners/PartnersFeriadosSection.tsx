@@ -139,14 +139,14 @@ function RegionCarousel({
         <h3 className="text-xl font-normal tracking-tight text-white sm:text-2xl">
           {regionLabel}
         </h3>
-        <div className="flex shrink-0 gap-0.5">
+        <div className="flex shrink-0 gap-[70px]">
           <button
             type="button"
             className="p-1.5 text-white transition hover:opacity-80"
             aria-label={`Anterior — ${regionLabel}`}
             onClick={() => scrollByDir(-1)}
           >
-            <ChevronLeft className="h-4 w-4" strokeWidth={1.5} />
+            <ChevronLeft className="h-7 w-7 cursor-pointer" strokeWidth={1.5} />
           </button>
           <button
             type="button"
@@ -154,7 +154,10 @@ function RegionCarousel({
             aria-label={`Próximo — ${regionLabel}`}
             onClick={() => scrollByDir(1)}
           >
-            <ChevronRight className="h-4 w-4" strokeWidth={1.5} />
+            <ChevronRight
+              className="h-7 w-7 cursor-pointer"
+              strokeWidth={1.5}
+            />
           </button>
         </div>
       </div>
@@ -165,7 +168,7 @@ function RegionCarousel({
         {ofertas.map((oferta) => (
           <div
             key={oferta.id}
-            className="w-[min(100%,300px)] shrink-0 snap-start sm:w-[280px]"
+            className="w-[min(100%,300px)] shrink-0 snap-start w-full md:w-[280px]"
           >
             <OfertaCard
               oferta={oferta}
@@ -208,13 +211,13 @@ function FeriadoHolidayBlock({
 
   return (
     <article className="border-b border-white/[0.12] pb-16 last:border-b-0 last:pb-0">
-      <div className="flex gap-8 py-10 sm:items-center sm:gap-10">
+      <div className="flex flex-wrap gap-8 py-10 sm:gap-10">
         <h2 className="text-[1.75rem] font-bold leading-tight tracking-tight md:text-4xl md:leading-tight">
           {section.title}
         </h2>
 
         <div
-          className="inline-flex w-full cursor-pointer shrink-0 gap-2 items-center justify-center sm:w-auto"
+          className="inline-flex w-full cursor-pointer shrink-0 gap-2 sm:w-auto"
           role="group"
           aria-label={`Nacional ou internacional — ${section.title}`}
         >

@@ -62,13 +62,13 @@ export function OfertaCard({
           : "shadow-[0_8px_24px_rgba(0,0,0,0.25)]"
       }`}
     >
-      <div className="relative h-[200px] w-full sm:h-[214px]">
+      <div className="relative h-[200px] w-full">
         <div
           className="h-full w-full bg-cover bg-center"
           style={{ backgroundImage: img ? `url(${img})` : undefined }}
         />
         {badgeOnImage ? (
-          <div className="absolute bottom-3 left-3">{badge}</div>
+          <div className="absolute bottom-[-9px] left-5">{badge}</div>
         ) : null}
       </div>
 
