@@ -1,4 +1,7 @@
 import { OfertaDetalhe } from "@/components/ofertas/OfertaDetalhe";
+import { UltrablueClosingCta } from "@/components/ultrablue/UltrablueClosingCta";
+import { UltrablueFooter } from "@/components/ultrablue/UltrablueFooter";
+import { UltrablueHeader } from "@/components/ultrablue/UltrablueHeader";
 import { TIPO_CARTAO, tipoCartaoIgual } from "@/constants/cartoes";
 import { getOfertaBySlug } from "@/services/ofertas";
 import type { Metadata } from "next";
@@ -44,12 +47,15 @@ export default async function UltrablueOfertaPage({ params }: PageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-btg-navy">
+    <>
+      <UltrablueHeader />
       <OfertaDetalhe
         oferta={oferta}
         backHref="/ultrablue"
-        offsetForFixedHeader={false}
+        offsetForFixedHeader
       />
-    </main>
+      <UltrablueClosingCta />
+      <UltrablueFooter />
+    </>
   );
 }
