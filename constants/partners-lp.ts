@@ -1,6 +1,7 @@
 /** Imagens estáticas da LP Partners (hero, banners, seção “por que”). */
 export const PARTNERS_LP_IMAGES = {
   hero: "/partners_image/banner_desk_partners.png",
+  heroMobile: "/partners_image/hero_mobile-partners.png",
   experiencias: "/partners_image/experience.png",
   programaPartners: "/partners_image/program.png",
   porQueViagem:

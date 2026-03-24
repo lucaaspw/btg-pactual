@@ -21,21 +21,21 @@ export function PartnersHero() {
         />
         {/* Leitura do título à esquerda + leve fechamento na base para o navy da próxima seção */}
         <div
-          className="absolute inset-0 bg-gradient-to-r from-btg-navy/75 via-btg-navy/25 to-transparent md:from-btg-navy/55 md:via-btg-navy/15"
+          className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-btg-navy/75 via-btg-navy/25 to-transparent md:from-btg-navy/55 md:via-btg-navy/15"
           aria-hidden
         />
       </div>
 
       <div
-        className={`relative z-10 mx-auto flex max-w-[1280px] flex-col justify-end px-5 pb-16 sm:px-8 md:h-[400px] md:pb-24 lg:px-0`}
+        className={`relative z-10 mx-auto flex max-w-[1280px] flex-col justify-end px-5 pt-20 md:pb-16 sm:px-8 md:h-[400px] md:pb-24 lg:px-0`}
       >
         <div>
-          <h1 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight drop-shadow-md md:text-5xl lg:text-[3.25rem]">
+          <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-center md:text-left md:text-5xl lg:text-[3.25rem]">
             Cartão Partners
             <br />
             BTG Pactual
           </h1>
-          <p className="mt-4 max-w-2xl text-lg leading-snug text-white drop-shadow-sm md:text-2xl">
+          <p className="mt-4 max-w-2xl text-center md:text-left text-xl leading-snug text-white md:text-2xl">
             O melhor do planeta para
             <br />
             suas viagens, com

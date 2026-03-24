@@ -32,10 +32,16 @@ export function PartnersWhy() {
   return (
     <section
       id="beneficios"
-      className="scroll-mt-24 bg-btg-navy px-5 py-16 lg:px-8"
+      className="scroll-mt-24 bg-btg-navy md:px-5 py-12 sm:py-16 lg:px-8"
     >
-      <div className="mx-auto grid max-w-[1280px] gap-10 lg:grid-cols-2 lg:gap-14 lg:items-center">
-        <div className="relative aspect-[4/5] min-h-[320px] overflow-hidden lg:aspect-auto lg:min-h-[520px]">
+      <div className="mx-auto grid max-w-[1280px] gap-8 lg:grid-cols-2 lg:gap-14 lg:items-center">
+        <div
+          className={
+            "relative mx-auto w-full max-w-[520px] overflow-hidden " +
+            "aspect-[16/10] min-h-[200px] shadow-[0_12px_40px_rgba(0,0,0,0.35)] " +
+            "lg:mx-0 lg:max-w-none lg:aspect-auto lg:min-h-[520px] lg:rounded-none lg:shadow-none"
+          }
+        >
           <Image
             src={PARTNERS_LP_IMAGES.porQueViagem}
             alt=""
@@ -45,24 +51,26 @@ export function PartnersWhy() {
           />
         </div>
 
-        <div>
-          <h2 className="text-xl font-bold leading-tight mb-10 md:text-xl">
+        <div className="text-center lg:text-left px-5">
+          <h2 className="text-2xl font-bold leading-tight text-white md:text-3xl lg:mb-0">
             Por que planejar sua viagem com a gente
           </h2>
 
-          <ul className="mt-20 grid lg:gap-y-20 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10">
+          <ul className="mt-10 flex flex-col items-center gap-12 sm:gap-14 lg:mt-20 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8 lg:gap-y-20">
             {features.map(({ imageSrc, title, text }) => (
-              <li key={title}>
-                <div className="flex gap-4">
+              <li key={title} className="w-full max-w-md lg:max-w-none">
+                <div className="flex flex-col items-center gap-4 text-center lg:flex-row lg:items-start lg:gap-4 lg:text-left">
                   <Image
                     src={imageSrc}
                     alt=""
-                    width={32}
-                    height={32}
-                    className="h-8 w-8 shrink-0 object-contain"
+                    width={40}
+                    height={40}
+                    className="h-10 w-10 shrink-0 object-contain lg:h-8 lg:w-8"
                   />
                   <div>
-                    <h3 className="font-semibold">{title}</h3>
+                    <h3 className="text-lg font-bold text-white lg:font-semibold">
+                      {title}
+                    </h3>
                     <p className="mt-2 text-sm leading-relaxed text-[#E7EEFF]">
                       {text}
                     </p>

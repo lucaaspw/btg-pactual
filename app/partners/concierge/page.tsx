@@ -127,23 +127,23 @@ export default function PartnersConciergePage() {
             sizes="100vw"
           />
           <div
-            className="absolute inset-0 bg-gradient-to-r from-btg-navy/75 via-btg-navy/25 to-transparent md:from-btg-navy/55 md:via-btg-navy/15"
+            className="absolute inset-0 bg-gradient-to-b  md:bg-gradient-to-r from-btg-navy/75 via-btg-navy/60 to-transparent md:from-btg-navy/55 md:via-btg-navy/15"
             aria-hidden
           />
           <div className="relative z-10 mx-auto flex max-w-[1280px] flex-col justify-end px-5 pb-10 sm:px-8 sm:pb-14 md:h-[400px] md:pb-24 lg:px-0">
             <div className="max-w-2xl">
               <Link
                 href="/partners"
-                className="flex md:text-2xl mb-20 items-center gap-1 text-sm text-[#E7EEFF] transition hover:text-white"
+                className="flex text-2xl mb-20 items-center gap-1 text-[#E7EEFF] transition hover:text-white"
               >
                 <ChevronLeft className="h-5 w-5" aria-hidden />
                 voltar
               </Link>
-              <h1 className="text-3xl font-bold leading-tight tracking-tight drop-shadow-md md:text-5xl">
+              <h1 className="text-4xl text-center md:text-left font-bold leading-tight tracking-tight drop-shadow-md md:text-5xl">
                 Concierge Partners
               </h1>
-              <p className="mt-3 text-base leading-snug text-white drop-shadow-sm sm:text-lg md:mt-4 md:text-2xl">
-                O mundo do jeito que voce imagina
+              <p className="mt-3 text-center md:text-left leading-snug text-white text-2xl md:mt-4 md:text-3xl">
+                O mundo do jeito que você imagina
               </p>
             </div>
           </div>
@@ -151,12 +151,12 @@ export default function PartnersConciergePage() {
 
         <section className="px-5 lg:px-8">
           <div className="mx-auto max-w-[1280px] border-b border-white/10 pt-8 pb-8 text-[#E7EEFF] sm:pt-10 md:pt-12">
-            <p className="mb-4 text-base sm:text-lg md:text-2xl">
+            <p className="mb-4 text-lg md:text-2xl">
               Com o Travel Service Partners - em parceria com a PRIMETOUR,
               referencia em turismo de luxo no Brasil - nosso time organiza
               viagens, reservas e experiencias exclusivas para voce.
             </p>
-            <p className="text-base leading-snug sm:text-lg md:text-2xl">
+            <p className="leading-snug text-lg md:text-2xl">
               Atendimento de segunda a segunda, das 8h as 20h.
             </p>
             <h2 className="mt-8 text-2xl font-bold sm:mt-10 md:text-4xl">
@@ -200,7 +200,7 @@ export default function PartnersConciergePage() {
             <h2 className="text-2xl pb-6 border-b border-white/10 font-bold md:text-3xl">
               Consultoria completa para sua viagem
             </h2>
-            <p className="mt-6 text-base text-[#E7EEFF] sm:text-lg md:text-2xl">
+            <p className="mt-6 text-[#E7EEFF] text-lg md:text-2xl">
               Nossa equipe esta preparada para elaborar roteiros personalizados
               que atendam aos seus desejos e preferencias. Da escolha do hotel
               ideal a organizacao de experiencias exclusivas no destino, cada
@@ -235,12 +235,12 @@ export default function PartnersConciergePage() {
             <h2 className="border-b border-white/10 pb-6 text-2xl font-bold md:text-3xl">
               Cuidamos de toda a logistica de sua viagem
             </h2>
-            <p className="mt-6 text-base sm:text-lg md:text-2xl">
+            <p className="mt-6 text-lg md:text-2xl">
               Realizamos a emissao de passagens aereas nacionais e
               internacionais, oferecendo consultoria especializada sobre rotas,
               assentos e utilizacao de milhas.
             </p>
-            <p className="mt-5 text-base sm:text-lg md:text-2xl">
+            <p className="mt-5 text-lg md:text-2xl">
               Caso necessario, tambem auxiliamos com remarcacoes e ajustes de
               itinerario.
             </p>

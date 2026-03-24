@@ -45,8 +45,10 @@ export default function PartnersBeneficiosPage() {
                   Benefícios do Cartão Partners
                 </h1>
                 <p className="mt-6 text-2xl leading-snug text-[#E7EEFF]">
-                  Muito mais do que um cartão: vantagens exclusivas para suas
-                  viagens e experiências ao redor do mundo.
+                  Muito mais do que um cartão:
+                  <br />
+                  vantagens exclusivas para suas viagens e experiências ao redor
+                  do mundo.
                 </p>
               </div>
 
@@ -64,7 +66,7 @@ export default function PartnersBeneficiosPage() {
           </div>
         </section>
 
-        <section className="px-5 pb-16 sm:px-8 sm:pb-20 lg:px-8">
+        <section className="px-5 md:pb-[170px] sm:px-8 pb-16 lg:px-8">
           <div className="mx-auto max-w-[1280px]">
             <h2 className="border-b border-white/10 pb-6 text-3xl font-bold">
               Cashback
@@ -77,7 +79,7 @@ export default function PartnersBeneficiosPage() {
               {cashbackItems.map((item) => (
                 <article
                   key={item}
-                  className="border border-[#5F7BA7] px-5 py-8"
+                  className="border border-[#5F7BA7] rounded-xl px-5 py-8"
                 >
                   <p className="text-[1.2rem] leading-tight text-[#E7EEFF]">
                     {item}
@@ -121,7 +123,7 @@ export default function PartnersBeneficiosPage() {
               </div>
             </div>
 
-            <div className="mt-5 border-t border-white/10">
+            <div className="mt-10 border-t border-white/10">
               <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2 lg:gap-8">
                 <div className="relative h-[520px] overflow-hidden sm:h-[560px] lg:h-[550px]">
                   <Image
