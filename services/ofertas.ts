@@ -74,3 +74,11 @@ export async function getOfertasPartnersPorTipoOferta(
   const partners = await getOfertasPorTipoCartao(TIPO_CARTAO.PARTNERS);
   return partners.filter((o) => tipoOfertaIgual(o.acf?.tipo_oferta, tipo));
 }
+
+/** Ofertas Ultrablue filtradas por `tipo_oferta` (Feriado, Roteiro, Cruzeiro). */
+export async function getOfertasUltrabluePorTipoOferta(
+  tipo: TipoOferta,
+): Promise<Oferta[]> {
+  const ultrablue = await getOfertasPorTipoCartao(TIPO_CARTAO.ULTRABLUE);
+  return ultrablue.filter((o) => tipoOfertaIgual(o.acf?.tipo_oferta, tipo));
+}

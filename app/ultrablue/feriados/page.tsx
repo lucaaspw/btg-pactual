@@ -1,10 +1,9 @@
-import { UltrablueCategoryOffersSection } from "@/components/ultrablue/UltrablueCategoryOffersSection";
+import { UltrablueFeriadosSection } from "@/components/ultrablue/UltrablueFeriadosSection";
 import { UltrablueClosingCta } from "@/components/ultrablue/UltrablueClosingCta";
 import { UltrablueFooter } from "@/components/ultrablue/UltrablueFooter";
 import { UltrablueHeader } from "@/components/ultrablue/UltrablueHeader";
-import { TIPO_CARTAO } from "@/constants/cartoes";
-import { TIPO_OFERTA, tipoOfertaIgual } from "@/constants/tipo-oferta";
-import { getOfertasPorTipoCartao } from "@/services/ofertas";
+import { TIPO_OFERTA } from "@/constants/tipo-oferta";
+import { getOfertasUltrabluePorTipoOferta } from "@/services/ofertas";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -14,18 +13,15 @@ export const metadata: Metadata = {
 };
 
 export default async function UltrablueFeriadosPage() {
-  const ofertasUltrablue = await getOfertasPorTipoCartao(TIPO_CARTAO.ULTRABLUE);
-  const ofertas = ofertasUltrablue.filter((o) =>
-    tipoOfertaIgual(o.acf?.tipo_oferta, TIPO_OFERTA.FERIADO),
-  );
+  const ofertas = await getOfertasUltrabluePorTipoOferta(TIPO_OFERTA.FERIADO);
 
   return (
     <>
       <UltrablueHeader />
-      <UltrablueCategoryOffersSection
-        title="Confira destinos selecionados para viajar com exclusividade durante os feriados."
-        description="Feriados"
+      <UltrablueFeriadosSection
+        title="Confira destinos selecionados para viajar com exclusividade durante os feriados de 2026"
         ofertas={ofertas}
+        holidayFallbackLabel="Páscoa"
       />
       <UltrablueClosingCta />
       <UltrablueFooter />
