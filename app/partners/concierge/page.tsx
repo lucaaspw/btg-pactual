@@ -216,16 +216,16 @@ export default function PartnersConciergePage() {
 
         <section className="md:px-5 md:py-12 sm:py-14 lg:px-8">
           <div className="mx-auto max-w-[1280px]">
-            <h2 className="text-[1.8rem] pb-6 px-5 md:border-b border-white/10 font-bold md:text-3xl">
+            <h2 className="text-[1.8rem] pb-6 px-5 md:px-0 md:border-b border-white/10 font-bold md:text-3xl">
               Consultoria completa para sua viagem
             </h2>
-            <p className="mt-6 text-[#E7EEFF] text-lg px-5 md:text-2xl">
+            <p className="mt-6 text-[#E7EEFF] text-lg px-5 md:px-0 md:text-2xl">
               Nossa equipe esta preparada para elaborar roteiros personalizados
               que atendam aos seus desejos e preferencias. Da escolha do hotel
               ideal a organizacao de experiencias exclusivas no destino, cada
               detalhe e planejado para proporcionar uma viagem unica.
             </p>
-            <p className="mt-5 text-lg px-5 font-semibold text-[#E7EEFF] sm:text-xl md:text-2xl">
+            <p className="mt-5 text-lg px-5 md:px-0 font-semibold text-[#E7EEFF] sm:text-xl md:text-2xl">
               Exemplos de experiencias que podemos organizar:
             </p>
 
