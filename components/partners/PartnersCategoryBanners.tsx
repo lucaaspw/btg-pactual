@@ -18,7 +18,7 @@ export function PartnersCategoryBanners() {
   return (
     <section
       id="categorias"
-      className="scroll-mt-24 relative border-0 md:border-y border-white/10 bg-btg-navy px-5 py-16 lg:px-8"
+      className="scroll-mt-24 relative border-0 lg:border-y border-white/10 bg-btg-navy px-5 py-16 lg:px-8"
     >
       <div className="mx-auto max-w-[1280px]">
         <div className="grid gap-x-20 gap-y-4 md:grid-cols-2">

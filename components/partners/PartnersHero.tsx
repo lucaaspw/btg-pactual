@@ -53,7 +53,7 @@ export function PartnersHero() {
           </p>
         </div>
       </div>
-      <div className="absolute bottom-2 left-0 right-0 px-5 md:px-0 flex flex-col items-center justify-center gap-2">
+      <div className="absolute bottom-3 left-0 right-0 px-5 lg:px-0 flex flex-col items-center justify-center gap-2">
         <p className="text-center text-white text-lg">
           Conheça nossas experiências
         </p>

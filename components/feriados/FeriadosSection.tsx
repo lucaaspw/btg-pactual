@@ -366,7 +366,9 @@ export function FeriadosSection({
   >({});
 
   return (
-    <section className={`${HEADER_OFFSET_CLASS} scroll-mt-24 ${t.section} pb-24`}>
+    <section
+      className={`${HEADER_OFFSET_CLASS} scroll-mt-24 ${t.section} pb-24`}
+    >
       {brand === "ultrablue" ? (
         <div className="relative min-h-[240px] w-full overflow-hidden sm:min-h-[280px] md:min-h-[320px]">
           <div
@@ -380,7 +382,7 @@ export function FeriadosSection({
             className="absolute inset-0 bg-gradient-to-t from-[#F1F4F8]/95 via-[#F1F4F8]/55 to-[#F1F4F8]/35 sm:from-[#F1F4F8]/85 sm:via-[#F1F4F8]/40"
             aria-hidden
           />
-          <div className="relative mx-auto max-w-[1280px] px-5 pb-10 pt-10 md:px-0">
+          <div className="relative mx-auto max-w-[1280px] px-5 pb-10 pt-10 lg:px-0">
             <Link href={homeHref} className={t.backLink}>
               <ChevronLeft className="h-5 w-5" aria-hidden />
               Voltar
@@ -396,7 +398,7 @@ export function FeriadosSection({
       ) : (
         <div className="w-full">
           <div className="mx-auto max-w-[1280px]">
-            <div className="px-5 pt-10 md:px-0">
+            <div className="px-5 pt-10 lg:px-0">
               <Link href={homeHref} className={t.backLink}>
                 <ChevronLeft className="h-5 w-5" aria-hidden />
                 Voltar
@@ -406,7 +408,7 @@ export function FeriadosSection({
           </div>
         </div>
       )}
-      <div className="mx-auto max-w-[1280px] px-5 md:px-0">
+      <div className="mx-auto max-w-[1280px] px-5 lg:px-0">
         {ofertas.length === 0 ? (
           <p
             className={

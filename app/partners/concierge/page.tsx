@@ -122,7 +122,7 @@ export default function PartnersConciergePage() {
             src="/concierge_image/banner_concierge.png"
             alt="Concierge Partners"
             fill
-            className="hidden object-cover object-center md:block"
+            className="hidden object-cover object-center lg:block"
             priority
             sizes="100vw"
           />
@@ -158,7 +158,7 @@ export default function PartnersConciergePage() {
         </section>
 
         <section className="px-5 lg:px-8">
-          <div className="mx-auto max-w-[1280px] md:border-b border-white/10 pt-8 md:pb-8 text-[#E7EEFF] sm:pt-10 md:pt-12">
+          <div className="mx-auto max-w-[1280px] lg:border-b border-white/10 pt-8 md:pb-8 text-[#E7EEFF] sm:pt-10 md:pt-12">
             <p className="mb-4 text-lg md:text-2xl">
               Com o Travel Service Partners — em parceria com a PRIMETOUR,
               referência em turismo de luxo no Brasil — nosso time organiza
@@ -169,7 +169,7 @@ export default function PartnersConciergePage() {
             </p>
             <a
               href="#"
-              className="mt-8 w-full flex items-center justify-between gap-2 bg-[#2E73D4] px-8 py-4 md:hidden text-white transition hover:bg-[#3A80E4]"
+              className="mt-8 w-full flex items-center justify-between gap-2 bg-[#2E73D4] px-8 py-4 lg:hidden text-white transition hover:bg-[#3A80E4]"
             >
               Quero falar com meu concierge
               <ArrowUpRight
@@ -214,22 +214,22 @@ export default function PartnersConciergePage() {
           </div>
         </section>
 
-        <section className="md:px-5 md:py-12 sm:py-14 lg:px-8">
+        <section className="lg:px-5 md:py-12 sm:py-14 lg:px-8">
           <div className="mx-auto max-w-[1280px]">
-            <h2 className="text-[1.8rem] pb-6 px-5 md:px-0 md:border-b border-white/10 font-bold md:text-3xl">
+            <h2 className="text-[1.8rem] pb-6 px-5 lg:px-0 lg:border-b border-white/10 font-bold md:text-3xl">
               Consultoria completa para sua viagem
             </h2>
-            <p className="mt-6 text-[#E7EEFF] text-lg px-5 md:px-0 md:text-2xl">
+            <p className="mt-6 text-[#E7EEFF] text-lg px-5 lg:px-0 md:text-2xl">
               Nossa equipe esta preparada para elaborar roteiros personalizados
               que atendam aos seus desejos e preferencias. Da escolha do hotel
               ideal a organizacao de experiencias exclusivas no destino, cada
               detalhe e planejado para proporcionar uma viagem unica.
             </p>
-            <p className="mt-5 text-lg px-5 md:px-0 font-semibold text-[#E7EEFF] sm:text-xl md:text-2xl">
+            <p className="mt-5 text-lg px-5 lg:px-0 font-semibold text-[#E7EEFF] sm:text-xl md:text-2xl">
               Exemplos de experiencias que podemos organizar:
             </p>
 
-            <div className="mt-8 grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-4">
+            <div className="mt-8 grid grid-cols-1 gap-4 md:px-5 sm:gap-5 md:grid-cols-2 xl:grid-cols-4">
               {travelExamples.map((item) => (
                 <article key={item.label} className="overflow-hidden">
                   <div className="relative h-[180px] sm:h-[200px]">
@@ -251,7 +251,7 @@ export default function PartnersConciergePage() {
 
         <section className="px-5 pt-2 pb-10 sm:pb-12 md:py-14 lg:px-8">
           <div className="mx-auto max-w-[1280px]">
-            <h2 className="md:border-b border-white/10 mt-6 pb-6 text-[1.8rem] font-bold md:text-3xl">
+            <h2 className="lg:border-b border-white/10 mt-6 pb-6 text-[1.8rem] font-bold md:text-3xl">
               Cuidamos de toda a logistica de sua viagem
             </h2>
             <p className="mt-6 text-lg md:text-2xl">
@@ -268,7 +268,7 @@ export default function PartnersConciergePage() {
 
         <section className="px-5 md:py-14 py-5 lg:px-8">
           <div className="mx-auto max-w-[1280px]">
-            <h2 className="text-2xl md:border-b border-white/10 pb-6 font-bold md:text-3xl">
+            <h2 className="text-2xl lg:border-b border-white/10 pb-6 font-bold md:text-3xl">
               A elite do turismo mundial tambem e Partners
             </h2>
 

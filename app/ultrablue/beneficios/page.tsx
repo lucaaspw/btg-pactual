@@ -52,7 +52,7 @@ export default function UltrablueBeneficiosPage() {
                 </Link>
                 <h1 className="text-center text-4xl font-bold leading-tight tracking-tight text-[#0B2859] md:text-left md:text-5xl">
                   Benefícios do
-                  <br className="md:hidden" />
+                  <br className="lg:hidden" />
                   Cartão Ultrablue
                 </h1>
                 <p className="mt-6 text-center text-2xl leading-snug text-[#05132A] md:text-left">
@@ -107,7 +107,7 @@ export default function UltrablueBeneficiosPage() {
         </section>
 
         <section className="px-5 pb-14 sm:px-8 sm:pb-16 lg:px-8">
-          <div className="mx-auto max-w-[1280px] md:border-t border-[#DFE6F0]">
+          <div className="mx-auto max-w-[1280px] lg:border-t border-[#DFE6F0]">
             <div className="grid grid-cols-1 items-stretch gap-6 pb-10 lg:grid-cols-2 lg:gap-8">
               <article className="flex h-full flex-col justify-center">
                 <h2 className="text-3xl font-bold leading-tight text-[#0B2859]">
@@ -116,11 +116,11 @@ export default function UltrablueBeneficiosPage() {
                 <p className="mt-5 text-xl text-[#05132A]">
                   Viaje com mais economia.
                 </p>
-                <p className="hidden md:block mt-8 max-w-[560px] text-[1.2rem] leading-snug text-[#05132A]">
+                <p className="hidden lg:block mt-8 max-w-[560px] text-[1.2rem] leading-snug text-[#05132A]">
                   Redução de <strong>4.38% para 1.1% no IOF</strong> em compras
                   internacionais.
                 </p>
-                <p className="hidden md:block mt-8 max-w-[560px] border-t border-[#DFE6F0] pt-6 text-[1.2rem] leading-snug text-[#05132A]">
+                <p className="hidden lg:block mt-8 max-w-[560px] border-t border-[#DFE6F0] pt-6 text-[1.2rem] leading-snug text-[#05132A]">
                   Mais previsibilidade e vantagens no uso do seu cartão no
                   exterior.
                 </p>
@@ -135,22 +135,22 @@ export default function UltrablueBeneficiosPage() {
                   sizes="(max-width: 1024px) 100vw, 670px"
                 />
               </div>
-              <p className="md:hidden mt-2 max-w-[560px] text-[1.2rem] leading-snug text-[#05132A]">
+              <p className="lg:hidden mt-2 max-w-[560px] text-[1.2rem] leading-snug text-[#05132A]">
                 Redução de <strong>4.38% para 1.1% no IOF</strong> em compras
                 internacionais.
               </p>
-              <p className="md:hidden mt-2 max-w-[560px] border-t border-[#DFE6F0] pt-6 text-[1.2rem] leading-snug text-[#05132A]">
+              <p className="lg:hidden mt-2 max-w-[560px] border-t border-[#DFE6F0] pt-6 text-[1.2rem] leading-snug text-[#05132A]">
                 Mais previsibilidade e vantagens no uso do seu cartão no
                 exterior.
               </p>
             </div>
 
-            <div className="mt-10 md:border-t border-[#DFE6F0]">
+            <div className="mt-10 lg:border-t border-[#DFE6F0]">
               <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2 lg:gap-8">
-                <h2 className="text-3xl md:hidden font-bold leading-tight text-[#0B2859]">
+                <h2 className="text-3xl lg:hidden font-bold leading-tight text-[#0B2859]">
                   Acesso ao Terminal BTG
                 </h2>
-                <p className="mt-5 md:hidden text-xl text-[#05132A]">
+                <p className="mt-5 lg:hidden text-xl text-[#05132A]">
                   Uma experiência diferenciada antes mesmo de embarcar.
                 </p>
                 <div className="relative h-[200px] md:h-[380px] overflow-hidden sm:h-[560px] md:h-[520px] lg:h-[550px]">
@@ -164,10 +164,10 @@ export default function UltrablueBeneficiosPage() {
                 </div>
 
                 <article className="flex h-full flex-col justify-center py-6">
-                  <h2 className="text-3xl hidden md:block font-bold leading-tight text-[#0B2859]">
+                  <h2 className="text-3xl hidden lg:block font-bold leading-tight text-[#0B2859]">
                     Acesso ao Terminal BTG
                   </h2>
-                  <p className="mt-5 hidden md:block text-xl text-[#05132A]">
+                  <p className="mt-5 hidden lg:block text-xl text-[#05132A]">
                     Uma experiência diferenciada antes mesmo de embarcar.
                   </p>
                   <p className="mt-6 text-[1.2rem] font-semibold text-[#0B2859]">

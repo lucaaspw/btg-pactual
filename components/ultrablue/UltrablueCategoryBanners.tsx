@@ -18,7 +18,7 @@ export function UltrablueCategoryBanners() {
   return (
     <section
       id="categorias"
-      className="scroll-mt-24 relative border-0 bg-[#F1F4F8] px-5 py-16 md:border-y md:border-[#0B2859]/20 lg:px-8"
+      className="scroll-mt-24 relative border-0 bg-[#F1F4F8] px-5 py-16 lg:border-y lg:border-[#0B2859]/20 lg:px-8"
     >
       <div className="mx-auto max-w-[1280px]">
         <div className="grid gap-x-20 gap-y-4 md:grid-cols-2">

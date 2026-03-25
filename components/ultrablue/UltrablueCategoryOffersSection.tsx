@@ -26,7 +26,7 @@ export function UltrablueCategoryOffersSection({
             }}
             aria-hidden
           />
-          <div className="relative mx-auto max-w-[1280px] pb-0 md:pb-8 pt-10 px-5 md:px-0">
+          <div className="relative mx-auto max-w-[1280px] pb-0 md:pb-8 pt-10 px-5 lg:px-0">
             <Link
               href="/ultrablue"
               className="mb-20 text-xl flex items-center gap-1 text-sm text-[#0B2859] transition hover:text-[#0B2859] md:text-2xl"
@@ -39,7 +39,7 @@ export function UltrablueCategoryOffersSection({
             </h1>
           </div>
         </div>
-        <div className="px-5 pt-8 md:px-0 mx-auto max-w-[1280px]">
+        <div className="px-5 pt-8 lg:px-0 mx-auto max-w-[1280px]">
           {description ? (
             <p className="mt-8 font-bold text-3xl leading-snug text-[#05132A]">
               {description}
@@ -48,8 +48,8 @@ export function UltrablueCategoryOffersSection({
           <hr className="mt-8 border-[#0B2859]/25" />
           {ofertas.length === 0 ? (
             <p className="mt-10 max-w-xl text-[#05132A]">
-              Em breve, novas ofertas exclusivas nesta categoria. O operador pode
-              publicá-las em{" "}
+              Em breve, novas ofertas exclusivas nesta categoria. O operador
+              pode publicá-las em{" "}
               <a
                 className="underline underline-offset-2"
                 href="/dashboard/nova-oferta"

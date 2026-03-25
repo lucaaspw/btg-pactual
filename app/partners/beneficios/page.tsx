@@ -79,9 +79,9 @@ export default function PartnersBeneficiosPage() {
           </div>
         </section>
 
-        <section className="px-5 md:pb-[170px] sm:px-8 pb-16 lg:px-8">
+        <section className="px-5 lg:pb-[170px] sm:px-8 pb-16 lg:px-8">
           <div className="mx-auto max-w-[1280px]">
-            <h2 className="md:border-b border-white/10 pb-6 text-3xl font-bold">
+            <h2 className="lg:border-b border-white/10 pb-6 text-3xl font-bold">
               Cashback
             </h2>
             <p className="mt-8 text-xl leading-snug text-[#E7EEFF]">
@@ -108,7 +108,7 @@ export default function PartnersBeneficiosPage() {
         </section>
 
         <section className="px-5 pb-14 sm:px-8 sm:pb-16 lg:px-8">
-          <div className="mx-auto max-w-[1280px] md:border-t border-white/10">
+          <div className="mx-auto max-w-[1280px] lg:border-t border-white/10">
             <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2 lg:gap-8 pb-10">
               <article className="flex h-full flex-col justify-center">
                 <h2 className="text-3xl font-bold leading-tight">
@@ -117,7 +117,7 @@ export default function PartnersBeneficiosPage() {
                 <p className="mt-5 text-xl text-[#E7EEFF]">
                   Viaje com tranquilidade.
                 </p>
-                <p className="mt-8 max-w-[560px] hidden md:block text-[1.35rem] leading-snug text-[#E7EEFF]">
+                <p className="mt-8 max-w-[560px] hidden lg:block text-[1.35rem] leading-snug text-[#E7EEFF]">
                   O cartão Partners oferece{" "}
                   <strong>seguro viagem global</strong> da Omint, garantindo
                   cobertura para você e até <strong>4 dependentes</strong>{" "}
@@ -135,7 +135,7 @@ export default function PartnersBeneficiosPage() {
                 />
               </div>
               <article className="flex h-full flex-col justify-center">
-                <p className="max-w-[560px] block md:hidden text-[1.35rem] leading-snug text-[#E7EEFF]">
+                <p className="max-w-[560px] block lg:hidden text-[1.35rem] leading-snug text-[#E7EEFF]">
                   O cartão Partners oferece{" "}
                   <strong>seguro viagem global</strong> da Omint, garantindo
                   cobertura para você e até <strong>4 dependentes</strong>{" "}
@@ -144,12 +144,12 @@ export default function PartnersBeneficiosPage() {
               </article>
             </div>
 
-            <div className="mt-10 md:border-t border-white/10">
+            <div className="mt-10 lg:border-t border-white/10">
               <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2 lg:gap-8">
-                <h2 className="text-3xl md:hidden font-bold leading-tight">
+                <h2 className="text-3xl lg:hidden font-bold leading-tight">
                   Acesso ao Terminal BTG
                 </h2>
-                <p className="mt-5 text-xl md:hidden text-[#E7EEFF]">
+                <p className="mt-5 text-xl lg:hidden text-[#E7EEFF]">
                   Uma experiência diferenciada antes mesmo de embarcar.
                 </p>
                 <div className="relative h-[380px] md:h-[520px] overflow-hidden sm:h-[560px] lg:h-[550px]">
@@ -163,10 +163,10 @@ export default function PartnersBeneficiosPage() {
                 </div>
 
                 <article className="flex h-full flex-col justify-center py-6">
-                  <h2 className="text-3xl hidden md:block font-bold leading-tight">
+                  <h2 className="text-3xl hidden lg:block font-bold leading-tight">
                     Acesso ao Terminal BTG
                   </h2>
-                  <p className="mt-5 text-xl hidden md:block text-[#E7EEFF]">
+                  <p className="mt-5 text-xl hidden lg:block text-[#E7EEFF]">
                     Uma experiência diferenciada antes mesmo de embarcar.
                   </p>
                   <p className="md:mt-6 text-[1.35rem] font-semibold text-white">
@@ -177,7 +177,7 @@ export default function PartnersBeneficiosPage() {
                     {terminalBenefits.map((benefit) => (
                       <li
                         key={benefit}
-                        className="md:border-b border-white/10 py-3 text-[1.3rem] text-[#E7EEFF] last:border-b-0"
+                        className="lg:border-b border-white/10 py-3 text-[1.3rem] text-[#E7EEFF] last:border-b-0"
                       >
                         {benefit}
                       </li>
@@ -188,7 +188,7 @@ export default function PartnersBeneficiosPage() {
             </div>
 
             <article className="mt-10">
-              <h2 className="md:border-b border-white/10 pb-5 text-3xl font-bold">
+              <h2 className="lg:border-b border-white/10 pb-5 text-3xl font-bold">
                 Salas VIP Loungekey
               </h2>
               <p className="mt-6 text-[1.35rem] leading-snug text-[#E7EEFF]">

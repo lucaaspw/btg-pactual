@@ -48,7 +48,7 @@ export function UltrablueHero() {
         </div>
       </div>
 
-      <div className="absolute md:hidden bottom-2 left-0 right-0 flex flex-col items-center justify-center gap-2 px-5 md:px-0">
+      <div className="absolute lg:hidden bottom-3 left-0 right-0 flex flex-col items-center justify-center gap-2 px-5 lg:px-0">
         <p className="text-center text-lg text-white">
           Conheça nossas experiências
         </p>
