@@ -66,7 +66,7 @@ export default function PartnersBeneficiosPage() {
               </div>
               <Link
                 href="#"
-                className="inline-flex items-center gap-2 bg-[#2E73D4] px-8 py-4 text-base font-semibold text-white shadow-lg transition hover:bg-[#3A80E4]"
+                className="inline-flex items-center gap-2 bg-[#2E73D4] px-8 py-4 text-xl font-semibold text-white shadow-lg transition hover:bg-[#3A80E4]"
               >
                 Quero falar com meu concierge
                 <ArrowUpRight

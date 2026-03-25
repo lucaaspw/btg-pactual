@@ -7,7 +7,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useMemo, useRef, useState } from "react";
 
-const HEADER_OFFSET_CLASS = "pt-[5.5rem] sm:pt-24";
+const HEADER_OFFSET_CLASS = "pt-[5.5rem] sm:pt-20";
 
 /** Qual LP de cartão está em uso — define tokens visuais no `FERIADOS_BRAND`. */
 export type FeriadosBrand = "partners" | "ultrablue";
@@ -16,18 +16,18 @@ const FERIADOS_BRAND = {
   partners: {
     section: "bg-[#050C1C]",
     backLink:
-      "mb-14 flex items-center gap-1 text-sm text-[#C8D4E8] transition hover:text-white md:text-base",
+      "mb-14 flex items-center gap-1 text-xl text-[#C8D4E8] transition hover:text-white",
     title:
-      "max-w-[920px] text-2xl font-bold leading-[1.25] tracking-tight md:text-3xl lg:text-[2rem] lg:leading-snug",
+      "max-w-[920px] text-2xl font-bold leading-[1.25] tracking-tight md:text-3xl lg:text-4xl lg:leading-snug",
     border: "border-b border-white/[0.12]",
     scopeActiveText: "text-btg-navy",
   },
   ultrablue: {
     section: "bg-[#F1F4F8] text-[#05132A]",
     backLink:
-      "mb-14 flex items-center gap-1 text-sm text-[#05132A] transition hover:text-[#0B2859] md:text-base",
+      "mb-14 flex items-center gap-1 text-xl text-[#05132A] transition hover:text-[#0B2859]",
     title:
-      "max-w-[920px] text-2xl font-bold leading-[1.25] tracking-tight text-[#0B2859] md:text-3xl lg:text-[2rem] lg:leading-snug",
+      "max-w-[920px] text-2xl font-bold leading-[1.25] tracking-tight text-[#0B2859] md:text-3xl lg:text-4xl lg:leading-snug",
     border: "border-b border-[#0B2859]/25",
     scopeActiveText: "text-[#0B2859]",
   },
@@ -370,7 +370,7 @@ export function FeriadosSection({
       className={`${HEADER_OFFSET_CLASS} scroll-mt-24 ${t.section} pb-24`}
     >
       {brand === "ultrablue" ? (
-        <div className="relative min-h-[240px] w-full overflow-hidden sm:min-h-[280px] md:min-h-[320px]">
+        <div className="relative min-h-[240px] w-full overflow-hidden sm:min-h-[280px] md:min-h-[520px]">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
@@ -382,17 +382,19 @@ export function FeriadosSection({
             className="absolute inset-0 bg-gradient-to-t from-[#F1F4F8]/95 via-[#F1F4F8]/55 to-[#F1F4F8]/35 sm:from-[#F1F4F8]/85 sm:via-[#F1F4F8]/40"
             aria-hidden
           />
-          <div className="relative mx-auto max-w-[1280px] px-5 pb-10 pt-10 lg:px-0">
+          <div className="relative text-xl mx-auto max-w-[1280px] px-5 pb-10 pt-10 lg:px-0">
             <Link href={homeHref} className={t.backLink}>
               <ChevronLeft className="h-5 w-5" aria-hidden />
-              Voltar
+              voltar
             </Link>
             <h1 className={t.title}>{title}</h1>
-            {introDescription ? (
-              <p className="mt-8 max-w-2xl text-lg leading-snug text-[#05132A]">
-                {introDescription}
-              </p>
-            ) : null}
+            <p className="mt-8 max-w-2xl text-lg leading-snug text-[#05132A]">
+              Muito mais do que um cartão:
+              <br />
+              praticidade, economia e experiências
+              <br />
+              exclusivas no seu dia a dia e em suas viagens.
+            </p>
           </div>
         </div>
       ) : (

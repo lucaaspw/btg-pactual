@@ -68,10 +68,10 @@ export function PartnersWhy() {
                     className="h-10 w-10 shrink-0 object-contain lg:h-8 lg:w-8"
                   />
                   <div>
-                    <h3 className="text-lg font-bold text-white lg:font-semibold">
+                    <h3 className="text-2lg font-bold text-white lg:font-semibold">
                       {title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-[#E7EEFF]">
+                    <p className="mt-2 text-xl leading-relaxed text-[#E7EEFF]">
                       {text}
                     </p>
                   </div>

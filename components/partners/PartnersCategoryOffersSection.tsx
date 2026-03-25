@@ -25,16 +25,16 @@ export function PartnersCategoryOffersSection({
         <div className="border-b border-white/10 pt-10 pb-8">
           <Link
             href="/partners"
-            className="flex md:text-2xl mb-20 items-center gap-1 text-sm text-[#E7EEFF] transition hover:text-white"
+            className="flex md:text-2xl mb-20 items-center gap-1 text-xl text-[#E7EEFF] transition hover:text-white"
           >
             <ChevronLeft className="h-5 w-5" aria-hidden />
-            Voltar
+            voltar
           </Link>
           <h1 className="text-xl font-bold tracking-tight md:text-2xl lg:text-3xl">
             {title}
           </h1>
           {description ? (
-            <p className="mt-8 max-w-2xl text-lg leading-snug text-[#E7EEFF]">
+            <p className="mt-8 max-w-2xl text-xl leading-snug text-[#E7EEFF]">
               {description}
             </p>
           ) : null}

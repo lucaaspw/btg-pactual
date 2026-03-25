@@ -167,7 +167,7 @@ export default function PartnersConciergePage() {
             <p className="leading-snug text-lg md:text-2xl">
               Atendimento de segunda a segunda, das 8h às 20h.
             </p>
-            <a
+            <Link
               href="#"
               className="mt-8 w-full flex items-center justify-between gap-2 bg-[#2E73D4] px-8 py-4 lg:hidden text-white transition hover:bg-[#3A80E4]"
             >
@@ -177,7 +177,7 @@ export default function PartnersConciergePage() {
                 strokeWidth={2}
                 aria-hidden
               />
-            </a>
+            </Link>
             <h2 className="mt-8 text-[1.8rem] font-bold sm:mt-10 md:text-4xl">
               O que o Concierge faz por você
             </h2>
@@ -204,9 +204,7 @@ export default function PartnersConciergePage() {
                     <h3 className="mb-2 text-xl font-semibold text-white sm:mb-3 sm:text-2xl">
                       {item.title}
                     </h3>
-                    <p className="text-base font-light sm:text-lg">
-                      {item.description}
-                    </p>
+                    <p className="text-xl font-light">{item.description}</p>
                   </div>
                 </article>
               ))}

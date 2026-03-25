@@ -13,14 +13,16 @@ export function UltrablueClosingCta() {
       className="scroll-mt-24 bg-[#10408D] px-5 py-20 text-center lg:px-8"
     >
       <div className="mx-auto">
-        <h2 className="text-2xl font-bold md:text-3xl">Quer saber mais?</h2>
+        <h2 className="text-2xl text-white font-bold md:text-3xl">
+          Quer saber mais?
+        </h2>
         <p className="mt-4 text-lg text-[#E7EEFF]">
           Nossa equipe está à disposição para tirar dúvidas e personalizar sua
           viagem do jeito que precisar.
         </p>
         <a
           href={conciergeHref()}
-          className="mt-8 inline-flex items-center gap-2 bg-[#2E73D4] px-8 py-4 text-base font-semibold text-white shadow-lg transition hover:bg-[#3A80E4]"
+          className="mt-8 inline-flex items-center gap-2 bg-[#2E73D4] px-8 py-4 text-xl text-white shadow-lg transition hover:bg-[#3A80E4]"
         >
           Quero falar com meu concierge
           <ArrowUpRight

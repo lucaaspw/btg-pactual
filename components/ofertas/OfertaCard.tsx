@@ -12,10 +12,10 @@ type OfertaCardProps = {
 };
 
 const ctaClassName =
-  "mt-auto flex w-full items-center justify-between bg-[#2E73D4] px-4 py-2 text-[1.1rem] font-bold transition hover:bg-[#3A80E4]";
+  "mt-auto flex w-full items-center justify-between bg-[#2E73D4] px-4 py-2 text-xl font-bold transition hover:bg-[#3A80E4]";
 
 const ctaFeriadosClassName =
-  "mt-auto flex w-full items-center justify-between bg-[#2E73D4] px-4 py-3 text-base font-bold transition hover:bg-[#3A80E4]";
+  "mt-auto flex w-full items-center justify-between bg-[#2E73D4] px-4 py-3 text-xl font-bold transition hover:bg-[#3A80E4]";
 
 function formatMoeda(raw?: string): string {
   const moeda = String(raw || "")
@@ -103,7 +103,7 @@ export function OfertaCard({
           <p
             className={
               badgeOnImage
-                ? "text-[11px] font-medium uppercase tracking-[0.06em] text-[#A8B8D0]"
+                ? "text-[11px] font-medium  tracking-[0.06em] text-[#A8B8D0]"
                 : "text-[1.2rem] leading-none text-[#E7EEFF]"
             }
           >

@@ -12,7 +12,7 @@ export function PartnersIntro() {
           vida.
         </p>
 
-        <p className="mt-10 text-sm font-semibold uppercase tracking-[0.12em] text-[#E7EEFF]">
+        <p className="mt-10 text-xl font-semibold  tracking-[0.12em] text-[#E7EEFF]">
           Curadoria
         </p>
         <h3 className="mt-2 text-2xl font-bold md:text-3xl">

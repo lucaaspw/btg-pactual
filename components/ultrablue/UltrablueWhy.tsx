@@ -4,23 +4,23 @@ import Image from "next/image";
 const features = [
   {
     imageSrc: ULTRABLUE_LP_IMAGES.whyConcierge,
-    title: "Atendimento dedicado",
-    text: "Concierge especializado para planejar cada detalhe da sua viagem com agilidade e cuidado.",
+    title: "Concierge exclusivo",
+    text: "Um time de especialistas para cuidar da sua rotina, viagens e experiências",
   },
   {
     imageSrc: ULTRABLUE_LP_IMAGES.whyCashback,
-    title: "Seguro viagem global",
-    text: "Cobertura pensada para você viajar com tranquilidade em qualquer destino.",
+    title: "Cashback em compras",
+    text: "Retorno em compras nacionais e internacionais",
   },
   {
     imageSrc: ULTRABLUE_LP_IMAGES.whyIof,
-    title: "Acesso ao terminal BTG",
-    text: "Benefícios em aeroportos, com prioridade no check-in e acesso a salas selecionadas.",
+    title: "IOF reduzido",
+    text: "Mais economia em compras no exterior",
   },
   {
     imageSrc: ULTRABLUE_LP_IMAGES.whySalaVip,
     title: "Salas VIP LoungeKey",
-    text: "Acesso a mais de mil salas VIP em aeroportos ao redor do mundo.",
+    text: "Acesso a mais de 1.000 salas VIP no mundo",
   },
 ] as const;
 
@@ -53,15 +53,15 @@ export function UltrablueWhy() {
                   <Image
                     src={imageSrc}
                     alt=""
-                    width={28}
-                    height={28}
-                    className="mt-1 h-10 w-10 md:h-7 md:w-7 shrink-0 object-contain"
+                    width={32}
+                    height={32}
+                    className="mt-1 h-9 w-9 shrink-0 object-contain"
                   />
                   <div>
-                    <h3 className="text-sm font-bold text-center md:text-left text-[#10408D] md:text-base">
+                    <h3 className="text-2xl font-bold text-center md:text-left text-[#10408D] ">
                       {title}
                     </h3>
-                    <p className="mt-1 text-xs leading-relaxed text-center md:text-left text-[#05132A] md:text-sm">
+                    <p className="mt-1 text-xl leading-relaxed text-center md:text-left text-[#05132A] md:text-xl">
                       {text}
                     </p>
                   </div>

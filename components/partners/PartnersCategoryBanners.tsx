@@ -31,7 +31,7 @@ export function PartnersCategoryBanners() {
             />
             <div className=" bg-[#0B2859] w-full z-10 mt-auto p-6">
               <h3 className="text-2xl font-bold">Experiências</h3>
-              <p className="mt-2 max-w-sm text-sm text-white/90">
+              <p className="mt-2 max-w-sm text-xl text-white/90">
                 Descubra viagens pensadas para cada momento.
               </p>
             </div>
@@ -61,7 +61,7 @@ export function PartnersCategoryBanners() {
             />
             <div className="relative  bg-[#0B2859] w-full z-10 mt-auto p-6">
               <h3 className="text-2xl font-bold">Programa Partners</h3>
-              <p className="mt-2 max-w-sm text-sm text-white/90">
+              <p className="mt-2 max-w-sm text-xl text-white/90">
                 Serviços exclusivos para clientes.
               </p>
             </div>

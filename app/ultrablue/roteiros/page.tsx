@@ -9,7 +9,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Roteiros — Cartão Ultrablue BTG Pactual",
-  description: "Roteiros exclusivos para clientes Cartão Ultrablue BTG Pactual.",
+  description:
+    "Roteiros exclusivos para clientes Cartão Ultrablue BTG Pactual.",
 };
 
 export default async function UltrablueRoteirosPage() {

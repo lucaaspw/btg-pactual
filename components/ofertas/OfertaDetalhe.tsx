@@ -12,15 +12,15 @@ const HEADER_OFFSET_CLASS = "pt-[5.5rem] sm:pt-24";
  */
 const DETALHE_LAYOUT = {
   backLink:
-    "flex mt-20 mb-20 items-center gap-1 text-sm transition md:text-2xl",
+    "flex mt-20 mb-20 items-center gap-1 text-xl transition md:text-2xl",
   blockTitle: "text-lg font-bold md:text-xl",
-  h1: "mt-3 text-center text-2xl font-bold leading-tight md:text-4xl md:leading-tight",
-  destino: "mt-10 text-center text-base md:text-lg",
-  body: "mt-4 text-base leading-relaxed md:text-lg",
-  valorLead: "text-base md:text-lg",
+  h1: "mt-3 text-start md:text-center px-5 md:px-0 text-3xl font-bold leading-tight md:text-4xl md:leading-tight",
+  destino: "mt-10 text-start md:text-center px-5 md:px-0 text-xl md:text-lg",
+  body: "mt-4 text-xl leading-relaxed md:text-lg",
+  valorLead: "text-xl md:text-lg",
   valorPrice: "text-lg font-bold leading-snug md:text-xl",
-  section: "py-10 text-center md:py-12",
-  articlePad: "px-5 pb-16 lg:px-8",
+  section: "py-10 text-start md:text-center md:py-12",
+  articlePad: "pb-16 lg:px-8",
   heroWrap:
     "relative mt-10 aspect-[21/9] min-h-[200px] w-full overflow-hidden bg-black/20 md:min-h-[280px]",
 } as const;
@@ -56,7 +56,6 @@ const DETALHE_BRAND = {
     muted: "text-[#05132A]/85",
     title: "text-[#0B2859]",
     blockTitle: `${DETALHE_LAYOUT.blockTitle} text-[#0B2859]`,
-    backLink: `${DETALHE_LAYOUT.backLink} text-[#05132A] hover:text-[#0B2859]`,
     divider: "divide-[#0B2859]/25",
   },
 } as const;
@@ -125,7 +124,7 @@ function ValorBloco({
   const priceClass = brand === "ultrablue" ? "text-[#0B2859]" : "text-white";
 
   return (
-    <div className="mt-4 space-y-1 text-center">
+    <div className="mt-4 space-y-1 text-start md:text-center">
       <p className={`${DETALHE_LAYOUT.valorLead} ${t.muted}`}>A partir de</p>
       <p className={`${DETALHE_LAYOUT.valorPrice} ${priceClass}`}>{destaque}</p>
       {ctx ? (
@@ -174,7 +173,7 @@ function CabecalhoBloco({
   titleClassName: string;
 }) {
   return (
-    <div className="flex items-center justify-center gap-2.5 md:gap-3">
+    <div className="flex items-center justify-start md:justify-center gap-2.5 md:gap-3">
       <Image
         src={iconSrc}
         alt=""
@@ -245,7 +244,7 @@ export function OfertaDetalhe({
       iconSrc: icones.drink,
       titulo: "Inclui no pacote",
       corpo: (
-        <div className="mt-4 space-y-3 text-center">
+        <div className="mt-4 space-y-3 text-start md:text-center">
           {incluiLinhas.map((linha) => (
             <p key={linha} className={bodyClass}>
               {linha}
@@ -261,9 +260,9 @@ export function OfertaDetalhe({
       className={`${topPad} ${DETALHE_LAYOUT.articlePad} ${tokens.shell}`}
     >
       <div className="mx-auto max-w-[1280px]">
-        <Link href={backHref} className={tokens.backLink}>
+        <Link href={backHref} className="flex items-center text-xl py-7 px-5">
           <ChevronLeft className="h-5 w-5" aria-hidden />
-          Voltar
+          voltar
         </Link>
 
         {destino ? (
@@ -287,7 +286,9 @@ export function OfertaDetalhe({
           </div>
         ) : null}
 
-        <div className={`mx-auto mt-14 max-w-2xl divide-y ${tokens.divider}`}>
+        <div
+          className={`mx-auto mt-14 max-w-2xl divide-y px-5 ${tokens.divider}`}
+        >
           {blocos.map(({ iconSrc, titulo: t, corpo }, i) => (
             <section key={`${t}-${i}`} className={DETALHE_LAYOUT.section}>
               <CabecalhoBloco

@@ -92,9 +92,9 @@ export function NovaOfertaForm() {
   }
 
   const sectionTitleClass =
-    "mb-6 flex items-center gap-2 border-b border-gray-200 pb-3 text-[11px] font-bold uppercase tracking-[0.08em] text-[#20334f]";
+    "mb-6 flex items-center gap-2 border-b border-gray-200 pb-3 text-[11px] font-bold  tracking-[0.08em] text-[#20334f]";
   const labelClass =
-    "mb-2.5 block text-xs font-semibold uppercase tracking-[0.06em] text-gray-700 leading-snug";
+    "mb-2.5 block text-xs font-semibold  tracking-[0.06em] text-gray-700 leading-snug";
   const inputClass =
     "w-full rounded-lg border border-gray-200 bg-[#f8fafc] px-3 py-2.5 text-sm text-gray-900 outline-none transition focus:border-[#2E73D4] focus:ring-2 focus:ring-[#2E73D4]/20";
   /** Clique em qualquer ponto abre o calendário (além do ícone nativo). */
