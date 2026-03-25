@@ -1,3 +1,5 @@
+import { DASHBOARD_SESSION_COOKIE, verifyDashboardSessionToken } from "@/lib/dashboard-session";
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
@@ -61,6 +63,15 @@ const ALLOWED_IMAGE_TYPES = new Set([
 
 export async function POST(request: Request) {
   try {
+    const jar = await cookies();
+    const session = jar.get(DASHBOARD_SESSION_COOKIE)?.value;
+    if (!verifyDashboardSessionToken(session)) {
+      return NextResponse.json(
+        { error: "Nao autorizado. Faca login no painel." },
+        { status: 401 },
+      );
+    }
+
     const contentType = request.headers.get("content-type") || "";
     if (!contentType.includes("multipart/form-data")) {
       return NextResponse.json(

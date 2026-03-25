@@ -1,3 +1,4 @@
+import { runDashboardAuthMiddleware } from "@/lib/middleware-dashboard-auth";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
@@ -61,7 +62,12 @@ function rewritePath(pathname: string, landing: Landing): string {
   return `${base}${clean}`;
 }
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
+  const dashboardResponse = await runDashboardAuthMiddleware(request);
+  if (dashboardResponse) {
+    return dashboardResponse;
+  }
+
   const host = request.headers.get("host") ?? "";
   const hostname = host.split(":")[0] ?? "";
   const landing = landingFromHost(hostname);
