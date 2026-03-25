@@ -14,14 +14,14 @@ export function PartnersCuratedOffers({ ofertas }: PartnersCuratedOffersProps) {
       <div className="mx-auto max-w-[1280px]">
         {ofertas.length === 0 ? (
           <p className="mt-10 max-w-xl text-[#E7EEFF]">
-            Em breve novas ofertas exclusivas. O operador pode publicar em{" "}
+            Em breve, novas ofertas exclusivas. O operador pode publicá-las em{" "}
             <a
               className="underline underline-offset-2"
               href="/dashboard/nova-oferta"
             >
               Nova oferta
-            </a>{" "}
-            com tipo de cartão <strong>Partners</strong>.
+            </a>
+            , com o tipo de cartão <strong>Partners</strong>.
           </p>
         ) : (
           <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">

@@ -20,7 +20,7 @@ function getAuthHeader() {
 }
 
 /**
- * ACF Date Picker (formato de retorno d/m/Y no teu site): o REST espera a mesma
+ * ACF Date Picker (formato de retorno d/m/Y no seu site): o REST espera a mesma
  * convenção. Inputs type=date enviam YYYY-MM-DD — convertemos para dd/mm/aaaa.
  */
 function toAcfDate(value: string): string {
@@ -67,7 +67,7 @@ export async function POST(request: Request) {
     const session = jar.get(DASHBOARD_SESSION_COOKIE)?.value;
     if (!verifyDashboardSessionToken(session)) {
       return NextResponse.json(
-        { error: "Nao autorizado. Faca login no painel." },
+        { error: "Não autorizado. Faça login no painel." },
         { status: 401 },
       );
     }
@@ -77,7 +77,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            "Envie o formulario com arquivo (multipart). Recarregue a pagina e tente de novo.",
+            "Envie o formulário com arquivo (multipart). Recarregue a página e tente novamente.",
         },
         { status: 400 },
       );
@@ -107,19 +107,19 @@ export async function POST(request: Request) {
 
     if (!(file instanceof File)) {
       return NextResponse.json(
-        { error: "Imagem obrigatoria: selecione um arquivo." },
+        { error: "Imagem obrigatória: selecione um arquivo." },
         { status: 400 },
       );
     }
     if (file.size === 0) {
       return NextResponse.json(
-        { error: "Selecione um arquivo de imagem valido." },
+        { error: "Selecione um arquivo de imagem válido." },
         { status: 400 },
       );
     }
     if (file.size > MAX_IMAGE_BYTES) {
       return NextResponse.json(
-        { error: "Imagem muito grande. Tamanho maximo: 5 MB." },
+        { error: "Imagem muito grande. Tamanho máximo: 5 MB." },
         { status: 400 },
       );
     }
@@ -127,7 +127,7 @@ export async function POST(request: Request) {
     if (!ALLOWED_IMAGE_TYPES.has(mime)) {
       return NextResponse.json(
         {
-          error: "Formato de imagem nao suportado. Use JPG, PNG, WebP ou GIF.",
+          error: "Formato de imagem não suportado. Use JPG, PNG, WebP ou GIF.",
         },
         { status: 400 },
       );
@@ -137,7 +137,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            "Campos obrigatorios: nome da oferta, destino, descricao e preco.",
+            "Campos obrigatórios: nome da oferta, destino, descrição e preço.",
         },
         { status: 400 },
       );
@@ -148,7 +148,7 @@ export async function POST(request: Request) {
 
     if (!wpUrl) {
       return NextResponse.json(
-        { error: "NEXT_PUBLIC_WP_URL nao configurada." },
+        { error: "NEXT_PUBLIC_WP_URL não configurada." },
         { status: 500 },
       );
     }
@@ -197,7 +197,7 @@ export async function POST(request: Request) {
 
     if (!mediaData) {
       return NextResponse.json(
-        { error: "Resposta invalida do WordPress ao criar midia." },
+        { error: "Resposta inválida do WordPress ao criar mídia." },
         { status: 502 },
       );
     }
@@ -206,7 +206,7 @@ export async function POST(request: Request) {
       typeof mediaData.source_url === "string" ? mediaData.source_url : "";
     if (!sourceUrl) {
       return NextResponse.json(
-        { error: "WordPress nao retornou URL da imagem." },
+        { error: "WordPress não retornou URL da imagem." },
         { status: 502 },
       );
     }
@@ -230,7 +230,7 @@ export async function POST(request: Request) {
       Number.isFinite(mediaId) && mediaId > 0 ? Math.floor(mediaId) : null;
     if (imagemAcf === null) {
       return NextResponse.json(
-        { error: "ID da midia invalido para o campo ACF de imagem." },
+        { error: "ID da mídia inválido para o campo ACF de imagem." },
         { status: 502 },
       );
     }

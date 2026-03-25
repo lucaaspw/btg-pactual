@@ -49,7 +49,7 @@ export async function runDashboardAuthMiddleware(
       return null;
     }
     return NextResponse.json(
-      { error: "Nao autorizado. Faca login no painel." },
+      { error: "Não autorizado. Faça login no painel." },
       { status: 401 },
     );
   }

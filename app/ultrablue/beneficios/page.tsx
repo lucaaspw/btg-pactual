@@ -48,7 +48,7 @@ export default function UltrablueBeneficiosPage() {
                   className="mb-20 flex items-center gap-1 text-sm text-[#05132A] transition hover:text-[#0B2859] md:text-2xl"
                 >
                   <ChevronLeft className="h-5 w-5" aria-hidden />
-                  voltar
+                  Voltar
                 </Link>
                 <h1 className="text-center text-4xl font-bold leading-tight tracking-tight text-[#0B2859] md:text-left md:text-5xl">
                   Benefícios do

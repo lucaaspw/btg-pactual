@@ -11,7 +11,7 @@ const OFERTAS_QUERY = `_fields=${OFERTAS_FIELDS}&per_page=100`;
 async function fetchOfertasJson(): Promise<unknown> {
   const base = process.env.NEXT_PUBLIC_WP_URL?.replace(/\/$/, "");
   if (!base) {
-    throw new Error("NEXT_PUBLIC_WP_URL nao configurada.");
+    throw new Error("NEXT_PUBLIC_WP_URL não configurada.");
   }
 
   const res = await fetch(
@@ -33,7 +33,7 @@ export async function getOfertaBySlug(slug: string): Promise<Oferta | null> {
 
   const base = process.env.NEXT_PUBLIC_WP_URL?.replace(/\/$/, "");
   if (!base) {
-    throw new Error("NEXT_PUBLIC_WP_URL nao configurada.");
+    throw new Error("NEXT_PUBLIC_WP_URL não configurada.");
   }
 
   const res = await fetch(

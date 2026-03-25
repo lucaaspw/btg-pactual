@@ -42,7 +42,7 @@ export type FeriadosSectionProps = {
    * (ex.: campanha em destaque).
    */
   holidayFallbackLabel?: string;
-  /** Rota da LP para o link «voltar». */
+  /** Rota da LP para o link "Voltar". */
   homeHref: string;
   /** Base da URL de detalhe, sem barra final (ex.: /partners/oferta). */
   ofertaDetailBasePath: string;
@@ -322,7 +322,8 @@ function FeriadoHolidayBlock({
         >
           Nenhuma oferta {escopo === "nacional" ? "nacional" : "internacional"}{" "}
           cadastrada para {section.title}. Ajuste o filtro ou publique ofertas
-          com &quot;Nacional / Internacional&quot; e estado ou país preenchidos.
+          com &quot;Nacional / Internacional&quot;, além de estado ou país
+          preenchidos.
         </p>
       ) : (
         <>
@@ -382,7 +383,7 @@ export function FeriadosSection({
           <div className="relative mx-auto max-w-[1280px] px-5 pb-10 pt-10 md:px-0">
             <Link href={homeHref} className={t.backLink}>
               <ChevronLeft className="h-5 w-5" aria-hidden />
-              voltar
+              Voltar
             </Link>
             <h1 className={t.title}>{title}</h1>
             {introDescription ? (
@@ -398,7 +399,7 @@ export function FeriadosSection({
             <div className="px-5 pt-10 md:px-0">
               <Link href={homeHref} className={t.backLink}>
                 <ChevronLeft className="h-5 w-5" aria-hidden />
-                voltar
+                Voltar
               </Link>
               <h1 className={t.title}>{title}</h1>
             </div>
@@ -414,15 +415,15 @@ export function FeriadosSection({
                 : "mt-10 max-w-xl text-[#E7EEFF]"
             }
           >
-            Em breve novas ofertas exclusivas nesta categoria. O operador pode
-            publicar em{" "}
+            Em breve, novas ofertas exclusivas nesta categoria. O operador pode
+            publicá-las em{" "}
             <a
               className="underline underline-offset-2"
               href="/dashboard/nova-oferta"
             >
               Nova oferta
-            </a>{" "}
-            com tipo de cartão <strong>{tipoCartaoNome}</strong>.
+            </a>
+            , com o tipo de cartão <strong>{tipoCartaoNome}</strong>.
           </p>
         ) : sections.length === 0 ? (
           <p

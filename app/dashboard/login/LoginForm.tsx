@@ -32,7 +32,7 @@ export function LoginForm() {
         setError(
           typeof data.error === "string"
             ? data.error
-            : "Nao foi possivel entrar. Tente de novo.",
+            : "Não foi possível entrar. Tente novamente.",
         );
         setLoading(false);
         return;
@@ -40,7 +40,7 @@ export function LoginForm() {
       router.replace(nextPath);
       router.refresh();
     } catch {
-      setError("Erro de rede. Verifique a conexao.");
+      setError("Erro de rede. Verifique a conexão.");
       setLoading(false);
     }
   }

@@ -145,7 +145,7 @@ export default function UltrablueConciergePage() {
                 className="mb-20 flex items-center gap-1 text-2xl text-[#E7EEFF] transition hover:text-white"
               >
                 <ChevronLeft className="h-5 w-5" aria-hidden />
-                voltar
+                Voltar
               </Link>
               <h1 className="text-center text-4xl font-bold leading-tight tracking-tight drop-shadow-md md:text-left md:text-5xl">
                 Concierge Ultrablue

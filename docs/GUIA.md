@@ -59,6 +59,13 @@ Rotas importantes:
 | `/dashboard`, `/dashboard/nova-oferta` | Painel e formulário de nova oferta |
 | `/api/ofertas` | API interna (POST) para criar oferta no WP |
 
+### Cadastro de ofertas (operador)
+
+- **Um único formulário** em `/dashboard/nova-oferta` serve **Partners** e **Ultrablue**.
+- O operador escolhe a **vitrine do cartão** no topo; o valor vai para o ACF `tipo_cartao` no WordPress. A oferta **só aparece** na landing daquele cartão (filtro em `services/ofertas.ts`).
+- Para publicar a **mesma viagem nas duas vitrines**, é preciso **cadastrar duas vezes** (uma com Partners, outra com Ultrablue).
+- Atalhos na URL: `?cartao=partners` ou `?cartao=ultrablue` (também `p` / `ub`) **pré-selecionam** o cartão — útil em links salvos ou no hub da raiz (`/`).
+
 ---
 
 ## 4. Variáveis de ambiente

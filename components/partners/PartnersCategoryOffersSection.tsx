@@ -28,7 +28,7 @@ export function PartnersCategoryOffersSection({
             className="flex md:text-2xl mb-20 items-center gap-1 text-sm text-[#E7EEFF] transition hover:text-white"
           >
             <ChevronLeft className="h-5 w-5" aria-hidden />
-            voltar
+            Voltar
           </Link>
           <h1 className="text-xl font-bold tracking-tight md:text-2xl lg:text-3xl">
             {title}
@@ -42,15 +42,15 @@ export function PartnersCategoryOffersSection({
 
         {ofertas.length === 0 ? (
           <p className="mt-10 max-w-xl text-[#E7EEFF]">
-            Em breve novas ofertas exclusivas nesta categoria. O operador pode
-            publicar em{" "}
+            Em breve, novas ofertas exclusivas nesta categoria. O operador pode
+            publicá-las em{" "}
             <a
               className="underline underline-offset-2"
               href="/dashboard/nova-oferta"
             >
               Nova oferta
-            </a>{" "}
-            com tipo de cartão <strong>Partners</strong>.
+            </a>
+            , com o tipo de cartão <strong>Partners</strong>.
           </p>
         ) : (
           <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">

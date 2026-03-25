@@ -32,7 +32,7 @@ export function UltrablueCategoryOffersSection({
               className="mb-20 text-xl flex items-center gap-1 text-sm text-[#0B2859] transition hover:text-[#0B2859] md:text-2xl"
             >
               <ChevronLeft className="h-5 w-5" aria-hidden />
-              voltar
+              Voltar
             </Link>
             <h1 className="text-xl font-bold tracking-tight text-[#0B2859] md:text-2xl lg:text-3xl">
               {title}
@@ -48,15 +48,15 @@ export function UltrablueCategoryOffersSection({
           <hr className="mt-8 border-[#0B2859]/25" />
           {ofertas.length === 0 ? (
             <p className="mt-10 max-w-xl text-[#05132A]">
-              Em breve novas ofertas exclusivas nesta categoria. O operador pode
-              publicar em{" "}
+              Em breve, novas ofertas exclusivas nesta categoria. O operador pode
+              publicá-las em{" "}
               <a
                 className="underline underline-offset-2"
                 href="/dashboard/nova-oferta"
               >
                 Nova oferta
-              </a>{" "}
-              com tipo de cartão <strong>Ultrablue</strong>.
+              </a>
+              , com o tipo de cartão <strong>Ultrablue</strong>.
             </p>
           ) : (
             <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">

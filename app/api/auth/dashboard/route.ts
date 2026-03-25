@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          "Autenticacao do painel nao configurada. Defina BTG_USERNAME e BTG_PASSWORD (ou BTG_AUTH_SECRET) no servidor.",
+          "Autenticação do painel não configurada. Defina BTG_USERNAME e BTG_PASSWORD (ou BTG_AUTH_SECRET) no servidor.",
       },
       { status: 503 },
     );
@@ -25,7 +25,7 @@ export async function POST(request: Request) {
   try {
     body = (await request.json()) as { username?: string; password?: string };
   } catch {
-    return NextResponse.json({ error: "JSON invalido." }, { status: 400 });
+    return NextResponse.json({ error: "JSON inválido." }, { status: 400 });
   }
 
   const username = String(body.username ?? "").trim();
@@ -33,7 +33,7 @@ export async function POST(request: Request) {
 
   if (!verifyDashboardCredentials(username, password)) {
     return NextResponse.json(
-      { error: "Usuario ou senha invalidos." },
+      { error: "Usuário ou senha inválidos." },
       { status: 401 },
     );
   }
@@ -43,7 +43,7 @@ export async function POST(request: Request) {
     token = signDashboardSessionToken();
   } catch {
     return NextResponse.json(
-      { error: "Falha ao criar sessao." },
+      { error: "Falha ao criar sessão." },
       { status: 500 },
     );
   }

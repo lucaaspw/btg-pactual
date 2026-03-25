@@ -79,7 +79,7 @@ function formatQuando(inicio?: string, fim?: string): string {
   const a = (inicio || "").trim();
   const b = (fim || "").trim();
   if (!a && !b) return "";
-  if (a && b) return `${a} a ${b}`;
+  if (a && b) return `${a} até ${b}`;
   return a || b;
 }
 
@@ -263,7 +263,7 @@ export function OfertaDetalhe({
       <div className="mx-auto max-w-[1280px]">
         <Link href={backHref} className={tokens.backLink}>
           <ChevronLeft className="h-5 w-5" aria-hidden />
-          voltar
+          Voltar
         </Link>
 
         {destino ? (

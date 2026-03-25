@@ -39,7 +39,7 @@ export default function PartnersBeneficiosPage() {
                   className="flex md:text-2xl mb-20 items-center gap-1 text-sm text-[#E7EEFF] transition hover:text-white"
                 >
                   <ChevronLeft className="h-5 w-5" aria-hidden />
-                  voltar
+                  Voltar
                 </Link>
                 <h1 className="text-4xl font-bold text-center md:text-left leading-tight tracking-tight md:text-5xl">
                   Benefícios do
