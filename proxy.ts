@@ -62,7 +62,7 @@ function rewritePath(pathname: string, landing: Landing): string {
   return `${base}${clean}`;
 }
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const dashboardResponse = await runDashboardAuthMiddleware(request);
   if (dashboardResponse) {
     return dashboardResponse;
@@ -90,7 +90,7 @@ export async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     /*
-     * Ignora arquivos estáticos com extensão comum; o resto passa pelo middleware
+     * Ignora arquivos estáticos com extensão comum; o resto passa pelo proxy
      * (inclui rotas sem extensão e RSC).
      */
     "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:ico|png|jpg|jpeg|gif|svg|webp|avif|woff2?|ttf|eot)$).*)",
