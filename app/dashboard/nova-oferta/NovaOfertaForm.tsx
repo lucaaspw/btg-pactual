@@ -3,17 +3,21 @@
 import {
   TIPO_CARTAO,
   tipoCartaoFromQueryParam,
-  type TipoCartao,
 } from "@/constants/cartoes";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Check } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Controller, useForm } from "react-hook-form";
+import {
+  type NovaOfertaFormInput,
+  type NovaOfertaFormValues,
+  novaOfertaSchema,
+} from "./novaOfertaSchema";
 
-function initialTipoCartao(search: string | null): TipoCartao | "" {
+function initialTipoCartao(search: string | null) {
   return tipoCartaoFromQueryParam(search) ?? "";
 }
-
-type TipoOferta = "Feriado" | "Roteiro" | "Cruzeiro";
 
 function tryOpenDatePicker(el: HTMLInputElement) {
   if (typeof el.showPicker === "function") {
@@ -27,42 +31,84 @@ function tryOpenDatePicker(el: HTMLInputElement) {
   }
 }
 
+function buildFormData(data: NovaOfertaFormValues) {
+  const fd = new FormData();
+  fd.append("tipo_cartao", data.tipo_cartao);
+  fd.append("tipo_oferta", data.tipo_oferta);
+  fd.append("destino_rota", data.destino_rota);
+  fd.append("nome_da_oferta", data.nome_da_oferta);
+  fd.append("descricao", data.descricao);
+  fd.append("nacional_internacional", data.nacional_internacional);
+  fd.append("estado_pais", data.estado_pais);
+  fd.append("nome_feriado", data.nome_feriado);
+  fd.append("imagem", data.imagem);
+  fd.append("texto_alternativo_alt", data.texto_alternativo_alt);
+  fd.append("data_de_inicio", data.data_de_inicio);
+  fd.append("data_final", data.data_final);
+  fd.append("moeda", data.moeda);
+  fd.append("preco", data.preco);
+  fd.append("contexto_do_preco", data.contexto_do_preco);
+  fd.append("taxas", data.taxas);
+  fd.append("incluso_no_pacote", data.incluso_no_pacote);
+  return fd;
+}
+
+function emptyFormValues(cartaoQuery: string | null): NovaOfertaFormInput {
+  return {
+    tipo_cartao: initialTipoCartao(cartaoQuery),
+    tipo_oferta: "",
+    destino_rota: "",
+    nome_da_oferta: "",
+    descricao: "",
+    nacional_internacional: "",
+    estado_pais: "",
+    nome_feriado: "",
+    imagem: undefined,
+    texto_alternativo_alt: "",
+    data_de_inicio: "",
+    data_final: "",
+    moeda: "R$",
+    preco: "",
+    contexto_do_preco: "",
+    taxas: "",
+    incluso_no_pacote: "",
+  };
+}
+
 export function NovaOfertaForm() {
   const searchParams = useSearchParams();
-  const [tipoCartao, setTipoCartao] = useState<TipoCartao | "">(() =>
-    initialTipoCartao(searchParams.get("cartao")),
-  );
-  const [tipoOferta, setTipoOferta] = useState<TipoOferta | "">("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
+  const {
+    register,
+    control,
+    handleSubmit,
+    setValue,
+    reset,
+    formState: { errors },
+  } = useForm<NovaOfertaFormInput, unknown, NovaOfertaFormValues>({
+    resolver: zodResolver(novaOfertaSchema),
+    defaultValues: emptyFormValues(searchParams.get("cartao")),
+  });
+
   useEffect(() => {
     const next = tipoCartaoFromQueryParam(searchParams.get("cartao"));
     if (next) {
-      setTipoCartao(next);
+      setValue("tipo_cartao", next);
     }
-  }, [searchParams]);
+  }, [searchParams, setValue]);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  async function onSubmit(data: NovaOfertaFormValues) {
     setLoading(true);
     setMessage("");
     setError("");
 
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const imagem = formData.get("imagem");
-    if (!(imagem instanceof File) || imagem.size === 0) {
-      setError("Selecione uma imagem principal (arquivo).");
-      setLoading(false);
-      return;
-    }
-
     try {
       const res = await fetch("/api/ofertas", {
         method: "POST",
-        body: formData,
+        body: buildFormData(data),
       });
 
       const result = await res.json();
@@ -81,9 +127,7 @@ export function NovaOfertaForm() {
       }
 
       setMessage("Oferta criada com sucesso!");
-      form.reset();
-      setTipoCartao(initialTipoCartao(searchParams.get("cartao")));
-      setTipoOferta("");
+      reset(emptyFormValues(searchParams.get("cartao")));
     } catch {
       setError("Erro de conexão ao criar oferta.");
     } finally {
@@ -97,13 +141,22 @@ export function NovaOfertaForm() {
     "mb-2.5 block text-xs font-semibold  tracking-[0.06em] text-gray-700 leading-snug";
   const inputClass =
     "w-full rounded-lg border border-gray-200 bg-[#f8fafc] px-3 py-2.5 text-sm text-gray-900 outline-none transition focus:border-[#2E73D4] focus:ring-2 focus:ring-[#2E73D4]/20";
+  const inputErrorClass =
+    "border-red-400 focus:border-red-500 focus:ring-red-500/20";
   /** Clique em qualquer ponto abre o calendário (além do ícone nativo). */
   const dateInputClass = `${inputClass} relative cursor-pointer [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:start-0 [&::-webkit-calendar-picker-indicator]:top-0 [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:cursor-pointer [&::-webkit-calendar-picker-indicator]:opacity-0`;
+
+  const fieldError = (msg?: string) =>
+    msg ? (
+      <p className="mt-1.5 text-xs font-medium text-red-600" role="alert">
+        {msg}
+      </p>
+    ) : null;
 
   return (
     <main className="min-h-screen bg-[#edf1f6] px-4 py-6 md:px-6">
       <div className="mx-auto max-w-[1140px]">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>
           <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
             <header className="border-b-2 border-[#f2b541] bg-btg-navy px-5 py-4 text-white">
               <h1 className="text-2xl font-bold">Cadastro de Oferta</h1>
@@ -132,28 +185,15 @@ export function NovaOfertaForm() {
                     </label>
                     <select
                       id="tipo_cartao"
-                      name="tipo_cartao"
-                      value={tipoCartao}
-                      onChange={(e) => {
-                        e.currentTarget.setCustomValidity("");
-                        const v = e.target.value;
-                        setTipoCartao(v === "" ? "" : (v as TipoCartao));
-                      }}
-                      onInvalid={(e) => {
-                        const el = e.currentTarget;
-                        if (el.validity.valueMissing) {
-                          el.setCustomValidity(
-                            "Este campo é obrigatório. Selecione o tipo de cartão.",
-                          );
-                        }
-                      }}
-                      className={inputClass}
-                      required
+                      className={`${inputClass} ${errors.tipo_cartao ? inputErrorClass : ""}`}
+                      aria-invalid={!!errors.tipo_cartao}
+                      {...register("tipo_cartao")}
                     >
                       <option value="">-- Selecione --</option>
                       <option value={TIPO_CARTAO.PARTNERS}>Partners</option>
                       <option value={TIPO_CARTAO.ULTRABLUE}>Ultrablue</option>
                     </select>
+                    {fieldError(errors.tipo_cartao?.message)}
                     <p className="mt-2.5 text-xs leading-relaxed text-gray-500">
                       A oferta aparece só na vitrine do cartão selecionado. Link
                       com{" "}
@@ -177,29 +217,16 @@ export function NovaOfertaForm() {
                     </label>
                     <select
                       id="tipo_oferta"
-                      name="tipo_oferta"
-                      value={tipoOferta}
-                      onChange={(e) => {
-                        e.currentTarget.setCustomValidity("");
-                        const v = e.target.value;
-                        setTipoOferta(v === "" ? "" : (v as TipoOferta));
-                      }}
-                      onInvalid={(e) => {
-                        const el = e.currentTarget;
-                        if (el.validity.valueMissing) {
-                          el.setCustomValidity(
-                            "Este campo é obrigatório. Selecione o tipo de oferta.",
-                          );
-                        }
-                      }}
-                      className={inputClass}
-                      required
+                      className={`${inputClass} ${errors.tipo_oferta ? inputErrorClass : ""}`}
+                      aria-invalid={!!errors.tipo_oferta}
+                      {...register("tipo_oferta")}
                     >
                       <option value="">-- Selecione --</option>
                       <option value="Feriado">Feriado</option>
                       <option value="Roteiro">Roteiro</option>
                       <option value="Cruzeiro">Cruzeiro</option>
                     </select>
+                    {fieldError(errors.tipo_oferta?.message)}
                   </div>
 
                   <div>
@@ -211,11 +238,12 @@ export function NovaOfertaForm() {
                     </label>
                     <input
                       id="destino_rota"
-                      name="destino_rota"
                       placeholder="Ex: Patagonia Argentina"
-                      className={inputClass}
-                      required
+                      className={`${inputClass} ${errors.destino_rota ? inputErrorClass : ""}`}
+                      aria-invalid={!!errors.destino_rota}
+                      {...register("destino_rota")}
                     />
+                    {fieldError(errors.destino_rota?.message)}
                   </div>
 
                   <div>
@@ -227,11 +255,12 @@ export function NovaOfertaForm() {
                     </label>
                     <input
                       id="nome_da_oferta"
-                      name="nome_da_oferta"
                       placeholder="Ex: Pedras do Patacho - Hotel Boutique Experience"
-                      className={inputClass}
-                      required
+                      className={`${inputClass} ${errors.nome_da_oferta ? inputErrorClass : ""}`}
+                      aria-invalid={!!errors.nome_da_oferta}
+                      {...register("nome_da_oferta")}
                     />
+                    {fieldError(errors.nome_da_oferta?.message)}
                   </div>
 
                   <div>
@@ -243,12 +272,13 @@ export function NovaOfertaForm() {
                     </label>
                     <textarea
                       id="descricao"
-                      name="descricao"
                       rows={3}
                       placeholder="2-3 linhas que aparecem no card da oferta."
-                      className={inputClass}
-                      required
+                      className={`${inputClass} ${errors.descricao ? inputErrorClass : ""}`}
+                      aria-invalid={!!errors.descricao}
+                      {...register("descricao")}
                     />
+                    {fieldError(errors.descricao?.message)}
                   </div>
 
                   <div className="grid gap-6 md:grid-cols-2 md:gap-x-8 md:gap-y-6">
@@ -261,9 +291,8 @@ export function NovaOfertaForm() {
                       </label>
                       <select
                         id="nacional_internacional"
-                        name="nacional_internacional"
-                        defaultValue=""
                         className={inputClass}
+                        {...register("nacional_internacional")}
                       >
                         <option value="">Selecione</option>
                         <option value="Nacional">Nacional</option>
@@ -276,9 +305,9 @@ export function NovaOfertaForm() {
                       </label>
                       <input
                         id="estado_pais"
-                        name="estado_pais"
                         placeholder="Ex.: Bahia ou Chile — agrupa na página Feriados"
                         className={inputClass}
+                        {...register("estado_pais")}
                       />
                     </div>
                   </div>
@@ -289,9 +318,9 @@ export function NovaOfertaForm() {
                     </label>
                     <input
                       id="nome_feriado"
-                      name="nome_feriado"
                       placeholder="Ex: Páscoa, Carnaval — agrupa na página Feriados"
                       className={inputClass}
+                      {...register("nome_feriado")}
                     />
                   </div>
                 </div>
@@ -313,14 +342,26 @@ export function NovaOfertaForm() {
                         Obrigatório
                       </span>
                     </label>
-                    <input
-                      id="imagem"
+                    <Controller
                       name="imagem"
-                      type="file"
-                      accept="image/jpeg,image/png,image/webp,image/gif"
-                      className={`${inputClass} file:mr-3 file:border-0 file:bg-[#eef1f5] file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-btg-navy`}
-                      required
+                      control={control}
+                      render={({ field: { onChange, onBlur, name, ref } }) => (
+                        <input
+                          id="imagem"
+                          ref={ref}
+                          name={name}
+                          onBlur={onBlur}
+                          type="file"
+                          accept="image/jpeg,image/png,image/webp,image/gif"
+                          className={`${inputClass} file:mr-3 file:border-0 file:bg-[#eef1f5] file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-btg-navy ${errors.imagem ? inputErrorClass : ""}`}
+                          aria-invalid={!!errors.imagem}
+                          onChange={(e) =>
+                            onChange(e.target.files?.[0] ?? undefined)
+                          }
+                        />
+                      )}
                     />
+                    {fieldError(errors.imagem?.message)}
                     <p className="mt-2.5 text-xs leading-relaxed text-gray-500">
                       JPG, PNG, WebP ou GIF — até 5 MB. A imagem é enviada para
                       o WordPress.
@@ -338,11 +379,12 @@ export function NovaOfertaForm() {
                     </label>
                     <input
                       id="texto_alternativo_alt"
-                      name="texto_alternativo_alt"
                       placeholder="Ex.: praia em Itacaré"
-                      className={inputClass}
-                      required
+                      className={`${inputClass} ${errors.texto_alternativo_alt ? inputErrorClass : ""}`}
+                      aria-invalid={!!errors.texto_alternativo_alt}
+                      {...register("texto_alternativo_alt")}
                     />
+                    {fieldError(errors.texto_alternativo_alt?.message)}
                   </div>
                 </div>
               </section>
@@ -362,10 +404,10 @@ export function NovaOfertaForm() {
                     </label>
                     <input
                       id="data_de_inicio"
-                      name="data_de_inicio"
                       type="date"
                       className={dateInputClass}
                       onClick={(e) => tryOpenDatePicker(e.currentTarget)}
+                      {...register("data_de_inicio")}
                     />
                   </div>
                   <div>
@@ -374,10 +416,10 @@ export function NovaOfertaForm() {
                     </label>
                     <input
                       id="data_final"
-                      name="data_final"
                       type="date"
                       className={dateInputClass}
                       onClick={(e) => tryOpenDatePicker(e.currentTarget)}
+                      {...register("data_final")}
                     />
                   </div>
                 </div>
@@ -396,12 +438,7 @@ export function NovaOfertaForm() {
                     <label className={labelClass} htmlFor="moeda">
                       Moeda
                     </label>
-                    <select
-                      id="moeda"
-                      name="moeda"
-                      defaultValue="R$"
-                      className={inputClass}
-                    >
+                    <select id="moeda" className={inputClass} {...register("moeda")}>
                       <option value="R$">R$</option>
                       <option value="US$">US$</option>
                     </select>
@@ -415,11 +452,12 @@ export function NovaOfertaForm() {
                     </label>
                     <input
                       id="preco"
-                      name="preco"
                       placeholder="7.529"
-                      className={inputClass}
-                      required
+                      className={`${inputClass} ${errors.preco ? inputErrorClass : ""}`}
+                      aria-invalid={!!errors.preco}
+                      {...register("preco")}
                     />
+                    {fieldError(errors.preco?.message)}
                   </div>
                 </div>
               </section>
@@ -439,9 +477,9 @@ export function NovaOfertaForm() {
                     </label>
                     <input
                       id="contexto_do_preco"
-                      name="contexto_do_preco"
                       placeholder="Ex.: para 2 adultos em acomodação dupla"
                       className={inputClass}
+                      {...register("contexto_do_preco")}
                     />
                   </div>
 
@@ -451,9 +489,9 @@ export function NovaOfertaForm() {
                     </label>
                     <input
                       id="taxas"
-                      name="taxas"
                       placeholder="Ex: taxas inclusas"
                       className={inputClass}
+                      {...register("taxas")}
                     />
                   </div>
 
@@ -463,10 +501,10 @@ export function NovaOfertaForm() {
                     </label>
                     <textarea
                       id="incluso_no_pacote"
-                      name="incluso_no_pacote"
                       rows={4}
                       placeholder="Descreva brevemente os itens inclusos no pacote."
                       className={inputClass}
+                      {...register("incluso_no_pacote")}
                     />
                   </div>
                 </div>
