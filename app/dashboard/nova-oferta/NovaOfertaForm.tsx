@@ -352,7 +352,7 @@ export function NovaOfertaForm() {
                           name={name}
                           onBlur={onBlur}
                           type="file"
-                          accept="image/jpeg,image/png,image/webp,image/gif"
+                          accept="image/jpeg,image/png,.jpg,.jpeg,.png"
                           className={`${inputClass} file:mr-3 file:border-0 file:bg-[#eef1f5] file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-btg-navy ${errors.imagem ? inputErrorClass : ""}`}
                           aria-invalid={!!errors.imagem}
                           onChange={(e) =>
@@ -363,7 +363,7 @@ export function NovaOfertaForm() {
                     />
                     {fieldError(errors.imagem?.message)}
                     <p className="mt-2.5 text-xs leading-relaxed text-gray-500">
-                      JPG, PNG, WebP ou GIF — até 5 MB. A imagem é enviada para
+                      JPG, JPEG ou PNG — até 5 MB. A imagem é enviada para
                       o WordPress.
                     </p>
                   </div>

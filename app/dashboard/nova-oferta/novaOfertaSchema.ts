@@ -2,12 +2,8 @@ import { isTipoCartao } from "@/constants/cartoes";
 import { z } from "zod";
 
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
-const ALLOWED_IMAGE_TYPES = new Set([
-  "image/jpeg",
-  "image/png",
-  "image/webp",
-  "image/gif",
-]);
+/** JPG/JPEG e PNG apenas (`.jpg` e `.jpeg` usam o MIME `image/jpeg`). */
+const ALLOWED_IMAGE_TYPES = new Set(["image/jpeg", "image/png"]);
 
 const tipoOfertaValues = ["Feriado", "Roteiro", "Cruzeiro"] as const;
 
@@ -63,7 +59,7 @@ export const novaOfertaSchema = z.object({
         ctx.addIssue({
           code: "custom",
           message:
-            "Formato de imagem não suportado. Use JPG, PNG, WebP ou GIF.",
+            "Formato não aceito. Use apenas JPG, JPEG ou PNG.",
         });
       }
     })

@@ -1,4 +1,7 @@
-import { DASHBOARD_SESSION_COOKIE, verifyDashboardSessionToken } from "@/lib/dashboard-session";
+import {
+  DASHBOARD_SESSION_COOKIE,
+  verifyDashboardSessionToken,
+} from "@/lib/dashboard-session";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -54,12 +57,7 @@ function normalizeMoeda(value: string): string {
 }
 
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
-const ALLOWED_IMAGE_TYPES = new Set([
-  "image/jpeg",
-  "image/png",
-  "image/webp",
-  "image/gif",
-]);
+const ALLOWED_IMAGE_TYPES = new Set(["image/jpeg", "image/jpg", "image/png"]);
 
 export async function POST(request: Request) {
   try {
@@ -127,7 +125,7 @@ export async function POST(request: Request) {
     if (!ALLOWED_IMAGE_TYPES.has(mime)) {
       return NextResponse.json(
         {
-          error: "Formato de imagem não suportado. Use JPG, PNG, WebP ou GIF.",
+          error: "Formato não aceito. Use apenas JPG, JPEG ou PNG.",
         },
         { status: 400 },
       );
