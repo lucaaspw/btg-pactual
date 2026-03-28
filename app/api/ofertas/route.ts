@@ -2,73 +2,102 @@ import {
   DASHBOARD_SESSION_COOKIE,
   verifyDashboardSessionToken,
 } from "@/lib/dashboard-session";
+import {
+  ALLOWED_IMAGE_TYPES,
+  getWpAuthHeader,
+  MAX_IMAGE_BYTES,
+  normalizeMoeda,
+  toAcfDate,
+} from "@/lib/wp-ofertas-api";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 
-function getAuthHeader() {
-  const user = process.env.WP_API_USER;
-  const appPassword = process.env.WP_API_APP_PASSWORD;
-
-  if (user && appPassword) {
-    const normalizedPassword = appPassword.replace(/\s+/g, "");
-    const basic = Buffer.from(`${user}:${normalizedPassword}`).toString(
-      "base64",
+async function requireDashboardSession() {
+  const jar = await cookies();
+  const session = jar.get(DASHBOARD_SESSION_COOKIE)?.value;
+  if (!verifyDashboardSessionToken(session)) {
+    return NextResponse.json(
+      { error: "Não autorizado. Faça login no painel." },
+      { status: 401 },
     );
-    return `Basic ${basic}`;
   }
-
   return null;
 }
 
-/**
- * ACF Date Picker (formato de retorno d/m/Y no seu site): o REST espera a mesma
- * convenção. Inputs type=date enviam YYYY-MM-DD — convertemos para dd/mm/aaaa.
- */
-function toAcfDate(value: string): string {
-  const v = value.trim();
-  if (!v) return "";
-  const iso = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v);
-  if (iso) {
-    const [, y, m, d] = iso;
-    return `${d}/${m}/${y}`;
-  }
-  return v;
-}
+export async function GET() {
+  try {
+    const unauthorized = await requireDashboardSession();
+    if (unauthorized) return unauthorized;
 
-function normalizeMoeda(value: string): string {
-  const moeda = value.trim().toLowerCase();
-  if (!moeda) return "R$";
-  if (
-    moeda === "$" ||
-    moeda === "us$" ||
-    moeda === "us" ||
-    moeda.includes("usd") ||
-    moeda.includes("dolar") ||
-    moeda.includes("dólar")
-  ) {
-    return "US$";
-  }
-  if (moeda.includes("eur") || moeda.includes("euro")) {
-    return "EUR";
-  }
-  return "R$";
-}
+    const wpUrl = process.env.NEXT_PUBLIC_WP_URL?.replace(/\/$/, "");
+    const authHeader = getWpAuthHeader();
 
-const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
-const ALLOWED_IMAGE_TYPES = new Set(["image/jpeg", "image/jpg", "image/png"]);
+    if (!wpUrl) {
+      return NextResponse.json(
+        { error: "NEXT_PUBLIC_WP_URL não configurada." },
+        { status: 500 },
+      );
+    }
+
+    if (!authHeader) {
+      return NextResponse.json(
+        { error: "Configure WP_API_USER e WP_API_APP_PASSWORD." },
+        { status: 500 },
+      );
+    }
+
+    const listUrl = new URL(`${wpUrl}/wp-json/wp/v2/btg_pactual`);
+    listUrl.searchParams.set("orderby", "date");
+    listUrl.searchParams.set("order", "desc");
+    listUrl.searchParams.set("per_page", "100");
+    listUrl.searchParams.set(
+      "_fields",
+      "id,title,slug,date,modified,acf",
+    );
+
+    const res = await fetch(listUrl.toString(), {
+      headers: { Authorization: authHeader },
+      cache: "no-store",
+    });
+
+    const text = await res.text();
+    let data: unknown = null;
+    try {
+      data = text ? JSON.parse(text) : null;
+    } catch {
+      data = null;
+    }
+
+    if (!res.ok) {
+      const msg =
+        data &&
+        typeof data === "object" &&
+        "message" in data &&
+        typeof (data as { message?: unknown }).message === "string"
+          ? (data as { message: string }).message
+          : res.statusText;
+      return NextResponse.json(
+        { error: `Falha ao listar ofertas (${res.status}): ${msg}` },
+        { status: res.status },
+      );
+    }
+
+    const arr = Array.isArray(data) ? data : [];
+    return NextResponse.json({ ofertas: arr }, { status: 200 });
+  } catch {
+    return NextResponse.json(
+      { error: "Erro inesperado ao listar ofertas." },
+      { status: 500 },
+    );
+  }
+}
 
 export async function POST(request: Request) {
   try {
-    const jar = await cookies();
-    const session = jar.get(DASHBOARD_SESSION_COOKIE)?.value;
-    if (!verifyDashboardSessionToken(session)) {
-      return NextResponse.json(
-        { error: "Não autorizado. Faça login no painel." },
-        { status: 401 },
-      );
-    }
+    const unauthorized = await requireDashboardSession();
+    if (unauthorized) return unauthorized;
 
     const contentType = request.headers.get("content-type") || "";
     if (!contentType.includes("multipart/form-data")) {
@@ -142,7 +171,7 @@ export async function POST(request: Request) {
     }
 
     const wpUrl = process.env.NEXT_PUBLIC_WP_URL?.replace(/\/$/, "");
-    const authHeader = getAuthHeader();
+    const authHeader = getWpAuthHeader();
 
     if (!wpUrl) {
       return NextResponse.json(

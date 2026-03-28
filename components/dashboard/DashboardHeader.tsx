@@ -41,6 +41,12 @@ export function DashboardHeader() {
           <Link href="/ultrablue" className="text-sm text-white">
             Ofertas Ultrablue
           </Link>
+          <span className="hidden text-white/25 sm:inline" aria-hidden>
+            |
+          </span>
+          <Link href="/dashboard/ofertas" className="text-sm text-white">
+            Todas as ofertas
+          </Link>
         </div>
         {!onLoginRoute ? (
           <button

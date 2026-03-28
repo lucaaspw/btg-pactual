@@ -42,7 +42,10 @@ export async function runDashboardAuthMiddleware(
     return NextResponse.redirect(login);
   }
 
-  if (pathname === "/api/ofertas" && request.method === "POST") {
+  if (pathname.startsWith("/api/ofertas")) {
+    if (request.method === "OPTIONS") {
+      return null;
+    }
     const token = request.cookies.get(DASHBOARD_SESSION_COOKIE)?.value;
     const ok = await verifyDashboardSessionTokenEdge(token);
     if (ok) {
