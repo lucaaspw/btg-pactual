@@ -5,6 +5,13 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "BTG Pactual",
   description: "Ofertas para Partners e Ultrablue",
+  icons: {
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/btg.ico", type: "image/x-icon" },
+    ],
+    shortcut: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
