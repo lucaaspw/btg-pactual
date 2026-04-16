@@ -22,7 +22,7 @@ export function UltrablueClosingCta() {
         </p>
         <a
           href={conciergeHref()}
-          className="mt-8 inline-flex items-center gap-2 bg-[#2E73D4] px-8 py-4 text-xl text-white shadow-lg transition hover:bg-[#3A80E4]"
+          className="mt-8 inline-flex items-center gap-2 bg-[#2E73D4] px-8 py-4 text-white shadow-lg transition hover:bg-[#3A80E4]"
         >
           Quero falar com meu concierge
           <ArrowUpRight

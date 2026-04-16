@@ -71,7 +71,7 @@ export function OfertaCard({
         className={`relative flex flex-1 flex-col ${badgeOnImage ? "gap-3 p-5" : "gap-4 p-4"}`}
       >
         {!badgeOnImage ? (
-          <span className="absolute top-[-9px] left-4 inline-block bg-white px-2 py-0.5 text-xs font-semibold text-btg-navy-card">
+          <span className="absolute top-[-12px] left-4 inline-block text-[16px] bg-white px-2 py-0.5 font-semibold text-btg-navy-card">
             {oferta.acf?.destino_rota || "Destino"}
           </span>
         ) : null}
@@ -80,7 +80,7 @@ export function OfertaCard({
           className={`font-bold leading-tight ${
             badgeOnImage
               ? "text-lg leading-snug sm:text-[1.125rem]"
-              : "mt-3 text-xl"
+              : "mt-3 text-xl text-white lg:text-2xl"
           }`}
         >
           {oferta.title.rendered ||
@@ -113,7 +113,7 @@ export function OfertaCard({
             className={
               badgeOnImage
                 ? "mt-1.5 text-[1.65rem] font-bold leading-none tracking-tight"
-                : "mt-2 text-[1.8rem] font-bold leading-none"
+                : "mt-2 text-[1.8rem] font-bold leading-none text-[#d2e5ff]"
             }
           >
             {moeda === "US$" ? "3x de " : ""}
@@ -125,8 +125,8 @@ export function OfertaCard({
             <p
               className={
                 badgeOnImage
-                  ? "mt-1.5 text-xs leading-snug text-[#B4C4DC]"
-                  : "mt-1 text-[0.95rem] leading-snug text-[#E7EEFF]"
+                  ? "mt-1.5 text-xs leading-snug text-[#fff]"
+                  : "mt-1 text-[0.95rem] leading-snug text-[#fff]"
               }
             >
               {contextoPreco}

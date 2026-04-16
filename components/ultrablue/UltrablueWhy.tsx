@@ -58,7 +58,7 @@ export function UltrablueWhy() {
                     className="mt-1 h-9 w-9 shrink-0 object-contain"
                   />
                   <div>
-                    <h3 className="text-2xl font-bold text-center md:text-left text-[#10408D] ">
+                    <h3 className="text-lg font-bold text-center md:text-left text-[#10408D] ">
                       {title}
                     </h3>
                     <p className="mt-1 text-xl leading-relaxed text-center md:text-left text-[#05132A] md:text-xl">
