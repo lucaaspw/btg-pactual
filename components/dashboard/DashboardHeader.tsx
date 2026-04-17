@@ -35,10 +35,10 @@ export function DashboardHeader() {
           <span className="hidden text-white/25 sm:inline" aria-hidden>
             |
           </span>
-          <Link href="/partners" className="text-sm text-white">
+          <Link href="/" className="text-sm text-white">
             Ofertas Partners
           </Link>
-          <Link href="/ultrablue" className="text-sm text-white">
+          <Link href="/" className="text-sm text-white">
             Ofertas Ultrablue
           </Link>
           <span className="hidden text-white/25 sm:inline" aria-hidden>
