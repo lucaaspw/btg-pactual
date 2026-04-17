@@ -36,10 +36,7 @@ export function DashboardHeader() {
             |
           </span>
           <Link href="/" className="text-sm text-white">
-            Ofertas Partners
-          </Link>
-          <Link href="/" className="text-sm text-white">
-            Ofertas Ultrablue
+            Ver Ofertas
           </Link>
           <span className="hidden text-white/25 sm:inline" aria-hidden>
             |
