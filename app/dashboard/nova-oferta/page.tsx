@@ -1,7 +1,12 @@
 import { NovaOfertaForm } from "./NovaOfertaForm";
 import { Suspense } from "react";
+import { headers } from "next/headers";
+import { landingFromHostHeader, tipoCartaoFromLanding } from "@/lib/landing";
 
-export default function NovaOfertaPage() {
+export default async function NovaOfertaPage() {
+  const host = (await headers()).get("host");
+  const lockedTipoCartao = tipoCartaoFromLanding(landingFromHostHeader(host));
+
   return (
     <Suspense
       fallback={
@@ -12,7 +17,7 @@ export default function NovaOfertaPage() {
         </main>
       }
     >
-      <NovaOfertaForm />
+      <NovaOfertaForm lockedTipoCartao={lockedTipoCartao} />
     </Suspense>
   );
 }

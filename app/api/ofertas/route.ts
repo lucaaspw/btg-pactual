@@ -3,12 +3,17 @@ import {
   verifyDashboardSessionToken,
 } from "@/lib/dashboard-session";
 import {
+  tipoCartaoIgual,
+  type TipoCartao,
+} from "@/constants/cartoes";
+import {
   ALLOWED_IMAGE_TYPES,
   getWpAuthHeader,
   MAX_IMAGE_BYTES,
   normalizeMoeda,
   toAcfDate,
 } from "@/lib/wp-ofertas-api";
+import { landingFromHostHeader, tipoCartaoFromLanding } from "@/lib/landing";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -26,7 +31,12 @@ async function requireDashboardSession() {
   return null;
 }
 
-export async function GET() {
+function tipoCartaoByRequestHost(request: Request): TipoCartao | null {
+  const landing = landingFromHostHeader(request.headers.get("host"));
+  return tipoCartaoFromLanding(landing);
+}
+
+export async function GET(request: Request) {
   try {
     const unauthorized = await requireDashboardSession();
     if (unauthorized) return unauthorized;
@@ -85,7 +95,17 @@ export async function GET() {
     }
 
     const arr = Array.isArray(data) ? data : [];
-    return NextResponse.json({ ofertas: arr }, { status: 200 });
+    const tipoCartaoLock = tipoCartaoByRequestHost(request);
+    const ofertasFiltradas = tipoCartaoLock
+      ? arr.filter((oferta) =>
+          tipoCartaoIgual(
+            (oferta as { acf?: { tipo_cartao?: string } })?.acf?.tipo_cartao,
+            tipoCartaoLock,
+          ),
+        )
+      : arr;
+
+    return NextResponse.json({ ofertas: ofertasFiltradas }, { status: 200 });
   } catch {
     return NextResponse.json(
       { error: "Erro inesperado ao listar ofertas." },
@@ -113,7 +133,8 @@ export async function POST(request: Request) {
     const formData = await request.formData();
     const getStr = (name: string) => String(formData.get(name) ?? "").trim();
 
-    const tipoCartao = getStr("tipo_cartao");
+    const tipoCartaoLock = tipoCartaoByRequestHost(request);
+    const tipoCartao = tipoCartaoLock ?? getStr("tipo_cartao");
     const tipoOferta = getStr("tipo_oferta");
     const nacionalInternacional = getStr("nacional_internacional");
     const estadoPais = getStr("estado_pais");

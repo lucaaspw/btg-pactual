@@ -3,6 +3,7 @@
 import {
   TIPO_CARTAO,
   tipoCartaoFromQueryParam,
+  type TipoCartao,
 } from "@/constants/cartoes";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Check } from "lucide-react";
@@ -75,7 +76,19 @@ function emptyFormValues(cartaoQuery: string | null): NovaOfertaFormInput {
   };
 }
 
-export function NovaOfertaForm() {
+type NovaOfertaFormProps = {
+  lockedTipoCartao?: TipoCartao | null;
+};
+
+function formDefaults(cartaoQuery: string | null, lockedTipoCartao: TipoCartao | null) {
+  const defaults = emptyFormValues(cartaoQuery);
+  return {
+    ...defaults,
+    tipo_cartao: lockedTipoCartao ?? defaults.tipo_cartao,
+  };
+}
+
+export function NovaOfertaForm({ lockedTipoCartao = null }: NovaOfertaFormProps) {
   const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -90,15 +103,19 @@ export function NovaOfertaForm() {
     formState: { errors },
   } = useForm<NovaOfertaFormInput, unknown, NovaOfertaFormValues>({
     resolver: zodResolver(novaOfertaSchema),
-    defaultValues: emptyFormValues(searchParams.get("cartao")),
+    defaultValues: formDefaults(searchParams.get("cartao"), lockedTipoCartao),
   });
 
   useEffect(() => {
+    if (lockedTipoCartao) {
+      setValue("tipo_cartao", lockedTipoCartao);
+      return;
+    }
     const next = tipoCartaoFromQueryParam(searchParams.get("cartao"));
     if (next) {
       setValue("tipo_cartao", next);
     }
-  }, [searchParams, setValue]);
+  }, [lockedTipoCartao, searchParams, setValue]);
 
   async function onSubmit(data: NovaOfertaFormValues) {
     setLoading(true);
@@ -127,7 +144,7 @@ export function NovaOfertaForm() {
       }
 
       setMessage("Oferta criada com sucesso!");
-      reset(emptyFormValues(searchParams.get("cartao")));
+      reset(formDefaults(searchParams.get("cartao"), lockedTipoCartao));
     } catch {
       setError("Erro de conexão ao criar oferta.");
     } finally {
@@ -185,13 +202,22 @@ export function NovaOfertaForm() {
                     </label>
                     <select
                       id="tipo_cartao"
+                      disabled={Boolean(lockedTipoCartao)}
                       className={`${inputClass} ${errors.tipo_cartao ? inputErrorClass : ""}`}
                       aria-invalid={!!errors.tipo_cartao}
                       {...register("tipo_cartao")}
                     >
-                      <option value="">-- Selecione --</option>
-                      <option value={TIPO_CARTAO.PARTNERS}>Partners</option>
-                      <option value={TIPO_CARTAO.ULTRABLUE}>Ultrablue</option>
+                      {!lockedTipoCartao ? (
+                        <option value="">-- Selecione --</option>
+                      ) : null}
+                      {!lockedTipoCartao ||
+                      lockedTipoCartao === TIPO_CARTAO.PARTNERS ? (
+                        <option value={TIPO_CARTAO.PARTNERS}>Partners</option>
+                      ) : null}
+                      {!lockedTipoCartao ||
+                      lockedTipoCartao === TIPO_CARTAO.ULTRABLUE ? (
+                        <option value={TIPO_CARTAO.ULTRABLUE}>Ultrablue</option>
+                      ) : null}
                     </select>
                     {fieldError(errors.tipo_cartao?.message)}
                     <p className="mt-2.5 text-xs leading-relaxed text-gray-500">
