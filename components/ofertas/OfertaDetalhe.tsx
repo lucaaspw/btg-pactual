@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { formatPrecoExibicao } from "@/lib/format-preco";
+import { prefixoParcelamentoPreco } from "@/lib/parcelamento-oferta";
 import type { Oferta } from "@/types/oferta";
 
 const HEADER_OFFSET_CLASS = "pt-[5.5rem] sm:pt-24";
@@ -119,7 +120,7 @@ function ValorBloco({
   const taxas = (acf.taxas || "").trim();
   const ctx = (acf.contexto_do_preco || "").trim();
 
-  const destaque = `${moeda} ${preco}${taxas ? ` (${taxas})` : ""}`;
+  const destaque = `${prefixoParcelamentoPreco(acf.parcelamento)}${moeda} ${preco}${taxas ? ` (${taxas})` : ""}`;
   const t = DETALHE_BRAND[brand];
   const priceClass = brand === "ultrablue" ? "text-[#0B2859]" : "text-white";
 

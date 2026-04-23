@@ -33,6 +33,8 @@ export interface Oferta {
     data_de_inicio: string;
     data_final: string;
     moeda: string;
+    /** Parcelas na vitrine (1–10); ex.: "3" → prefixo "3x de ". */
+    parcelamento?: string | number;
     preco: string;
     contexto_do_preco: string;
     /** Ex.: "taxas inclusas" — aparece junto ao valor. */

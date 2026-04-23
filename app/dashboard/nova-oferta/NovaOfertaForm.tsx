@@ -10,6 +10,7 @@ import { Check } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import { OPCOES_PARCELAMENTO_FORM } from "@/lib/parcelamento-oferta";
 import {
   type NovaOfertaFormInput,
   type NovaOfertaFormValues,
@@ -47,6 +48,7 @@ function buildFormData(data: NovaOfertaFormValues) {
   fd.append("data_de_inicio", data.data_de_inicio);
   fd.append("data_final", data.data_final);
   fd.append("moeda", data.moeda);
+  fd.append("parcelamento", data.parcelamento);
   fd.append("preco", data.preco);
   fd.append("contexto_do_preco", data.contexto_do_preco);
   fd.append("taxas", data.taxas);
@@ -69,6 +71,7 @@ function emptyFormValues(cartaoQuery: string | null): NovaOfertaFormInput {
     data_de_inicio: "",
     data_final: "",
     moeda: "R$",
+    parcelamento: "1",
     preco: "",
     contexto_do_preco: "",
     taxas: "",
@@ -459,7 +462,7 @@ export function NovaOfertaForm({ lockedTipoCartao = null }: NovaOfertaFormProps)
                   Preço
                 </h2>
 
-                <div className="grid gap-6 md:grid-cols-[120px_1fr] md:gap-x-8">
+                <div className="grid gap-6 md:grid-cols-[120px_minmax(0,160px)_1fr] md:gap-x-8">
                   <div>
                     <label className={labelClass} htmlFor="moeda">
                       Moeda
@@ -467,6 +470,22 @@ export function NovaOfertaForm({ lockedTipoCartao = null }: NovaOfertaFormProps)
                     <select id="moeda" className={inputClass} {...register("moeda")}>
                       <option value="R$">R$</option>
                       <option value="US$">US$</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className={labelClass} htmlFor="parcelamento">
+                      Parcelamento
+                    </label>
+                    <select
+                      id="parcelamento"
+                      className={inputClass}
+                      {...register("parcelamento")}
+                    >
+                      {OPCOES_PARCELAMENTO_FORM.map((o) => (
+                        <option key={o.value} value={o.value}>
+                          {o.label}
+                        </option>
+                      ))}
                     </select>
                   </div>
                   <div>

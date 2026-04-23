@@ -1,10 +1,24 @@
 import { isTipoCartao } from "@/constants/cartoes";
+import type { ParcelamentoValor } from "@/lib/parcelamento-oferta";
 import { z } from "zod";
 
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 const ALLOWED_IMAGE_TYPES = new Set(["image/jpeg", "image/png"]);
 
 const tipoOfertaValues = ["Feriado", "Roteiro", "Cruzeiro"] as const;
+
+const parcelamentoValues = [
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+] as const satisfies readonly ParcelamentoValor[];
 
 export const editarOfertaSchema = z.object({
   tipo_cartao: z
@@ -70,6 +84,7 @@ export const editarOfertaSchema = z.object({
   data_de_inicio: z.string(),
   data_final: z.string(),
   moeda: z.enum(["R$", "US$", "EUR"]),
+  parcelamento: z.enum(parcelamentoValues),
   preco: z.string().trim().min(1, "Informe o preço."),
   contexto_do_preco: z.string(),
   taxas: z.string(),

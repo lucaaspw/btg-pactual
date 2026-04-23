@@ -21,7 +21,7 @@ export function UltrablueClosingCta() {
           viagem do jeito que precisar.
         </p>
         <a
-          href={conciergeHref()}
+          href="https://api.whatsapp.com/send?phone=551148621688&text=Ultrablue%20BTG%20Pactual%3A%20Sele%C3%A7%C3%A3o%20para%20a%20P%C3%A1scoa%20com%20benef%C3%ADcios%20exclusivos%20-%20C%C3%B3digo%20U0206"
           className="mt-8 inline-flex items-center gap-2 bg-[#2E73D4] px-8 py-4 text-white shadow-lg transition hover:bg-[#3A80E4]"
         >
           Quero falar com meu concierge

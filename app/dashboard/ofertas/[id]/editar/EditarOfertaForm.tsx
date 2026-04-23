@@ -1,6 +1,10 @@
 "use client";
 
 import { TIPO_CARTAO, isTipoCartao } from "@/constants/cartoes";
+import {
+  OPCOES_PARCELAMENTO_FORM,
+  normalizeParcelamento,
+} from "@/lib/parcelamento-oferta";
 import { acfDateToHtmlDate } from "@/lib/wp-ofertas-api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowLeft, Check } from "lucide-react";
@@ -81,6 +85,9 @@ function mapWpToForm(data: {
     data_de_inicio: acfDateToHtmlDate(String(acf.data_de_inicio ?? "")),
     data_final: acfDateToHtmlDate(String(acf.data_final ?? "")),
     moeda,
+    parcelamento: normalizeParcelamento(
+      String(acf.parcelamento ?? "1"),
+    ),
     preco: String(acf.preco ?? ""),
     contexto_do_preco: String(acf.contexto_do_preco ?? ""),
     taxas: String(acf.taxas ?? ""),
@@ -107,6 +114,7 @@ function buildFormData(data: EditarOfertaFormValues) {
   fd.append("data_de_inicio", data.data_de_inicio);
   fd.append("data_final", data.data_final);
   fd.append("moeda", data.moeda);
+  fd.append("parcelamento", data.parcelamento);
   fd.append("preco", data.preco);
   fd.append("contexto_do_preco", data.contexto_do_preco);
   fd.append("taxas", data.taxas);
@@ -553,7 +561,7 @@ export function EditarOfertaForm() {
                   Preço
                 </h2>
 
-                <div className="grid gap-6 md:grid-cols-[120px_1fr] md:gap-x-8">
+                <div className="grid gap-6 md:grid-cols-[120px_minmax(0,160px)_1fr] md:gap-x-8">
                   <div>
                     <label className={labelClass} htmlFor="moeda">
                       Moeda
@@ -562,6 +570,22 @@ export function EditarOfertaForm() {
                       <option value="R$">R$</option>
                       <option value="US$">US$</option>
                       <option value="EUR">EUR</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className={labelClass} htmlFor="parcelamento">
+                      Parcelamento
+                    </label>
+                    <select
+                      id="parcelamento"
+                      className={inputClass}
+                      {...register("parcelamento")}
+                    >
+                      {OPCOES_PARCELAMENTO_FORM.map((o) => (
+                        <option key={o.value} value={o.value}>
+                          {o.label}
+                        </option>
+                      ))}
                     </select>
                   </div>
                   <div>

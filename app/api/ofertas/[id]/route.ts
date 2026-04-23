@@ -2,6 +2,7 @@ import {
   DASHBOARD_SESSION_COOKIE,
   verifyDashboardSessionToken,
 } from "@/lib/dashboard-session";
+import { normalizeParcelamento } from "@/lib/parcelamento-oferta";
 import {
   ALLOWED_IMAGE_TYPES,
   getWpAuthHeader,
@@ -214,6 +215,7 @@ export async function PUT(
     const dataInicio = toAcfDate(getStr("data_de_inicio"));
     const dataFim = toAcfDate(getStr("data_final"));
     const moeda = normalizeMoeda(getStr("moeda"));
+    const parcelamento = normalizeParcelamento(getStr("parcelamento"));
     const preco = getStr("preco");
     const contextoDoPreco = getStr("contexto_do_preco");
     const observacaoTaxa = getStr("taxas");
@@ -369,6 +371,7 @@ export async function PUT(
       data_de_inicio: dataInicio,
       data_final: dataFim,
       moeda,
+      parcelamento,
       preco,
       contexto_do_preco: contextoDoPreco,
       incluso_no_pacote: inclusoNoPacote,

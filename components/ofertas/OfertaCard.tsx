@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { formatPrecoExibicao } from "@/lib/format-preco";
+import { prefixoParcelamentoPreco } from "@/lib/parcelamento-oferta";
 import type { Oferta } from "@/types/oferta";
 
 type OfertaCardProps = {
@@ -116,7 +117,7 @@ export function OfertaCard({
                 : "mt-2 text-[1.8rem] font-bold leading-none text-[#d2e5ff]"
             }
           >
-            {moeda === "US$" ? "3x de " : ""}
+            {prefixoParcelamentoPreco(oferta.acf?.parcelamento)}
             {oferta.acf?.preco
               ? `${moeda} ${formatPrecoExibicao(String(oferta.acf.preco), oferta.acf?.moeda)}`
               : "Consulte"}
