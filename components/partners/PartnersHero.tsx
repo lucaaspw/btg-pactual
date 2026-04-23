@@ -36,7 +36,7 @@ export function PartnersHero() {
       </div>
 
       <div
-        className={`relative z-10 mx-auto flex max-w-[1280px] flex-col justify-end px-5 pt-20 md:pb-16 sm:px-8 md:h-[400px] md:pb-24 lg:px-0`}
+        className={`relative z-10 mx-auto flex max-w-[1280px] flex-col justify-end px-5 pt-10 md:pb-16 sm:px-8 md:h-[400px] md:pb-24 lg:px-0`}
       >
         <div>
           <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-center md:text-left md:text-5xl lg:text-[3.25rem]">

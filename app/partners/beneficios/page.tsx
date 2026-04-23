@@ -7,8 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 const cashbackItems = [
-  "4 pontos a cada US$1 gasto em compras nacionais",
-  "7 pontos a cada US$1 gasto em compras internacionais",
+  "4 pontos a cada US$ 1,00 gasto em compras nacionais",
+  "7 pontos a cada US$ 1,00 gasto em compras internacionais",
 ] as const;
 
 const terminalBenefits = [

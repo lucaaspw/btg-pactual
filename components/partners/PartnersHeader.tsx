@@ -58,7 +58,7 @@ export function PartnersHeader() {
           <Image
             src="/partners_image/btgpactual_logo.png"
             alt="BTG Pactual"
-            width={160}
+            width={110}
             height={40}
             className="w-auto h-14"
             priority
@@ -73,9 +73,9 @@ export function PartnersHeader() {
           className="inline-flex h-10 w-10 items-center justify-center text-white transition hover:text-[#b8d4ff] lg:hidden"
         >
           {mobileOpen ? (
-            <X className="h-6 w-6" />
+            <X className="h-8 w-10" />
           ) : (
-            <Menu className="h-6 w-6" />
+            <Menu className="h-8 w-10" />
           )}
         </button>
 

@@ -80,7 +80,7 @@ export function OfertaCard({
           className={`font-bold leading-tight ${
             badgeOnImage
               ? "text-lg leading-snug sm:text-[1.125rem]"
-              : "mt-3 text-xl text-white lg:text-2xl"
+              : "mt-3 text-2xl text-white lg:text-3xl"
           }`}
         >
           {oferta.title.rendered ||
