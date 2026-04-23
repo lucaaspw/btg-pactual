@@ -51,9 +51,11 @@ export function PartnersWhy() {
           />
         </div>
 
-        <div className="text-center lg:text-left px-5">
-          <h2 className="text-2xl font-bold leading-tight text-white md:text-3xl lg:mb-0">
-            Por que planejar sua viagem com a gente
+        <div className="text-center lg:text-left px-5 pt-5">
+          <h2 className="text-3xl md:text-4xl font-bold leading-tight text-[#D2E5FF] lg:mb-0">
+            Por que planejar sua
+            <br className="md:hidden" />
+            viagem com a gente
           </h2>
 
           <ul className="mt-10 flex flex-col items-center gap-12 sm:gap-14 lg:mt-20 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8 lg:gap-y-20">
@@ -68,10 +70,10 @@ export function PartnersWhy() {
                     className="h-10 w-10 shrink-0 object-contain lg:h-8 lg:w-8"
                   />
                   <div>
-                    <h3 className="text-2lg font-bold text-white lg:font-semibold">
+                    <h3 className="text-2xl font-bold text-white lg:font-semibold">
                       {title}
                     </h3>
-                    <p className="mt-2 text-xl leading-relaxed text-[#E7EEFF]">
+                    <p className="mt-2 leading-relaxed text-xl text-light text-[#ffffFF]">
                       {text}
                     </p>
                   </div>

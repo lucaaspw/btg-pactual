@@ -125,7 +125,7 @@ export default function PartnersBeneficiosPage() {
                 </p>
               </article>
 
-              <div className="relative h-[380px] overflow-hidden sm:h-[420px] lg:h-[420px]">
+              <div className="relative h-[219px] md:h-[380px] overflow-hidden lg:h-[420px]">
                 <Image
                   src="/beneficios_image/seguro_viagem_global.png"
                   alt="Família em viagem na praia"
@@ -152,7 +152,7 @@ export default function PartnersBeneficiosPage() {
                 <p className="mt-5 text-xl lg:hidden text-[#E7EEFF]">
                   Uma experiência diferenciada antes mesmo de embarcar.
                 </p>
-                <div className="relative h-[380px] md:h-[520px] overflow-hidden sm:h-[560px] lg:h-[550px]">
+                <div className="relative h-[219px] md:h-[520px] overflow-hidden lg:h-[550px]">
                   <Image
                     src="/beneficios_image/acesso_terminal.png"
                     alt="Terminal BTG"
@@ -177,7 +177,7 @@ export default function PartnersBeneficiosPage() {
                     {terminalBenefits.map((benefit) => (
                       <li
                         key={benefit}
-                        className="lg:border-b border-white/10 py-3 text-[1.3rem] text-[#E7EEFF] last:border-b-0"
+                        className="border-b border-white/10 py-3 text-xl md:text-2xl font-light text-[#FFFFFF] last:border-b-0"
                       >
                         {benefit}
                       </li>

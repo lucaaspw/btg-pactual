@@ -385,16 +385,9 @@ export function FeriadosSection({
           <div className="relative text-xl mx-auto max-w-[1280px] px-5 pb-10 pt-10 lg:px-0">
             <Link href={homeHref} className={t.backLink}>
               <ChevronLeft className="h-5 w-5" aria-hidden />
-              voltar
+              Voltar
             </Link>
             <h1 className={t.title}>{title}</h1>
-            <p className="mt-8 max-w-2xl text-lg leading-snug text-[#05132A]">
-              Muito mais do que um cartão:
-              <br />
-              praticidade, economia e experiências
-              <br />
-              exclusivas no seu dia a dia e em suas viagens.
-            </p>
           </div>
         </div>
       ) : (
