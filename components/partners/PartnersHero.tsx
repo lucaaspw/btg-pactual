@@ -9,7 +9,7 @@ export function PartnersHero() {
   return (
     <section
       id="hero"
-      className={`relative z-0 h-[600px] overflow-hidden ${HEADER_OFFSET_CLASS}`}
+      className={`relative z-0 h-[600px] overflow-hidden bg-btg-navy ${HEADER_OFFSET_CLASS}`}
     >
       <div className="absolute inset-0 z-0">
         <Image

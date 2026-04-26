@@ -142,10 +142,10 @@ export default function PartnersConciergePage() {
             <div className="max-w-2xl">
               <Link
                 href="/partners"
-                className="flex text-2xl mb-20 items-center gap-1 text-[#E7EEFF] transition hover:text-white"
+                className="flex text-2xl mb-10 mt-10 items-center gap-1 text-[#E7EEFF] transition hover:text-white"
               >
                 <ChevronLeft className="h-5 w-5" aria-hidden />
-                Voltar
+                voltar
               </Link>
               <h1 className="text-4xl text-center md:text-left font-bold leading-tight tracking-tight drop-shadow-md md:text-5xl">
                 Concierge Partners

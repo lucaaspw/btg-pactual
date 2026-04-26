@@ -10,17 +10,17 @@ const experienceLinks = [
 ] as const;
 
 const programLinks = [
-  { label: "Concierge Partners", href: "/partners#categorias" },
-  { label: "Benefícios", href: "/partners#beneficios" },
+  { label: "Concierge Partners", href: "/partners/concierge" },
+  { label: "Benefícios", href: "/partners/beneficios" },
 ] as const;
 
 export function PartnersCategoryBanners() {
   return (
     <section
       id="categorias"
-      className="scroll-mt-24 relative border-0 lg:border-y border-white/10 bg-btg-navy px-5 py-16 lg:px-8"
+      className="scroll-mt-24 relative bg-btg-navy px-5 pb-16 lg:px-8"
     >
-      <div className="mx-auto max-w-[1280px]">
+      <div className="mx-auto max-w-[1280px] border-t border-white/10 pt-16">
         <div className="grid gap-x-20 gap-y-4 md:grid-cols-2">
           <div className="group">
             <div className="relative h-[166px] md:h-[219px] overflow-hidden">

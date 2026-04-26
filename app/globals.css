@@ -12,7 +12,7 @@
   --background: #ffffff;
   --foreground: #171717;
   /** Azul institucional BTG (LP Partners / fundos escuros) */
-  --btg-navy: #05132a;
+  --btg-navy: #05132A;
   --btg-navy-deep: #020a16;
   /** Cards / botões sobre fundo navy */
   --btg-navy-card: #0a2a63;
@@ -23,7 +23,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-btg-navy: #05132a;
+  --color-btg-navy: #05132A;
   --color-btg-navy-deep: #020a16;
   --color-btg-navy-card: #0a2a63;
   --color-btg-title: var(--btg-title);

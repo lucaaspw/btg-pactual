@@ -14,7 +14,7 @@ export type FeriadosBrand = "partners" | "ultrablue";
 
 const FERIADOS_BRAND = {
   partners: {
-    section: "bg-[#050C1C]",
+    section: "bg-btg-navy",
     backLink:
       "mb-14 flex items-center gap-1 text-xl text-[#C8D4E8] transition hover:text-white",
     title:
@@ -385,7 +385,7 @@ export function FeriadosSection({
           <div className="relative text-xl mx-auto max-w-[1280px] px-5 pb-10 pt-10 lg:px-0">
             <Link href={homeHref} className={t.backLink}>
               <ChevronLeft className="h-5 w-5" aria-hidden />
-              Voltar
+              voltar
             </Link>
             <h1 className={t.title}>{title}</h1>
           </div>
@@ -396,7 +396,7 @@ export function FeriadosSection({
             <div className="px-5 pt-10 lg:px-0">
               <Link href={homeHref} className={t.backLink}>
                 <ChevronLeft className="h-5 w-5" aria-hidden />
-                Voltar
+                voltar
               </Link>
               <h1 className={t.title}>{title}</h1>
             </div>

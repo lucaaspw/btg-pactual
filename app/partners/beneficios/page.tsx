@@ -36,10 +36,10 @@ export default function PartnersBeneficiosPage() {
               <div className="max-w-[540px]">
                 <Link
                   href="/partners"
-                  className="flex md:text-2xl mb-20 items-center gap-1 text-sm text-[#E7EEFF] transition hover:text-white"
+                  className="flex mb-10 mt-10 items-center gap-1 text-2xl text-[#E7EEFF] transition hover:text-white"
                 >
                   <ChevronLeft className="h-5 w-5" aria-hidden />
-                  Voltar
+                  voltar
                 </Link>
                 <h1 className="text-4xl font-bold text-center md:text-left leading-tight tracking-tight md:text-5xl">
                   Benefícios do
@@ -66,7 +66,7 @@ export default function PartnersBeneficiosPage() {
               </div>
               <Link
                 href="https://api.whatsapp.com/send?phone=551148621680&text=Cart%C3%A3o%20Partners%3A%20Sele%C3%A7%C3%A3o%20para%20a%20P%C3%A1scoa%20com%20benef%C3%ADcios%20exclusivos%20-%20C%C3%B3digo%20P0202"
-                className="inline-flex items-center gap-2 bg-[#2E73D4] px-8 py-4 text-xl font-semibold text-white shadow-lg transition hover:bg-[#3A80E4]"
+                className="inline-flex md:hidden items-center gap-2 bg-[#2E73D4] px-8 py-4 text-xl font-semibold text-white shadow-lg transition hover:bg-[#3A80E4]"
               >
                 Quero falar com meu concierge
                 <ArrowUpRight

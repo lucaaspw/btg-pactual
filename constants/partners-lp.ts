@@ -4,8 +4,7 @@ export const PARTNERS_LP_IMAGES = {
   heroMobile: "/partners_image/hero_mobile-partners.png",
   experiencias: "/partners_image/experience.png",
   programaPartners: "/partners_image/program.png",
-  porQueViagem:
-    "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1000&q=80",
+  porQueViagem: "/partners_image/porque-viajar.png",
   whyAtendimento: "/partners_image/icon_atendimento_p.png",
   whySeguro: "/partners_image/icon_seguro_p.png",
   whyAcesso: "/partners_image/icon_acesso_p.png",

@@ -9,22 +9,22 @@ const features: {
   {
     imageSrc: PARTNERS_LP_IMAGES.whyAtendimento,
     title: "Atendimento dedicado",
-    text: "Concierge especializado para planejar cada detalhe da sua viagem com agilidade e cuidado.",
+    text: "Um concierge exclusivo acompanha você do planejamento ao retorno, garantindo suporte antes, durante e depois da viagem.",
   },
   {
     imageSrc: PARTNERS_LP_IMAGES.whySeguro,
     title: "Seguro viagem global",
-    text: "Cobertura pensada para você viajar com tranquilidade em qualquer destino.",
+    text: "Cobertura Omint para você e até 4 dependentes.",
   },
   {
     imageSrc: PARTNERS_LP_IMAGES.whyAcesso,
     title: "Acesso ao terminal BTG",
-    text: "Benefícios em aeroportos, com prioridade no check-in e acesso a salas selecionadas.",
+    text: "Check-in dedicado, despacho prioritário e concierge exclusivo.",
   },
   {
     imageSrc: PARTNERS_LP_IMAGES.whySalaVip,
     title: "Salas VIP LoungeKey",
-    text: "Acesso a mais de mil salas VIP em aeroportos ao redor do mundo.",
+    text: "Acessos ilimitados em mais de 1.000 Salas VIP ao redor do mundo, com direito a bebidas, Wi-Fi e convidados.",
   },
 ];
 
@@ -34,31 +34,28 @@ export function PartnersWhy() {
       id="beneficios"
       className="scroll-mt-24 bg-btg-navy lg:px-5 py-12 sm:py-16 lg:px-8"
     >
-      <div className="mx-auto grid max-w-[1280px] gap-8 lg:grid-cols-2 lg:gap-14 lg:items-center">
+      <div className="mx-auto flex items-center max-w-[1280px] gap-8 lg:gap-14 lg:items-center">
         <div
-          className={
-            "relative mx-auto w-full max-w-[520px] overflow-hidden " +
-            "aspect-[16/10] min-h-[200px] shadow-[0_12px_40px_rgba(0,0,0,0.35)] " +
-            "lg:mx-0 lg:max-w-none lg:aspect-auto lg:min-h-[520px] lg:rounded-none lg:shadow-none"
-          }
+          className={"relative mx-auto w-full max-w-[530px] overflow-hidden "}
         >
           <Image
             src={PARTNERS_LP_IMAGES.porQueViagem}
-            alt=""
-            fill
+            alt="Por que planejar sua viagem com a gente"
+            width={530}
+            height={550}
             className="object-cover"
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
         </div>
 
-        <div className="text-center lg:text-left px-5 pt-5">
-          <h2 className="text-3xl md:text-4xl font-bold leading-tight text-[#D2E5FF] lg:mb-0">
+        <div className="text-center lg:text-left px-5 ">
+          <h2 className="text-2xl md:text-3xl font-bold leading-tight text-[#D2E5FF] lg:mb-0">
             Por que planejar sua
             <br className="md:hidden" />
             viagem com a gente
           </h2>
 
-          <ul className="mt-10 flex flex-col items-center gap-12 sm:gap-14 lg:mt-20 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8 lg:gap-y-20">
+          <ul className="mt-5 flex flex-col items-center gap-12 sm:gap-14 lg:mt-20 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8 lg:gap-y-10">
             {features.map(({ imageSrc, title, text }) => (
               <li key={title} className="w-full max-w-md lg:max-w-none">
                 <div className="flex flex-col items-center gap-4 text-center lg:flex-row lg:items-start lg:gap-4 lg:text-left">
@@ -70,10 +67,10 @@ export function PartnersWhy() {
                     className="h-10 w-10 shrink-0 object-contain lg:h-8 lg:w-8"
                   />
                   <div>
-                    <h3 className="text-2xl font-bold text-white lg:font-semibold">
+                    <h3 className="text-lg font-bold mb-5 text-white lg:font-semibold">
                       {title}
                     </h3>
-                    <p className="mt-2 leading-relaxed text-xl text-light text-[#ffffFF]">
+                    <p className="mt-2 leading-relaxed text-light text-[#ffffFF]">
                       {text}
                     </p>
                   </div>
