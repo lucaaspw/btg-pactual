@@ -1,3 +1,4 @@
+import { PARTNERS_LP_IMAGES } from "@/constants/partners-lp";
 import { ULTRABLUE_LP_IMAGES } from "@/constants/ultrablue-lp";
 import Image from "next/image";
 
@@ -30,11 +31,15 @@ export function UltrablueWhy() {
       id="beneficios"
       className="scroll-mt-24 bg-[#F1F4F8] md:py-16 pb-10 lg:px-8"
     >
-      <div className="mx-auto grid max-w-[1280px] items-center gap-8 lg:grid-cols-2 lg:gap-14">
-        <div className="relative mx-auto aspect-[4/3] min-h-[220px] w-full max-w-[520px] overflow-hidden lg:mx-0">
+      <div className="mx-auto flex items-center flex-col lg:flex-row max-w-[1280px] gap-8 lg:gap-14 lg:items-center">
+        <div
+          className={
+            "relative mx-auto w-full max-w-[530px] h-[550px] overflow-hidden "
+          }
+        >
           <Image
             src={ULTRABLUE_LP_IMAGES.porQueViagem}
-            alt=""
+            alt="Por que planejar sua viagem com a gente"
             fill
             className="object-cover"
             sizes="(max-width: 1024px) 100vw, 50vw"
