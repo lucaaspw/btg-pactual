@@ -22,16 +22,21 @@ export function UltrablueCategoryBanners() {
     >
       <div className="mx-auto max-w-[1280px] lg:border-t lg:border-[#0B2859]/20  py-16">
         <div className="grid gap-x-20 gap-y-4 md:grid-cols-2">
-          <div>
-            <Image
-              src={ULTRABLUE_LP_IMAGES.experiencias}
-              alt="Experiências"
-              width={620}
-              height={166}
-            />
-            <div className="mt-auto w-full bg-[#0B2859] p-6">
-              <h3 className="text-2xl font-light text-white">Experiências</h3>
-              <p className="mt-4 max-w-sm text-white/90">
+          <div className="group">
+            <div className="relative h-[166px] md:h-[219px] overflow-hidden">
+              <Image
+                src={ULTRABLUE_LP_IMAGES.experiencias}
+                alt="Praia"
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            <div className=" bg-[#0B2859] w-full z-10 mt-auto p-6">
+              <h3 className="text-lg md:text-xl text-white font-light">
+                Experiências
+              </h3>
+              <p className="mt-3 max-w-sm text-2xl text-white/90">
                 Descubra viagens pensadas para cada momento.
               </p>
             </div>
@@ -40,7 +45,7 @@ export function UltrablueCategoryBanners() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="flex items-center justify-between text-xl border-b border-[#0B2859] py-4 text-lg font-bold text-[#0B2859] transition hover:text-[#1E4F99]"
+                  className="flex items-center justify-between border-b border-[#0B2859]/15 py-4 text-2xl font-bold text-[#0B2859] transition"
                 >
                   <span>{item.label}</span>
                   <ArrowUpRight
@@ -52,16 +57,20 @@ export function UltrablueCategoryBanners() {
             </div>
           </div>
 
-          <div>
-            <Image
-              src={ULTRABLUE_LP_IMAGES.programaUltrablue}
-              alt="Programa Ultrablue"
-              width={620}
-              height={166}
-            />
-            <div className="mt-auto w-full bg-[#0B2859] p-6">
-              <h3 className="text-2xl text-white">Programa Ultrablue</h3>
-              <p className="mt-4 text-white/90">
+          <div className="group">
+            <div className="relative h-[166px] md:h-[219px] overflow-hidden">
+              <Image
+                src={ULTRABLUE_LP_IMAGES.programaUltrablue}
+                alt="Programa Partners"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="relative  bg-[#0B2859] w-full z-10 mt-auto p-6">
+              <h3 className="text-lg md:text-xl text-white font-light">
+                Programa Partners
+              </h3>
+              <p className="mt-3 max-w-sm text-2xl text-white/90">
                 Serviços exclusivos para clientes.
               </p>
             </div>
@@ -70,7 +79,7 @@ export function UltrablueCategoryBanners() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="flex items-center justify-between text-xl border-b border-[#0B2859] py-4 text-lg font-bold text-[#0B2859] transition hover:text-[#1E4F99]"
+                  className="flex items-center justify-between border-b border-[#0B2859]/15 py-4 text-2xl font-bold text-[#0B2859] transition"
                 >
                   <span>{item.label}</span>
                   <ArrowUpRight

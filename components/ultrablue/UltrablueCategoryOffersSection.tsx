@@ -18,7 +18,7 @@ export function UltrablueCategoryOffersSection({
   return (
     <section className="scroll-mt-24 bg-[#F1F4F8] pb-16">
       <div className="">
-        <div className="relative min-h-[240px] overflow-hidden pt-20 pb-20 sm:min-h-[280px] md:min-h-[460px] lg:min-h-[554px]">
+        <div className="relative min-h-[240px] mt-20 w-full overflow-hidden sm:min-h-[280px] md:min-h-[520px]">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
@@ -26,22 +26,26 @@ export function UltrablueCategoryOffersSection({
             }}
             aria-hidden
           />
-          <div className="relative mx-auto max-w-[1280px] pb-0 md:pb-8 pt-10 px-5 lg:px-0">
+          <div
+            className="absolute inset-0 bg-gradient-to-t from-[#F1F4F8]/95 via-[#F1F4F8]/55 to-[#F1F4F8]/35 sm:from-[#F1F4F8]/85 sm:via-[#F1F4F8]/40"
+            aria-hidden
+          />
+          <div className="relative mx-auto max-w-[1280px] px-5 pb-10 pt-10 text-xl lg:px-0">
             <Link
               href="/ultrablue"
-              className="mb-20 text-xl flex items-center gap-1 text-xl text-[#0B2859] transition hover:text-[#0B2859] md:text-2xl"
+              className="mb-14 flex items-center gap-1 text-xl text-[#05132A] transition hover:text-[#0B2859]"
             >
               <ChevronLeft className="h-5 w-5" aria-hidden />
               voltar
             </Link>
-            <h1 className="text-xl font-bold tracking-tight text-[#0B2859] md:text-2xl lg:text-5xl">
+            <h1 className="max-w-[920px] text-2xl font-bold leading-[1.25] tracking-tight text-[#0B2859] md:text-3xl lg:text-4xl lg:leading-snug">
               {title}
             </h1>
           </div>
         </div>
         <div className="px-5 pt-8 lg:px-0 mx-auto max-w-[1280px]">
           {description ? (
-            <p className="mt-8 font-bold text-3xl leading-snug text-[#05132A]">
+            <p className="mt-8 font-bold text-3xl leading-snug text-[#0B2859]">
               {description}
             </p>
           ) : null}

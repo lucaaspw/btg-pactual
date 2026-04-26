@@ -16,7 +16,7 @@ export function UltrablueIntro() {
         </p>
 
         <p className="mt-10 text-2xl mb-3 text-[#05132A]/90">Curadoria</p>
-        <h3 className="mt-2 text-4xl font-bold text-[#0B2859] md:text-3xl">
+        <h3 className="mt-2 text-3xl font-bold text-[#0B2859] md:text-3xl">
           Escolhas do nosso Concierge
         </h3>
       </div>

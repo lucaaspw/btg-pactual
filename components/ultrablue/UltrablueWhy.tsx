@@ -42,8 +42,10 @@ export function UltrablueWhy() {
         </div>
 
         <div className="text-center px-5 lg:text-left">
-          <h2 className="text-2xl font-bold leading-tight text-[#0B2859] md:text-3xl lg:mb-0">
-            Por que ter o Ultrablue com você
+          <h2 className="text-2xl md:text-3xl font-bold leading-tight text-[#0B2859] lg:mb-0">
+            Por que ter o
+            <br className="md:hidden" />
+            Ultrablue com você
           </h2>
 
           <ul className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:mt-20 lg:gap-x-8 lg:gap-y-10">
@@ -58,10 +60,10 @@ export function UltrablueWhy() {
                     className="mt-1 h-9 w-9 shrink-0 object-contain"
                   />
                   <div>
-                    <h3 className="text-lg font-bold text-center md:text-left text-[#10408D] ">
+                    <h3 className="text-xl font-bold text-center md:text-left text-[#10408D] ">
                       {title}
                     </h3>
-                    <p className="mt-1 text-xl leading-relaxed text-center md:text-left text-[#05132A] md:text-xl">
+                    <p className="mt-1 leading-relaxed text-center md:text-left text-[#05132A] md:text-xl">
                       {text}
                     </p>
                   </div>
