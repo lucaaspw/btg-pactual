@@ -34,7 +34,7 @@ export function PartnersWhy() {
       id="beneficios"
       className="scroll-mt-24 bg-btg-navy lg:px-5 py-12 sm:py-16 lg:px-8"
     >
-      <div className="mx-auto flex items-center max-w-[1280px] gap-8 lg:gap-14 lg:items-center">
+      <div className="mx-auto flex items-center flex-col lg:flex-row max-w-[1280px] gap-8 lg:gap-14 lg:items-center">
         <div
           className={"relative mx-auto w-full max-w-[530px] overflow-hidden "}
         >

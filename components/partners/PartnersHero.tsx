@@ -30,7 +30,7 @@ export function PartnersHero() {
         />
         {/* Leitura do título à esquerda + leve fechamento na base para o navy da próxima seção */}
         <div
-          className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-btg-navy/75 via-btg-navy/25 to-transparent md:from-btg-navy/55 md:via-btg-navy/15"
+          className="absolute inset-y-0 bg-gradient-to-t md:left-0 z-10 md:w-1/2 md:max-w-[50vw] md:bg-gradient-to-r from-[#05132A] via-[#05132A]/75 to-[#05132A]/0"
           aria-hidden
         />
       </div>
