@@ -370,7 +370,7 @@ export function FeriadosSection({
       className={`${HEADER_OFFSET_CLASS} scroll-mt-24 ${t.section} pb-24`}
     >
       {brand === "ultrablue" ? (
-        <div className="relative min-h-[240px] w-full overflow-hidden sm:min-h-[280px] md:min-h-[520px]">
+        <div className="relative min-h-[240px] w-full overflow-hidden sm:min-h-[280px] md:min-h-[360px]">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{

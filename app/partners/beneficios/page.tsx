@@ -30,9 +30,9 @@ export default function PartnersBeneficiosPage() {
       <PartnersHeader />
 
       <main className="bg-btg-navy text-white">
-        <section className="px-5 pt-[5.5rem] pb-10 sm:px-8 sm:pt-24 sm:pb-12 lg:px-8">
-          <div className="mx-auto max-w-[1280px] pb-10 sm:pb-12">
-            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,560px)] lg:gap-10">
+        <section className="px-5 pt-[5.5rem] lg:pb-0 sm:px-8 sm:pt-24 sm:pb-12 lg:px-8">
+          <div className="mx-auto max-w-[1280px] lg:pb-0 sm:pb-12">
+            <div className="grid grid-cols-1 items-center lg:items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,560px)] lg:gap-10">
               <div className="max-w-[540px]">
                 <Link
                   href="/partners"
@@ -66,7 +66,7 @@ export default function PartnersBeneficiosPage() {
               </div>
               <Link
                 href="https://api.whatsapp.com/send?phone=551148621680&text=Cart%C3%A3o%20Partners%3A%20Sele%C3%A7%C3%A3o%20para%20a%20P%C3%A1scoa%20com%20benef%C3%ADcios%20exclusivos%20-%20C%C3%B3digo%20P0202"
-                className="inline-flex md:hidden items-center gap-2 bg-[#2E73D4] px-8 py-4 text-xl font-semibold text-white shadow-lg transition hover:bg-[#3A80E4]"
+                className="inline-flex md:hidden items-center gap-2 bg-[#2E73D4] px-8 py-4 mb-10 text-xl font-semibold text-white shadow-lg transition hover:bg-[#3A80E4]"
               >
                 Quero falar com meu concierge
                 <ArrowUpRight

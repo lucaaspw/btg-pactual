@@ -117,7 +117,7 @@ export default function PartnersConciergePage() {
       <PartnersHeader />
 
       <main className="bg-btg-navy text-white">
-        <section className="relative z-0 h-[574px] overflow-hidden pt-[5.5rem] sm:h-[520px] sm:pt-24 md:h-[600px]">
+        <section className="relative z-0 h-[574px] overflow-hidden pt-[5.5rem] sm:h-[520px] sm:pt-24 md:h-[600px] lg:h-[500px]">
           <Image
             src="/concierge_image/banner_concierge.png"
             alt="Concierge Partners"
@@ -138,11 +138,11 @@ export default function PartnersConciergePage() {
             className="absolute inset-0 bg-gradient-to-b  md:bg-gradient-to-r from-btg-navy/75 via-btg-navy/60 to-transparent md:from-btg-navy/55 md:via-btg-navy/15"
             aria-hidden
           />
-          <div className="relative z-10 mx-auto flex max-w-[1280px] flex-col justify-end px-5 pb-10 sm:px-8 sm:pb-14 md:h-[400px] md:pb-24 lg:px-0">
+          <div className="relative z-10 mx-auto flex max-w-[1280px] flex-col justify-end lg:justify-start px-5 pb-10 sm:px-8 sm:pb-14 md:h-[400px] md:pb-24 lg:px-0">
             <div className="max-w-2xl">
               <Link
                 href="/partners"
-                className="flex text-2xl mb-10 mt-10 items-center gap-1 text-[#E7EEFF] transition hover:text-white"
+                className="flex text-xl mb-10 mt-10 items-center gap-1 text-[#E7EEFF] transition hover:text-white"
               >
                 <ChevronLeft className="h-5 w-5" aria-hidden />
                 voltar

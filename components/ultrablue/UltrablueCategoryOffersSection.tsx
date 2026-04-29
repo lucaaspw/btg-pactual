@@ -18,7 +18,7 @@ export function UltrablueCategoryOffersSection({
   return (
     <section className="scroll-mt-24 bg-[#F1F4F8] pb-16">
       <div className="">
-        <div className="relative min-h-[240px] mt-20 w-full overflow-hidden sm:min-h-[280px] md:min-h-[520px]">
+        <div className="relative min-h-[240px] mt-20 w-full overflow-hidden sm:min-h-[280px] md:min-h-[360px]">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{

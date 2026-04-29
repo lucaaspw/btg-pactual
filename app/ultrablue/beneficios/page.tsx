@@ -41,7 +41,7 @@ export default function UltrablueBeneficiosPage() {
             priority
           />
           <div className="relative mx-auto max-w-[1280px] pb-10 pt-10 sm:pb-12">
-            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,560px)] lg:gap-10">
+            <div className="grid grid-cols-1 items-center lg:items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,560px)] lg:gap-10">
               <div className="max-w-[540px]">
                 <Link
                   href="/ultrablue"
@@ -62,7 +62,7 @@ export default function UltrablueBeneficiosPage() {
                 </p>
               </div>
 
-              <div className="relative mx-auto h-[300px] w-full max-w-[660px] overflow-hidden sm:h-[360px] lg:h-[520px]">
+              <div className="relative mx-auto h-[300px] w-full max-w-[660px] overflow-hidden sm:h-[360px] lg:h-[400px]">
                 <Image
                   src="/ultrablue_image/card_ultrablue.png"
                   alt="Cartão Ultrablue BTG Pactual"
