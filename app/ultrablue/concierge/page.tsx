@@ -1,6 +1,7 @@
 import { UltrablueClosingCta } from "@/components/ultrablue/UltrablueClosingCta";
 import { UltrablueFooter } from "@/components/ultrablue/UltrablueFooter";
 import { UltrablueHeader } from "@/components/ultrablue/UltrablueHeader";
+import { CONCIERGE_WHATSAPP } from "@/constants/concierge";
 import { ArrowUpRight, ChevronLeft } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -171,7 +172,7 @@ export default function UltrablueConciergePage() {
                 Atendimento de segunda a segunda, das 8h às 20h.
               </p>
               <a
-                href="https://api.whatsapp.com/send?phone=551148621688&text=Ultrablue%20BTG%20Pactual%3A%20Sele%C3%A7%C3%A3o%20para%20a%20P%C3%A1scoa%20com%20benef%C3%ADcios%20exclusivos%20-%20C%C3%B3digo%20U0206"
+                href={CONCIERGE_WHATSAPP.ultrablue}
                 className="mt-8 flex w-full items-center justify-between gap-2 bg-[#2E73D4] px-8 py-4 text-white transition hover:bg-[#3A80E4] lg:hidden"
               >
                 Quero falar com meu concierge

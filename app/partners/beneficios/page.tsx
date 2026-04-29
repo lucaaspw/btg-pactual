@@ -1,6 +1,7 @@
 import { PartnersClosingCta } from "@/components/partners/PartnersClosingCta";
 import { PartnersFooter } from "@/components/partners/PartnersFooter";
 import { PartnersHeader } from "@/components/partners/PartnersHeader";
+import { CONCIERGE_WHATSAPP } from "@/constants/concierge";
 import { ArrowUpRight, ChevronLeft } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -36,7 +37,7 @@ export default function PartnersBeneficiosPage() {
               <div className="max-w-[540px]">
                 <Link
                   href="/partners"
-                  className="flex mb-10 mt-10 items-center gap-1 text-2xl text-[#E7EEFF] transition hover:text-white"
+                  className="flex mb-10 mt-10 items-center gap-1 text-xl text-[#E7EEFF] transition hover:text-white"
                 >
                   <ChevronLeft className="h-5 w-5" aria-hidden />
                   voltar
@@ -65,7 +66,7 @@ export default function PartnersBeneficiosPage() {
                 />
               </div>
               <Link
-                href="https://api.whatsapp.com/send?phone=551148621680&text=Cart%C3%A3o%20Partners%3A%20Sele%C3%A7%C3%A3o%20para%20a%20P%C3%A1scoa%20com%20benef%C3%ADcios%20exclusivos%20-%20C%C3%B3digo%20P0202"
+                href={CONCIERGE_WHATSAPP.partners}
                 className="inline-flex md:hidden items-center gap-2 bg-[#2E73D4] px-8 py-4 mb-10 text-xl font-semibold text-white shadow-lg transition hover:bg-[#3A80E4]"
               >
                 Quero falar com meu concierge

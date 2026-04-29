@@ -14,11 +14,21 @@ import {
   normalizeMoeda,
   toAcfDate,
 } from "@/lib/wp-ofertas-api";
+import {
+  getWpErrorMessage,
+  parseWpJsonResponse,
+} from "@/lib/ofertas-api/wp-response";
 import { landingFromHostHeader, tipoCartaoFromLanding } from "@/lib/landing";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
+
+function asRecord(value: unknown): Record<string, unknown> | null {
+  return value && typeof value === "object"
+    ? (value as Record<string, unknown>)
+    : null;
+}
 
 async function requireDashboardSession() {
   const jar = await cookies();
@@ -73,22 +83,10 @@ export async function GET(request: Request) {
       cache: "no-store",
     });
 
-    const text = await res.text();
-    let data: unknown = null;
-    try {
-      data = text ? JSON.parse(text) : null;
-    } catch {
-      data = null;
-    }
+    const data = await parseWpJsonResponse(res);
 
     if (!res.ok) {
-      const msg =
-        data &&
-        typeof data === "object" &&
-        "message" in data &&
-        typeof (data as { message?: unknown }).message === "string"
-          ? (data as { message: string }).message
-          : res.statusText;
+      const msg = getWpErrorMessage(data, res.statusText);
       return NextResponse.json(
         { error: `Falha ao listar ofertas (${res.status}): ${msg}` },
         { status: res.status },
@@ -222,20 +220,10 @@ export async function POST(request: Request) {
       cache: "no-store",
     });
 
-    const mediaText = await mediaRes.text();
-    let mediaData: Record<string, unknown> | null = null;
-    try {
-      mediaData = mediaText
-        ? (JSON.parse(mediaText) as Record<string, unknown>)
-        : null;
-    } catch {
-      mediaData = null;
-    }
+    const mediaData = await parseWpJsonResponse(mediaRes);
 
     if (!mediaRes.ok) {
-      const wpMessage =
-        (typeof mediaData?.message === "string" && mediaData.message) ||
-        mediaRes.statusText;
+      const wpMessage = getWpErrorMessage(mediaData, mediaRes.statusText);
       return NextResponse.json(
         {
           error: `Falha ao enviar imagem ao WordPress (${mediaRes.status}): ${wpMessage}`,
@@ -245,7 +233,8 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!mediaData) {
+    const mediaObj = asRecord(mediaData);
+    if (!mediaObj) {
       return NextResponse.json(
         { error: "Resposta inválida do WordPress ao criar mídia." },
         { status: 502 },
@@ -253,7 +242,7 @@ export async function POST(request: Request) {
     }
 
     const sourceUrl =
-      typeof mediaData.source_url === "string" ? mediaData.source_url : "";
+      typeof mediaObj.source_url === "string" ? mediaObj.source_url : "";
     if (!sourceUrl) {
       return NextResponse.json(
         { error: "WordPress não retornou URL da imagem." },
@@ -262,7 +251,7 @@ export async function POST(request: Request) {
     }
 
     const mediaId =
-      typeof mediaData.id === "number" ? mediaData.id : Number(mediaData.id);
+      typeof mediaObj.id === "number" ? mediaObj.id : Number(mediaObj.id);
     if (imagemAlt && Number.isFinite(mediaId)) {
       await fetch(`${wpUrl}/wp-json/wp/v2/media/${mediaId}`, {
         method: "PUT",
@@ -320,18 +309,10 @@ export async function POST(request: Request) {
       cache: "no-store",
     });
 
-    const wpText = await wpRes.text();
-    let wpData: Record<string, unknown> | null = null;
-    try {
-      wpData = wpText ? (JSON.parse(wpText) as Record<string, unknown>) : null;
-    } catch {
-      wpData = null;
-    }
+    const wpData = await parseWpJsonResponse(wpRes);
 
     if (!wpRes.ok) {
-      const wpMessage =
-        (typeof wpData?.message === "string" && wpData.message) ||
-        wpRes.statusText;
+      const wpMessage = getWpErrorMessage(wpData, wpRes.statusText);
       return NextResponse.json(
         {
           error: `Falha ao criar post no WordPress (${wpRes.status}): ${wpMessage}`,
@@ -341,7 +322,8 @@ export async function POST(request: Request) {
       );
     }
 
-    const postIdRaw = wpData?.id;
+    const wpObj = asRecord(wpData);
+    const postIdRaw = wpObj?.id;
     const postId =
       typeof postIdRaw === "number"
         ? postIdRaw
@@ -364,20 +346,10 @@ export async function POST(request: Request) {
         },
       );
 
-      const putText = await putRes.text();
-      let putData: Record<string, unknown> | null = null;
-      try {
-        putData = putText
-          ? (JSON.parse(putText) as Record<string, unknown>)
-          : null;
-      } catch {
-        putData = null;
-      }
+      const putData = await parseWpJsonResponse(putRes);
 
       if (!putRes.ok) {
-        const putMessage =
-          (typeof putData?.message === "string" && putData.message) ||
-          putRes.statusText;
+        const putMessage = getWpErrorMessage(putData, putRes.statusText);
         return NextResponse.json(
           {
             error: `Post criado (id ${postId}), mas falhou ao gravar os campos ACF (${putRes.status}): ${putMessage}`,

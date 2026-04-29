@@ -46,7 +46,7 @@ lib/                    # Utilitários (ex.: formatação de preço)
 services/ofertas.ts     # Busca ofertas no WP (REST) para páginas server-side
 types/                  # Tipos (ex.: Oferta)
 public/                 # Assets estáticos (imagens por pasta temática)
-middleware.ts           # Reescrita por subdomínio (Partners / Ultrablue)
+proxy.ts                # Proxy/rewrite por subdomínio (Partners / Ultrablue)
 ```
 
 Rotas importantes:
@@ -151,7 +151,7 @@ O build pode avisar que a convenção **`middleware`** será substituída por **
 ## 8. Boas práticas para novos desenvolvedores
 
 1. **Landings:** colocar páginas em `app/partners/...` ou `app/ultrablue/...`; componentes grandes em `components/partners` ou `components/ultrablue`.
-2. **Compartilhado:** `components/ofertas`, `components/feriados`, `lib`, `types`, `constants`.
+2. **Compartilhado:** `components/shared` (ex.: header e CTA entre marcas), `components/ofertas`, `components/feriados`, `lib`, `types`, `constants` (ex.: `concierge.ts`, `landing-header.ts`).
 3. **Novos assets em `public`:** se forem servidos na **raiz** (`/minha_pasta/...`), adicione o prefixo em `PUBLIC_ROOT_PREFIXES` em `middleware.ts` para o subdomínio não reescrever o path incorretamente.
 4. **Não commitar** `.env.local` com senhas; usar variáveis no painel do host em produção.
 
